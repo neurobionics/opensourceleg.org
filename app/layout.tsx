@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/shared/navbar";
+import Footer from "@/components/shared/footer";
 
 export const metadata: Metadata = {
   title: "Open-Source Leg",
@@ -25,6 +26,7 @@ export default function RootLayout({
       >
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
