@@ -35,7 +35,7 @@ export default function Home() {
               href="https://github.com/neurobionics/opensourceleg"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[var(--light-green)] text-black border hover:bg-gray-50 rounded-lg px-6 py-6 text-lg flex items-center gap-2"
+              className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-6 text-lg flex items-center gap-2"
             >
               <Github className="w-5 h-5" />
               View on GitHub
@@ -154,7 +154,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Performance Benefits Section */}
+      {/* Leverage Section */}
       <div className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
@@ -209,6 +209,78 @@ export default function Home() {
                 </a>
               )
             })}
+          </div>
+        </div>
+      </div>
+
+      {/* Getting Started Section */}
+      <div className="py-10 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="relative">
+            {/* Left Content */}
+            <div className="max-w-md">
+              <div className="space-y-6 mb-8">
+                <h2 className="text-4xl md:text-5xl font-light leading-tight">Hardware</h2>
+                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                  Get up and running with the OpenSource Leg platform in minutes with our comprehensive documentation.
+                </p>
+              </div>
+
+              {/* Quick start steps */}
+              <div className="bg-gray-900 rounded-3xl p-8">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-white text-xl font-medium">Installation Steps</h3>
+                  <div className="bg-gray-700 rounded-full p-2">
+                    <Wrench className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3 text-white">
+                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                    <span>Clone the repository</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white">
+                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">2</div>
+                    <span>Install dependencies</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white">
+                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">3</div>
+                    <span>Run calibration</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white">
+                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">4</div>
+                    <span>Start developing</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Documentation Preview */}
+            <div className="lg:absolute lg:right-0 lg:top-1/2 lg:w-1/2 lg:h-full mt-16 lg:mt-0">
+              <div className="lg:h-full lg:flex lg:flex-col lg:justify-start">
+                <div className="space-y-6 mb-8">
+                  <h2 className="text-4xl md:text-5xl font-light leading-tight">Comprehensive Documentation</h2>
+                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
+                    From hardware assembly to advanced control algorithms. Everything you need to get started.
+                  </p>
+                </div>
+
+                {/* Documentation preview */}
+                <div className="bg-gray-900 rounded-3xl p-8 max-w-md">
+                  <div className="flex justify-center">
+                    <div className="bg-white rounded-xl px-6 py-4 flex items-center gap-3 w-full">
+                      <BookOpen className="w-6 h-6 text-blue-600" />
+                      <div className="flex-1">
+                        <div className="font-medium text-gray-900">API Reference</div>
+                        <div className="text-sm text-gray-500">Complete function library</div>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-gray-400" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -293,143 +365,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Technology Showcase Section */}
-      <div className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Content - Tech Demo */}
-            <div className="relative">
-              <div className="bg-gradient-to-br from-blue-800 via-indigo-900 to-purple-900 rounded-3xl p-8 relative overflow-hidden">
-                <div className="absolute inset-0 bg-black/20"></div>
-
-                {/* Code snippet */}
-                <div className="relative z-10 mb-8">
-                  <div className="text-white text-sm font-mono leading-relaxed bg-gray-900/50 rounded-xl p-4">
-                    <div className="text-green-400"># Initialize prosthetic control system</div>
-                    <div className="text-blue-300">from opensourceleg import ProstheticLeg</div>
-                    <div className="text-white">leg = ProstheticLeg()</div>
-                    <div className="text-white">leg.calibrate_sensors()</div>
-                    <div className="text-green-400"># Real-time gait control</div>
-                    <div className="text-white">leg.start_walking_mode()</div>
-                  </div>
-                </div>
-
-                {/* Feature highlights */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                  <div className="text-white text-sm space-y-3">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      <span>Real-time sensor fusion</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                      <span>Machine learning integration</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                      <span>Modular hardware design</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content */}
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-light leading-tight">
-                  <span className="relative">
-                    Advanced Technology Stack
-                    <div className="absolute -top-4 -left-4 w-8 h-8">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full absolute top-0 left-0"></div>
-                      <div className="w-1 h-4 bg-blue-500 rounded-full absolute top-1 left-3 rotate-45"></div>
-                      <div className="w-2 h-2 bg-blue-500 rounded-full absolute bottom-0 right-0"></div>
-                    </div>
-                  </span>
-                </h2>
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                  Built on proven robotics frameworks with real-time control capabilities. Our modular design
-                  allows researchers to focus on innovation rather than infrastructure.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Getting Started Section */}
-      <div className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative">
-            {/* Left Content */}
-            <div className="max-w-md">
-              <div className="space-y-6 mb-8">
-                <h2 className="text-4xl md:text-5xl font-light leading-tight">Quick Start Guide</h2>
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                  Get up and running with the OpenSource Leg platform in minutes with our comprehensive documentation.
-                </p>
-              </div>
-
-              {/* Quick start steps */}
-              <div className="bg-gray-900 rounded-3xl p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-white text-xl font-medium">Installation Steps</h3>
-                  <div className="bg-gray-700 rounded-full p-2">
-                    <Wrench className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">1</div>
-                    <span>Clone the repository</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">2</div>
-                    <span>Install dependencies</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">3</div>
-                    <span>Run calibration</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">4</div>
-                    <span>Start developing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content - Documentation Preview */}
-            <div className="lg:absolute lg:right-0 lg:top-1/2 lg:w-1/2 lg:h-full mt-16 lg:mt-0">
-              <div className="lg:h-full lg:flex lg:flex-col lg:justify-start">
-                <div className="space-y-6 mb-8">
-                  <h2 className="text-4xl md:text-5xl font-light leading-tight">Comprehensive Documentation</h2>
-                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                    From hardware assembly to advanced control algorithms. Everything you need to get started.
-                  </p>
-                </div>
-
-                {/* Documentation preview */}
-                <div className="bg-gray-900 rounded-3xl p-8 max-w-md">
-                  <div className="flex justify-center">
-                    <div className="bg-white rounded-xl px-6 py-4 flex items-center gap-3 w-full">
-                      <BookOpen className="w-6 h-6 text-blue-600" />
-                      <div className="flex-1">
-                        <div className="font-medium text-gray-900">API Reference</div>
-                        <div className="text-sm text-gray-500">Complete function library</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-gray-400" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div>      
     </div>
   )
 }

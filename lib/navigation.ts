@@ -137,9 +137,4 @@ export const navigationConfig: NavigationSection[] = [
       }
     ]
   },
-  {
-    title: "Contact",
-    type: "link",
-    href: "/contact"
-  }
 ]

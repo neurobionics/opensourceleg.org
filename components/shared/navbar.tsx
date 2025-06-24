@@ -86,7 +86,7 @@ export default function Navbar() {
               </Link>
               
               {/* Desktop Navigation Menu */}
-              <div className="hidden lg:block">
+              <div className="hidden lg:flex lg:items-center lg:gap-4">
                 <NavigationMenu viewport={false}>
                   <NavigationMenuList>
                     {navigationConfig.map((section) => (
@@ -152,6 +152,16 @@ export default function Navbar() {
                     ))}
                   </NavigationMenuList>
                 </NavigationMenu>
+                
+                {/* Forum Button */}
+                <Link
+                  href="https://discourse.opensourceleg.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[var(--light-green)] text-black border border-black rounded-md px-4 py-2 text-sm font-medium hover:bg-[var(--light-blue)] transition-colors -mr-2"
+                >
+                  Forum
+                </Link>
               </div>
 
               {/* Mobile Hamburger Button */}
@@ -260,6 +270,19 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
+              
+              {/* Mobile Forum Button */}
+              <div className="pt-4 border-t border-border">
+                <Link
+                  href="https://discourse.opensourceleg.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-[var(--light-green)] text-black border border-black rounded-lg px-3 py-2 text-center font-medium hover:bg-[var(--light-green)]/80 transition-colors"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Forum
+                </Link>
+              </div>
             </nav>
           </div>
         </div>
