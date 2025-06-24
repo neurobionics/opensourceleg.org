@@ -71,8 +71,8 @@ export default function Navbar() {
         transition-transform duration-300 ease-in-out
         ${isVisible ? 'translate-y-0' : '-translate-y-full'}
       `}>
-        <div className="flex justify-center w-full py-4 bg-background/80 backdrop-blur-md px-4 md:px-0">
-          <div className="border border-border rounded-lg px-6 py-3 bg-card shadow-sm w-full max-w-none md:max-w-fit md:px-4 md:py-2 md:w-auto">
+        <div className="flex justify-center w-full py-4 px-4 md:px-0">
+          <div className="border border-border rounded-lg px-6 py-3 bg-background shadow-sm w-full max-w-none md:max-w-fit md:px-4 md:py-2 md:w-auto">
             <div className="flex items-center justify-between md:justify-start gap-8">
               {/* Logo */}
               <Link href="/" className="flex-shrink-0">
