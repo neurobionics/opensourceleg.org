@@ -8,7 +8,8 @@ import {
   ArrowRight,
   VideotapeIcon,
   TrendingUpIcon,
-  TrendingDownIcon
+  TrendingDownIcon,
+  ArrowUpRight
 } from "lucide-react"
 import { toolPanels } from "@/lib/assets"
 import { statsPanels } from "@/lib/stats"
@@ -347,7 +348,7 @@ export default function Home() {
       
 
       {/* Stats Section */}
-      <div className="py-10 px-6">
+      <div className="pt-10 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-16">
@@ -415,20 +416,81 @@ export default function Home() {
           {/* Data timeframe note */}
           <div className="text-center mt-8">
             <p className="text-xs text-muted-foreground">
-              Data collected over the period of last 6 months.
+              Based on data collected over the last 6 months.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Community Section */}
-      <div className="py-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-light mb-8">
-            Join the community
-          </h2>
+        {/* Community Section */}
+        <div className="bg-[var(--light-blue)] py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <div className="space-y-8">
+                <h2 className="text-3xl md:text-5xl font-light text-white">
+                  <span className="font-medium italic">Join</span> the community!
+                </h2>
+                
+                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                  Join our wonderful community of students, engineers, and researchers driving groundbreaking advancements in prosthetics.
+                </p>
+
+                {/* Action buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button
+                    href="https://discourse.opensourceleg.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  >
+                    Join Forum <ArrowUpRight className="w-5 h-5 ml-2" />
+                  </Button>
+                  <Button
+                    href="/about"
+                    variant="outline"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  >
+                    Read More
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right Content - Community Images */}
+              <div className="relative h-96">
+                {/* Image 1 - Top Left */}
+                <div className="absolute top-0 left-0 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2">
+                  <Image 
+                    src="/community-1.jpg" 
+                    alt="Community member working on prosthetics" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                
+                {/* Image 2 - Center Right */}
+                <div className="absolute top-16 right-0 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform -rotate-3">
+                  <Image 
+                    src="/community-2.jpg" 
+                    alt="Research team collaboration" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+                
+                {/* Image 3 - Bottom Left */}
+                <div className="absolute bottom-0 left-8 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-1">
+                  <Image 
+                    src="/community-3.jpg" 
+                    alt="Open source hardware development" 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
            
     </div>
   )
