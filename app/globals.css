@@ -53,7 +53,7 @@ body {
   --dark-blue: oklch(0.249 0.075 258.24); /* #08124D */
   --light-green: oklch(0.9396 0.1468 115.51); /* #E7F77E */
   --dark-green: oklch(0.3978 0.0879 118.18); /* #434D08 */
-  --white: oklch(0.9676 0.0057 72.84); /* #F6F4F0 */
+  --white: oklch(0.9749 0.0025 228.78); /* #F6F4F0 */
   --black: oklch(0.155 0.006 83.31); /* #1E1C19 */
   --gray: oklch(0.4362 0.0099 278.42);
 
@@ -97,5 +97,43 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .animate-scroll {
+    animation: scroll var(--scroll-duration, 30s) linear infinite;
+    will-change: transform;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Logo carousel utilities */
+  .logo-carousel {
+    --scroll-duration: 30s;
+    --logo-gap: 2rem;
+  }
+  
+  .logo-carousel.fast {
+    --scroll-duration: 15s;
+  }
+  
+  .logo-carousel.slow {
+    --scroll-duration: 45s;
+  }
+  
+  .logo-carousel.tight {
+    --logo-gap: 1rem;
+  }
+  
+  .logo-carousel.wide {
+    --logo-gap: 4rem;
   }
 }

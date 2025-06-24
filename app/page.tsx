@@ -1,6 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 import {
   Move3DIcon,
   Github,
@@ -62,7 +63,7 @@ export default function Home() {
             {/* Left Content - Video */}
             <div className="h-full flex items-center">
               {/* YouTube Video Embed */}
-              <div className="relative w-full h-0 pb-[56.25%] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="border border-[var(--white)] relative w-full h-0 pb-[56.25%] rounded-2xl overflow-hidden shadow-2xl">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-2xl"
                   src="https://www.youtube.com/embed/xFliFk65l3Q?autoplay=1&mute=1"
@@ -106,45 +107,46 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center space-y-8">
             {/* Centered heading */}
-            <h3 className="text-2xl md:text-3xl font-light">
-              Trusted by researchers and institutions worldwide
+            <h3 className="text-2xl md:text-3xl font-light font-serif">
+              Trusted by <span className="px-2 text-5xl font-semibold text-[var(--light-green)]">25+</span> research institutions worldwide
             </h3>
 
-            {/* Partners carousel */}
+            {/* Researchers carousel */}
             <div className="flex items-center justify-center overflow-hidden">
-              <div className="flex items-center gap-12 animate-scroll whitespace-nowrap">
+              <div className="flex items-center animate-scroll logo-carousel slow">
                 {/* First set */}
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">MIT</span>
+                <div className="flex items-center gap-8 flex-shrink-0">
+                  <Image 
+                    src="/logo-strip-1.png" 
+                    alt="Research institutions - strip 1" 
+                    width={600}
+                    height={64}
+                    className="h-16 object-contain"
+                  />
+                  <Image 
+                    src="/logo-strip-2.png" 
+                    alt="Research institutions - strip 2" 
+                    width={600}
+                    height={64}
+                    className="h-16 object-contain"
+                  />
                 </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">Stanford</span>
-                </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">Carnegie Mellon</span>
-                </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">Johns Hopkins</span>
-                </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">ETH Zurich</span>
-                </div>
-
                 {/* Duplicate set for seamless loop */}
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">MIT</span>
-                </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">Stanford</span>
-                </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">Carnegie Mellon</span>
-                </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">Johns Hopkins</span>
-                </div>
-                <div className="text-white/80 whitespace-nowrap">
-                  <span className="text-lg font-medium">ETH Zurich</span>
+                <div className="flex items-center gap-8 flex-shrink-0 ml-8">
+                  <Image 
+                    src="/logo-strip-1.png" 
+                    alt="Research institutions - strip 1" 
+                    width={600}
+                    height={64}
+                    className="h-16 object-contain"
+                  />
+                  <Image 
+                    src="/logo-strip-2.png" 
+                    alt="Research institutions - strip 2" 
+                    width={600}
+                    height={64}
+                    className="h-16 object-contain"
+                  />
                 </div>
               </div>
             </div>
@@ -153,24 +155,34 @@ export default function Home() {
       </div>
 
       {/* Performance Benefits Section */}
-      <div className="py-20 px-6">
+      <div className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-light mb-8">
-              <span className="relative">
-                10x
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-blue-300 rounded-full"></div>
-              </span>{" "}
-              faster development
+                              <span className="relative">
+                  Leverage
+                  <svg 
+                    className="absolute -bottom-1 left-0 w-full h-3" 
+                    viewBox="0 0 200 12" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M2 10C60 6 140 6 198 8" 
+                      stroke="var(--light-green)" 
+                      strokeWidth="6" 
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </span>{" "}
+              the OSL ecosystem
             </h2>
-            <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-              Open-source collaboration accelerates innovation in prosthetic technology.
-              <br />
-              When researchers share code, hardware designs, and data, everyone benefits.
-              <br />
-              Join the movement to democratize assistive technology.
-            </p>
+              <p className="text-lg md:text-xl text-gray-700 max-w-2xl md:max-w-3xl mx-auto leading-relaxed text-balance">
+                Essential open-source tools for building, testing, and iterating<br />
+                on next-generation prosthetic control systems.
+              </p>
           </div>
 
           {/* Comparison panels */}
