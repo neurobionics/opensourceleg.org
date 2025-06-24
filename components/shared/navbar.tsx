@@ -86,7 +86,7 @@ export default function Navbar() {
               </Link>
               
               {/* Desktop Navigation Menu */}
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <NavigationMenu viewport={false}>
                   <NavigationMenuList>
                     {navigationConfig.map((section) => (
@@ -156,7 +156,7 @@ export default function Navbar() {
 
               {/* Mobile Hamburger Button */}
               <button
-                className="md:hidden p-2 hover:bg-accent rounded-md transition-colors"
+                className="lg:hidden p-2 hover:bg-accent rounded-md transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 aria-label="Toggle mobile menu"
               >
