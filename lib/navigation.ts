@@ -43,11 +43,6 @@ export const navigationConfig: NavigationSection[] = [
     },
     items: [
       {
-        title: "Getting Started",
-        href: "/hardware/getting-started",
-        description: "How to get started with our hardware"
-      },
-      {
         title: "Downloads",
         href: "/hardware/downloads",
         description: "One stop shop for all things hardware"
@@ -69,11 +64,6 @@ export const navigationConfig: NavigationSection[] = [
     },
     items: [
       {
-        title: "Getting Started",
-        href: "/software/getting-started",
-        description: "How to get started with our software"
-      },
-      {
         title: "Downloads",
         href: "/software/downloads",
         description: "One stop shop for all things software"
@@ -94,11 +84,6 @@ export const navigationConfig: NavigationSection[] = [
       href: "/electronics"
     },
     items: [
-      {
-        title: "Getting Started",
-        href: "/electronics/getting-started",
-        description: "How to get started with our electronics"
-      },
       {
         title: "Downloads",
         href: "/electronics/downloads",

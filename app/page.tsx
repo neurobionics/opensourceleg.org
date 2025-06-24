@@ -5,11 +5,15 @@ import Image from "next/image"
 import {
   Move3DIcon,
   Github,
-  BookOpen,
   ArrowRight,
-  Wrench,
+  VideotapeIcon,
+  TrendingUpIcon,
+  TrendingDownIcon
 } from "lucide-react"
 import { toolPanels } from "@/lib/assets"
+import { statsPanels } from "@/lib/stats"
+import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 export default function Home() {
   return (
@@ -52,7 +56,7 @@ export default function Home() {
             </Button>
           </div>
 
-          <p className="text-gray-500 text-sm">Built by researchers, for researchers</p>
+          <p className="text-gray-500 text-sm">Built for researchers, by researchers</p>
         </main>
       </div>
 
@@ -88,7 +92,7 @@ export default function Home() {
                 </svg>
                 
                 <blockquote className="text-white pl-12">
-                  <p className="text-2xl md:text-3xl font-semibold leading-relaxed mb-8">
+                  <p className="text-2xl md:text-3xl font-light leading-relaxed mb-8">
                     To give people access to the tools needed to overcome the barriers preventing these technologies from impacting the lives of people with disabilities.
                   </p>
                   <footer className="text-white/60 text-lg">
@@ -213,159 +217,219 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Getting Started Section */}
-      <div className="py-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="relative">
-            {/* Left Content */}
-            <div className="max-w-md">
-              <div className="space-y-6 mb-8">
-                <h2 className="text-4xl md:text-5xl font-light leading-tight">Hardware</h2>
-                <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                  Get up and running with the OpenSource Leg platform in minutes with our comprehensive documentation.
-                </p>
-              </div>
+      {/* Hardware Section */}
+      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-[2rem] text-white py-20 px-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8 flex flex-col gap-4 justify-center">
+            {/* Main headline */}
+            <h2 className="text-4xl md:text-5xl font-light leading-tight">
+              Built for <span className="relative text-[var(--light-green)] italic font-medium">researchers
+                <svg 
+                  className="absolute -bottom-1 left-0 w-full h-3" 
+                  viewBox="0 0 200 12" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M2 10C60 6 140 6 198 8" 
+                    stroke="var(--light-blue)" 
+                    strokeWidth="4" 
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-[var(--white)] max-w-2xl md:max-w-3xl mx-auto leading-relaxed mb-8">
+              The Open-Source Leg hardware is a robust and relatively inexpensive system that 
+              can be easily manufactured, assembled, and controlled.
+              </p>
 
-              {/* Quick start steps */}
-              <div className="bg-gray-900 rounded-3xl p-8">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-white text-xl font-medium">Installation Steps</h3>
-                  <div className="bg-gray-700 rounded-full p-2">
-                    <Wrench className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">1</div>
-                    <span>Clone the repository</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">2</div>
-                    <span>Install dependencies</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">3</div>
-                    <span>Run calibration</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-white">
-                    <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-xs font-bold">4</div>
-                    <span>Start developing</span>
-                  </div>
-                </div>
+              {/* Action buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                  <Button
+                    href="https://cad.onshape.com/documents/3520551dd01cf402179e8687/w/87da2fb0a553b44a27833624/e/d9c95c04904f8d6a753006a4"
+                    className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-6 text-lg flex items-center gap-2"
+                  >
+                    <Move3DIcon className="w-5 h-5 mr-2" />
+                    View on Onshape
+                  </Button>
+                  <Button
+                    href="/tutorials"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  >
+                    Tutorials <VideotapeIcon className="w-5 h-5 ml-2" />
+                  </Button>
+                  <Button
+                    href="/hardware"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  >
+                    Read More <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>                 
               </div>
+              
             </div>
-
-            {/* Right Content - Documentation Preview */}
-            <div className="lg:absolute lg:right-0 lg:top-1/2 lg:w-1/2 lg:h-full mt-16 lg:mt-0">
-              <div className="lg:h-full lg:flex lg:flex-col lg:justify-start">
-                <div className="space-y-6 mb-8">
-                  <h2 className="text-4xl md:text-5xl font-light leading-tight">Comprehensive Documentation</h2>
-                  <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
-                    From hardware assembly to advanced control algorithms. Everything you need to get started.
-                  </p>
-                </div>
-
-                {/* Documentation preview */}
-                <div className="bg-gray-900 rounded-3xl p-8 max-w-md">
-                  <div className="flex justify-center">
-                    <div className="bg-white rounded-xl px-6 py-4 flex items-center gap-3 w-full">
-                      <BookOpen className="w-6 h-6 text-blue-600" />
-                      <div className="flex-1">
-                        <div className="font-medium text-gray-900">API Reference</div>
-                        <div className="text-sm text-gray-500">Complete function library</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-gray-400" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Right Content */}
+          <div className="relative w-full h-96 rounded-2xl overflow-hidden">
+            <Image src="/hardware.webp" alt="Open-Source Leg Hardware" fill className="object-cover" />
           </div>
         </div>
-      </div>
+      </div>  
 
-      {/* Target Users Section */}
-      <div className="bg-[var(--dark-blue)] text-white py-20 px-6">
+      {/* Software Section */}
+      <div className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
-              {/* Main headline */}
-              <h2 className="text-4xl md:text-5xl font-light leading-tight">
-                Built <span className="text-[var(--light-green)] italic">for innovators</span>
-              </h2>
-
-              {/* Category tags */}
-              <div className="flex flex-wrap gap-3">
-                <span className="bg-blue-400 text-black px-4 py-2 rounded-full text-sm font-medium">
-                  Researchers
-                </span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Engineers</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Students</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Clinicians</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Makers</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Startups</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Universities</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Medical Centers</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Prosthetists</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Bioengineers</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Roboticists</span>
-                <span className="border border-white/30 text-white px-4 py-2 rounded-full text-sm">Hackers</span>
-              </div>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content - Software Screenshot */}
+            <div className="w-full rounded-[2rem] overflow-hidden border-2 border-[var(--black)]">
+              <Image src="/software.png" alt="Open-Source Leg Software" width={800} height={600} className="w-full h-auto object-contain" />
             </div>
 
-            {/* Right Content */}
-            <div className="space-y-8">
-              {/* Illustration */}
-              <div className="flex justify-center mb-8">
-                <div className="relative">
-                  {/* Main circle */}
-                  <div className="w-48 h-48 bg-blue-300 rounded-full flex items-center justify-center relative">
-                    {/* Inner circle */}
-                    <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center relative">
-                      {/* Circuit pattern */}
-                      <div className="absolute inset-4 border-2 border-blue-400 rounded-full"></div>
-                      <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                      
-                      {/* Connection lines */}
-                      <div className="absolute top-4 left-1/2 w-0.5 h-6 bg-blue-400 transform -translate-x-1/2"></div>
-                      <div className="absolute bottom-4 left-1/2 w-0.5 h-6 bg-blue-400 transform -translate-x-1/2"></div>
-                      <div className="absolute left-4 top-1/2 w-6 h-0.5 bg-blue-400 transform -translate-y-1/2"></div>
-                      <div className="absolute right-4 top-1/2 w-6 h-0.5 bg-blue-400 transform -translate-y-1/2"></div>
-                    </div>
+            {/* Right Content - Description */}
+            <div className="space-y-8 flex flex-col gap-4 justify-center">
+              {/* Main headline */}
+              <h2 className="text-4xl md:text-5xl font-light leading-tight">
+                Built for <span className="relative text-[var(--light-blue)] italic font-medium">developers
+                  <svg 
+                    className="absolute -bottom-1 left-0 w-full h-3" 
+                    viewBox="0 0 200 12" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M2 10C60 6 140 6 198 8" 
+                      stroke="var(--light-green)" 
+                      strokeWidth="4" 
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </h2>
+              
+              <p className="text-lg md:text-xl text-gray-700 max-w-2xl md:max-w-3xl leading-relaxed mb-8">
+              The Open-Source Leg software is designed to be modular and flexible to allow for easy integration with a wide variety of sensors and robotics frameworks.
+              The software library is written in Python and is compatible with Python 3.9 and above.
+              </p>
 
-                    {/* Floating elements */}
-                    <div className="absolute -right-8 top-8 w-16 h-20 bg-white rounded-lg border-4 border-blue-500 transform rotate-12">
-                      <div className="p-2 space-y-1">
-                        <div className="w-8 h-1 bg-blue-400 rounded-full"></div>
-                        <div className="w-6 h-1 bg-blue-400 rounded-full"></div>
-                        <div className="w-7 h-1 bg-blue-400 rounded-full"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="space-y-6">
-                <h3 className="text-2xl md:text-3xl font-light">For Research & Development</h3>
-                <p className="text-lg text-gray-300 leading-relaxed">
-                  Whether you&apos;re developing new control algorithms, testing sensor configurations, or studying
-                  gait patterns, our platform provides the tools and community support you need to innovate.
-                </p>
-                <Button 
-                  href="/docs/getting-started"
-                  className="bg-blue-400 text-black hover:bg-blue-300 rounded-full px-8 py-3 text-lg flex items-center gap-2"
+              {/* Action buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <Button
+                  href="https://github.com/neurobionics/opensourceleg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[var(--light-blue)] text-white border border-black hover:text-black hover:bg-[var(--light-green)] rounded-md px-6 py-6 text-base font-medium"
                 >
-                  <BookOpen className="w-5 h-5" />
-                  Get Started
+                  <Github className="w-5 h-5 mr-2" />
+                  View on GitHub
+                </Button>
+                <Button
+                  href="https://neurobionics.github.io/opensourceleg/"
+                  target="_blank"
+                  variant="outline"
+                  className="bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                >
+                  Documentation <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+                <Button
+                  href="/software"
+                  variant="outline"
+                  className="bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                >
+                  Read more <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>
             </div>
           </div>
         </div>
-      </div>      
+      </div>
+      
+
+      {/* Stats Section */}
+      <div className="py-10 px-6">
+        <div className="max-w-7xl mx-auto">
+          {/* Main headline */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-light mb-8">
+              Built and tested by the{" "}
+                <span className="relative font-medium italic">
+                  Community
+                  <svg 
+                    className="absolute -bottom-1 left-0 w-full h-3" 
+                    viewBox="0 0 200 12" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M2 10C60 6 140 6 198 8" 
+                      stroke="var(--light-green)" 
+                      strokeWidth="6" 
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+            </h2>
+              <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance">
+                Our open-source tools are continuously improved through community contributions &
+                testing across research institutions worldwide.
+              </p>
+          </div>
+
+          {/* stats panels */}
+          <div className="grid md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {statsPanels.map((stat) => {
+              const TrendIcon = stat.trend === "up" ? TrendingUpIcon : TrendingDownIcon
+              const trendColor = stat.trend === "up" ? "text-green-600" : "text-red-600"
+              
+              return (
+                <Card key={stat.id} className="@container/card bg-[var(--black)] text-white border-gray-700">
+                  <CardHeader>
+                    <CardDescription className="text-gray-300">{stat.title}</CardDescription>
+                    <CardTitle className="py-2 text-3xl font-bold tabular-nums @[250px]/card:text-4xl text-[var(--white)]">
+                      {stat.value.toLocaleString()}
+                    </CardTitle>
+                    <CardAction>
+                      <Badge variant="outline" className={`${trendColor} font-semibold p-2 text-sm border-gray-600`}>
+                        <TrendIcon className="w-3 h-3 mr-1"/>
+                        +{stat.trendValue}%
+                      </Badge>
+                    </CardAction>
+                  </CardHeader>
+                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                    <div className="line-clamp-1 flex gap-2 font-medium">
+                      <a href={stat.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--light-blue)] transition-colors">
+                        View {stat.title} →
+                      </a>
+                    </div>
+                    <div className="text-gray-400">
+                      {stat.description}
+                    </div>
+                  </CardFooter>
+                </Card>
+                            )
+            })}
+          </div>
+          
+          {/* Data timeframe note */}
+          <div className="text-center mt-8">
+            <p className="text-xs text-muted-foreground">
+              Data collected over the period of last 6 months.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Community Section */}
+      <div className="py-10 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-light mb-8">
+            Join the community
+          </h2>
+        </div>
+      </div>
+           
     </div>
   )
 }

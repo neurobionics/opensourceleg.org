@@ -10,7 +10,6 @@ export default function Footer() {
       title: "Hardware",
       links: [
         { title: "Overview", href: "/hardware" },
-        { title: "Getting Started", href: "/hardware/getting-started" },
         { title: "Downloads", href: "/hardware/downloads" },
         { title: "Tutorials", href: "/hardware/tutorials" },
       ]
@@ -19,7 +18,6 @@ export default function Footer() {
       title: "Software", 
       links: [
         { title: "Overview", href: "/software" },
-        { title: "Getting Started", href: "/software/getting-started" },
         { title: "Downloads", href: "/software/downloads" },
         { title: "Tutorials", href: "/software/tutorials" },
       ]
@@ -28,7 +26,6 @@ export default function Footer() {
       title: "Electronics",
       links: [
         { title: "Overview", href: "/electronics" },
-        { title: "Getting Started", href: "/electronics/getting-started" },
         { title: "Downloads", href: "/electronics/downloads" },
         { title: "Tutorials", href: "/electronics/tutorials" },
       ]
