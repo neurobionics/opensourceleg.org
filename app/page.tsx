@@ -4,16 +4,10 @@ import { Button } from "@/components/ui/button"
 import {
   Move3DIcon,
   Github,
-  Zap,
-  Cpu,
   BookOpen,
   ArrowRight,
   Check,
-  Play,
-  Code,
   Wrench,
-  Activity,
-  Shield,
 } from "lucide-react"
 
 export default function Home() {
@@ -62,132 +56,53 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="bg-black text-white min-h-screen relative overflow-hidden rounded-[3rem]">
-        <div className="max-w-7xl mx-auto px-6 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div className="space-y-8">
-              {/* Feature badges */}
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm">
-                  <Cpu className="w-4 h-4" />
-                  Real-time Control
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm">
-                  <Zap className="w-4 h-4" />
-                  Low Latency
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 rounded-full px-4 py-2 text-sm">
-                  <Shield className="w-4 h-4" />
-                  Safety First
-                </div>
-              </div>
-
-              {/* Main headline */}
-              <h2 className="text-4xl md:text-5xl font-light leading-tight">
-                Advanced control system for next-generation prosthetics
-              </h2>
-
-              {/* Description */}
-              <p className="text-xl text-gray-300 leading-relaxed">
-                Real-time sensor fusion, adaptive gait control, and machine learning-powered movement prediction.
-              </p>
-
-              {/* CTA button */}
-              <Button 
-                href="#demo"
-                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3 text-lg flex items-center gap-2"
-              >
-                <Play className="w-5 h-5" />
-                Watch Demo
-              </Button>
-            </div>
-
-            {/* Right Content - Technical Visualization */}
-            <div className="relative">
-              {/* Floating tech icons */}
-              <div className="absolute -top-10 -left-10 w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center">
-                <Cpu className="w-6 h-6 text-white" />
-              </div>
-              <div className="absolute top-20 -left-20 w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
-                <Activity className="w-6 h-6 text-white" />
-              </div>
-              <div className="absolute -top-5 left-20 w-12 h-12 bg-purple-400 rounded-xl flex items-center justify-center">
-                <Zap className="w-6 h-6 text-white" />
-              </div>
-              <div className="absolute top-10 left-40 w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center">
-                <Code className="w-6 h-6 text-white" />
-              </div>
-
-              {/* Device mockup */}
-              <div className="bg-gray-900 rounded-[2.5rem] p-6 max-w-sm mx-auto border-4 border-gray-700">
-                <div className="bg-black rounded-[2rem] p-6 h-[400px] flex flex-col">
-                  {/* Status display */}
-                  <div className="flex justify-between items-center mb-6">
-                    <div className="flex items-center gap-2">
-                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                      <span className="text-white text-sm">System Active</span>
-                    </div>
-                    <div className="text-green-400 text-sm">98% Battery</div>
-                  </div>
-
-                  {/* Sensor readings */}
-                  <div className="flex-1 space-y-4">
-                    <div className="bg-gray-800 rounded-xl p-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-300 text-sm">IMU Sensor</span>
-                        <span className="text-green-400 text-sm">Active</span>
-                      </div>
-                      <div className="flex gap-1">
-                        {Array.from({ length: 8 }).map((_, i) => (
-                          <div
-                            key={i}
-                            className="w-2 bg-green-500 rounded-sm"
-                            style={{
-                              height: `${Math.random() * 20 + 10}px`,
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    
-                    <div className="bg-gray-800 rounded-xl p-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-300 text-sm">Pressure Sensors</span>
-                        <span className="text-blue-400 text-sm">Calibrated</span>
-                      </div>
-                      <div className="flex gap-1">
-                        {Array.from({ length: 6 }).map((_, i) => (
-                          <div
-                            key={i}
-                            className="w-3 bg-blue-500 rounded-sm"
-                            style={{
-                              height: `${Math.random() * 15 + 5}px`,
-                            }}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Control interface */}
-                  <div className="mt-4 bg-gray-800 rounded-xl px-4 py-3 flex items-center justify-between">
-                    <span className="text-gray-300 text-sm">Gait Mode: Normal</span>
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
-                        <Check className="w-3 h-3 text-white" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-28">
+        <div className="max-w-7xl mx-auto px-6 h-[90vh] flex items-center -mt-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center w-full h-full py-20">
+            {/* Left Content - Video */}
+            <div className="h-full flex items-center">
+              {/* YouTube Video Embed */}
+              <div className="relative w-full h-0 pb-[56.25%] rounded-2xl overflow-hidden shadow-2xl">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-2xl"
+                  src="https://www.youtube.com/embed/xFliFk65l3Q?autoplay=1&mute=1"
+                  title="OpenSource Leg Intro"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
               </div>
             </div>
+
+            {/* Right Content - Quote */}
+            <div className="h-full flex items-center">
+              <div className="relative w-full">
+                {/* Quote SVG Icon */}
+                <svg 
+                  className="absolute -top-6 -left-6 w-16 h-16 text-white/20" 
+                  fill="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
+                </svg>
+                
+                <blockquote className="text-white pl-12">
+                  <p className="text-2xl md:text-3xl font-semibold leading-relaxed mb-8">
+                    To give people access to the tools needed to overcome the barriers preventing these technologies from impacting the lives of people with disabilities.
+                  </p>
+                  <footer className="text-white/60 text-lg">
+                    <cite>— Prof. Elliott Rouse, University of Michigan</cite>
+                  </footer>
+                </blockquote>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
 
       {/* Community & Partners Section */}
-      <div className="bg-blue-700 text-white py-16 relative z-0 -mt-24">
+      <div className="bg-[var(--light-blue)] text-white py-16 relative z-0 -mt-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center space-y-8">
             {/* Centered heading */}
