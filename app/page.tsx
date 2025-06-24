@@ -7,9 +7,9 @@ import {
   Github,
   BookOpen,
   ArrowRight,
-  Check,
   Wrench,
 } from "lucide-react"
+import { toolPanels } from "@/lib/assets"
 
 export default function Home() {
   return (
@@ -159,8 +159,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-light mb-8">
-                              <span className="relative">
+            <h2 className="text-3xl md:text-5xl font-light mb-8">
+                <span className="relative font-medium italic">
                   Leverage
                   <svg 
                     className="absolute -bottom-1 left-0 w-full h-3" 
@@ -177,71 +177,51 @@ export default function Home() {
                     />
                   </svg>
                 </span>{" "}
-              the OSL ecosystem
+              the Open-Source Leg ecosystem
             </h2>
               <p className="text-lg md:text-xl text-gray-700 max-w-2xl md:max-w-3xl mx-auto leading-relaxed text-balance">
-                Essential open-source tools for building, testing, and iterating<br />
-                on next-generation prosthetic control systems.
+                Essential tools and resources for building, testing, and iterating<br />
+                on next-generation prosthetics control systems or general robotics applications.
               </p>
           </div>
 
-          {/* Comparison panels */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {/* Traditional panel */}
-            <div className="bg-[#f8f6f0] rounded-3xl p-8 h-80 flex flex-col justify-between border border-gray-200">
-              <div>
-                <h3 className="text-lg font-medium text-gray-600 mb-2">Traditional Development</h3>
-                <div className="text-5xl font-light text-black mb-8">5-7 years</div>
-              </div>
-              <div className="text-gray-500 text-base">Proprietary, siloed research</div>
-            </div>
-
-            {/* Open Source panel */}
-            <div className="relative rounded-3xl h-80 overflow-hidden">
-              {/* Background gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-800 via-purple-900 to-indigo-800"></div>
-              <div className="absolute inset-0 bg-black/20"></div>
-
-              {/* Floating elements */}
-              <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-400/30 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-purple-400/20 rounded-full blur-2xl"></div>
-
-              <div className="relative z-10 p-8 h-full flex flex-col justify-between text-white">
-                <div>
-                  <h3 className="text-lg font-medium text-white/80 mb-2">Open Source</h3>
-                  <div className="text-5xl font-light mb-8">6-12 months</div>
-                </div>
-
-                {/* Features */}
-                <div className="space-y-2 text-white/90 text-sm">
-                  <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-400" />
-                    <span>Collaborative development</span>
+          {/* Tool panels */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {toolPanels.map((tool) => {
+              const IconComponent = tool.icon
+              return (
+                <a 
+                  key={tool.id}
+                  href={tool.href}
+                  target="_blank"
+                  className="group bg-white rounded-3xl p-8 h-80 flex flex-col justify-between border border-[var(--black)] hover:shadow-xl transition-all duration-300 cursor-pointer"
+                >
+                  <div className="flex-1 flex items-center justify-center">
+                    <IconComponent 
+                      className="w-20 h-20 text-[var(--black)] group-hover:scale-110 group-hover:text-[var(--light-blue)] transition-transform duration-300" 
+                      strokeWidth={1.5}
+                    />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-400" />
-                    <span>Shared knowledge base</span>
+                  <div className="text-center">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{tool.title}</h3>
+                    <p className="text-gray-600 text-sm">{tool.description}</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Check className="w-4 h-4 text-green-400" />
-                    <span>Rapid iteration</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+                </a>
+              )
+            })}
           </div>
         </div>
       </div>
 
       {/* Target Users Section */}
-      <div className="bg-black text-white rounded-[3rem] py-20 px-6">
+      <div className="bg-[var(--dark-blue)] text-white py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8">
               {/* Main headline */}
               <h2 className="text-4xl md:text-5xl font-light leading-tight">
-                Built <span className="text-blue-400 italic">for innovators</span>
+                Built <span className="text-[var(--light-green)] italic">for innovators</span>
               </h2>
 
               {/* Category tags */}

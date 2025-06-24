@@ -50,7 +50,7 @@ body {
   
   /* Brand Color Palette */
   --light-blue: oklch(0.6898 0.1247 274.97); /* #8594E8 */
-  --dark-blue: oklch(0.249 0.075 258.24); /* #08124D */
+  --dark-blue: oklch(0.2254 0.108 267.87); /* #08124D */
   --light-green: oklch(0.9396 0.1468 115.51); /* #E7F77E */
   --dark-green: oklch(0.3978 0.0879 118.18); /* #434D08 */
   --white: oklch(0.9749 0.0025 228.78); /* #F6F4F0 */

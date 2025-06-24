@@ -77,7 +77,7 @@ export default function Navbar() {
               {/* Logo */}
               <Link href="/" className="flex-shrink-0">
                 <Image
-                  src="/logo/osl-icon-black.svg"
+                  src="/logo/osl-icon.svg"
                   alt="Open Source Leg"
                   width={28}
                   height={28}
