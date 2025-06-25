@@ -24,27 +24,27 @@ export default function Home() {
       {/* Hero Section */}
       <div className="min-h-screen relative overflow-hidden">
         {/* Main content */}
-        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-6 text-center pt-32">
+        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 text-center pt-20 sm:pt-32">
           {/* Main headline */}
-          <h1 className="text-3xl md:text-5xl mb-6 font-semibold max-w-5xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 font-semibold max-w-5xl leading-tight">
             <span className="text-black">Open-Source Leg</span>{" "}
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-3xl leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl leading-relaxed px-2">
             An end-to-end open-source platform that makes
             prosthetics research more accessible, collaborative, and reproducible.
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
             <Button 
               href="https://github.com/neurobionics/opensourceleg"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-6 text-lg flex items-center gap-2"
+              className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
             >
-              <Github className="w-5 h-5" />
+              <Github className="w-4 h-4 sm:w-5 sm:h-5" />
               View on GitHub
             </Button>
             <Button
@@ -52,9 +52,9 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               variant="outline"
-              className="text-black border-black hover:bg-[var(--light-blue)] hover:text-black rounded-lg px-6 py-6 text-lg flex items-center gap-2"
+              className="text-black border-black hover:bg-[var(--light-blue)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
             >
-              <Move3DIcon className="w-5 h-5" />
+              <Move3DIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               View on Onshape
             </Button>
           </div>
@@ -62,15 +62,15 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-28">
-        <div className="max-w-7xl mx-auto px-6 h-[90vh] flex items-center -mt-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center w-full h-full py-20">
+      <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-16 sm:-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[70vh] sm:h-[90vh] flex items-center -mt-10 sm:-mt-20">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full h-full py-16 sm:py-20">
             {/* Left Content - Video */}
-            <div className="h-full flex items-center">
+            <div className="h-full flex items-center order-2 lg:order-1">
               {/* YouTube Video Embed */}
-              <div className="border border-[var(--white)] relative w-full h-0 pb-[56.25%] rounded-2xl overflow-hidden shadow-2xl">
+              <div className="border border-[var(--white)] relative w-full h-0 pb-[56.25%] rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl">
                 <iframe
-                  className="absolute top-0 left-0 w-full h-full rounded-2xl"
+                  className="absolute top-0 left-0 w-full h-full rounded-xl sm:rounded-2xl"
                   src="https://www.youtube.com/embed/xFliFk65l3Q?autoplay=1&mute=1"
                   title="OpenSource Leg Intro"
                   frameBorder="0"
@@ -81,22 +81,22 @@ export default function Home() {
             </div>
 
             {/* Right Content - Quote */}
-            <div className="h-full flex items-center">
+            <div className="h-full flex items-center order-1 lg:order-2">
               <div className="relative w-full">
                 {/* Quote SVG Icon */}
                 <svg 
-                  className="absolute -top-6 -left-6 w-16 h-16 text-white/20" 
+                  className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 text-white/20" 
                   fill="currentColor" 
                   viewBox="0 0 24 24"
                 >
                   <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
                 </svg>
                 
-                <blockquote className="text-white pl-12">
-                  <p className="text-2xl md:text-3xl font-light leading-relaxed mb-8">
+                <blockquote className="text-white pl-8 sm:pl-12">
+                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light leading-relaxed mb-6 sm:mb-8">
                     We want to give people access to the tools needed to overcome the barriers preventing these technologies from impacting the lives of people with disabilities.
                   </p>
-                  <footer className="text-white/60 text-lg">
+                  <footer className="text-white/60 text-base sm:text-lg">
                     <cite>— Prof. Elliott Rouse, University of Michigan</cite>
                   </footer>
                 </blockquote>
@@ -108,49 +108,49 @@ export default function Home() {
       </div>
 
       {/* Community & Partners Section */}
-      <div className="bg-[var(--light-blue)] text-white py-16 relative z-0 -mt-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center space-y-8">
+      <div className="bg-[var(--light-blue)] text-white py-12 sm:py-16 relative z-0 -mt-16 sm:-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center space-y-6 sm:space-y-8">
             {/* Centered heading */}
-            <h3 className="text-2xl md:text-3xl font-light font-serif">
-              Trusted by <span className="px-2 text-5xl font-semibold text-[var(--light-green)]">25+</span> research institutions worldwide
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-light font-serif px-2">
+              Trusted by <span className="px-1 sm:px-2 text-3xl sm:text-4xl md:text-5xl font-semibold text-[var(--light-green)]">25+</span> research institutions worldwide
             </h3>
 
             {/* Researchers carousel */}
             <div className="flex items-center justify-center overflow-hidden">
               <div className="flex items-center animate-scroll logo-carousel slow">
                 {/* First set */}
-                <div className="flex items-center gap-8 flex-shrink-0">
+                <div className="flex items-center gap-4 sm:gap-8 flex-shrink-0">
                   <Image 
                     src="/logo-strip-1.png" 
                     alt="Research institutions - strip 1" 
                     width={600}
                     height={64}
-                    className="h-16 object-contain"
+                    className="h-12 sm:h-16 object-contain"
                   />
                   <Image 
                     src="/logo-strip-2.png" 
                     alt="Research institutions - strip 2" 
                     width={600}
                     height={64}
-                    className="h-16 object-contain"
+                    className="h-12 sm:h-16 object-contain"
                   />
                 </div>
                 {/* Duplicate set for seamless loop */}
-                <div className="flex items-center gap-8 flex-shrink-0 ml-8">
+                <div className="flex items-center gap-4 sm:gap-8 flex-shrink-0 ml-4 sm:ml-8">
                   <Image 
                     src="/logo-strip-1.png" 
                     alt="Research institutions - strip 1" 
                     width={600}
                     height={64}
-                    className="h-16 object-contain"
+                    className="h-12 sm:h-16 object-contain"
                   />
                   <Image 
                     src="/logo-strip-2.png" 
                     alt="Research institutions - strip 2" 
                     width={600}
                     height={64}
-                    className="h-16 object-contain"
+                    className="h-12 sm:h-16 object-contain"
                   />
                 </div>
               </div>
@@ -160,15 +160,15 @@ export default function Home() {
       </div>
 
       {/* Leverage Section */}
-      <div className="py-32 px-6">
+      <div className="py-20 sm:py-32 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-light mb-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 sm:mb-8">
                 <span className="relative font-medium italic">
                   Leverage
                   <svg 
-                    className="absolute -bottom-1 left-0 w-full h-3" 
+                    className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                     viewBox="0 0 200 12" 
                     fill="none" 
                     xmlns="http://www.w3.org/2000/svg"
@@ -184,14 +184,14 @@ export default function Home() {
                 </span>{" "}
               the Open-Source Leg ecosystem
             </h2>
-              <p className="text-lg md:text-xl text-gray-700 max-w-2xl md:max-w-3xl mx-auto leading-relaxed text-balance">
-                Essential tools and resources for building, testing, and iterating<br />
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-xl sm:max-w-2xl md:max-w-3xl mx-auto leading-relaxed text-balance px-2">
+                Essential tools and resources for building, testing, and iterating<br className="hidden sm:block" />
                 on next-generation prosthetics control systems or general robotics applications.
               </p>
           </div>
 
           {/* Tool panels */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
             {toolPanels.map((tool) => {
               const IconComponent = tool.icon
               return (
@@ -199,17 +199,17 @@ export default function Home() {
                   key={tool.id}
                   href={tool.href}
                   target="_blank"
-                  className="group bg-white rounded-3xl p-8 h-80 flex flex-col justify-between border border-[var(--black)] hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  className="group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-64 sm:h-80 flex flex-col justify-between border border-[var(--black)] hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
                   <div className="flex-1 flex items-center justify-center">
                     <IconComponent 
-                      className="w-20 h-20 text-[var(--black)] group-hover:scale-110 group-hover:text-[var(--light-blue)] transition-transform duration-300" 
+                      className="w-16 h-16 sm:w-20 sm:h-20 text-[var(--black)] group-hover:scale-110 group-hover:text-[var(--light-blue)] transition-transform duration-300" 
                       strokeWidth={1.5}
                     />
                   </div>
                   <div className="text-center">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{tool.title}</h3>
-                    <p className="text-gray-600 text-sm">{tool.description}</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{tool.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{tool.description}</p>
                   </div>
                 </a>
               )
@@ -219,15 +219,15 @@ export default function Home() {
       </div>
 
       {/* Hardware Section */}
-      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-[2rem] text-white py-20 px-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-12 sm:py-20 px-6 sm:px-12 lg:px-20">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8 flex flex-col gap-4 justify-center">
+          <div className="space-y-6 sm:space-y-8 flex flex-col gap-3 sm:gap-4 justify-center">
             {/* Main headline */}
-            <h2 className="text-4xl md:text-5xl font-light leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
               Built for <span className="relative text-[var(--light-green)] italic font-medium">engineers
                 <svg 
-                  className="absolute -bottom-1 left-0 w-full h-3" 
+                  className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                   viewBox="0 0 200 12" 
                   fill="none" 
                   xmlns="http://www.w3.org/2000/svg"
@@ -242,58 +242,58 @@ export default function Home() {
                 </svg>
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-[var(--white)] max-w-2xl md:max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="text-base sm:text-lg md:text-xl text-[var(--white)] leading-relaxed mb-6 sm:mb-8">
               The Open-Source Leg hardware is a robust and relatively inexpensive system that 
               can be easily manufactured, assembled, and controlled.
               </p>
 
               {/* Action buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
                   <Button
                     href="https://cad.onshape.com/documents/3520551dd01cf402179e8687/w/87da2fb0a553b44a27833624/e/d9c95c04904f8d6a753006a4"
-                    className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-6 text-lg flex items-center gap-2"
+                    className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
                   >
-                    <Move3DIcon className="w-5 h-5 mr-2" />
+                    <Move3DIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                     View on Onshape
                   </Button>
                   <Button
                     href="/tutorials"
-                    className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
-                    Tutorials <VideotapeIcon className="w-5 h-5 ml-2" />
+                    Tutorials <VideotapeIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
                   <Button
                     href="/hardware"
-                    className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
-                    Read More <ArrowRight className="w-5 h-5 ml-2" />
+                    Read More <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>                 
               </div>
               
             </div>
           {/* Right Content */}
-          <div className="relative w-full h-96 rounded-2xl overflow-hidden">
+          <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden mt-8 lg:mt-0">
             <Image src="/hardware.webp" alt="Open-Source Leg Hardware" fill className="object-cover" />
           </div>
         </div>
       </div>  
 
       {/* Software Section */}
-      <div className="py-20 px-6">
+      <div className="py-12 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Content - Software Screenshot */}
-            <div className="w-full rounded-[2rem] overflow-hidden border-2 border-[var(--black)]">
+            <div className="w-full rounded-2xl sm:rounded-[2rem] overflow-hidden border-2 border-[var(--black)]">
               <Image src="/software.png" alt="Open-Source Leg Software" width={800} height={600} className="w-full h-auto object-contain" />
             </div>
 
             {/* Right Content - Description */}
-            <div className="space-y-8 flex flex-col gap-4 justify-center">
+            <div className="space-y-6 sm:space-y-8 flex flex-col gap-3 sm:gap-4 justify-center">
               {/* Main headline */}
-              <h2 className="text-4xl md:text-5xl font-light leading-tight">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
                 Built for <span className="relative text-[var(--light-blue)] italic font-medium">developers
                   <svg 
-                    className="absolute -bottom-1 left-0 w-full h-3" 
+                    className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                     viewBox="0 0 200 12" 
                     fill="none" 
                     xmlns="http://www.w3.org/2000/svg"
@@ -309,36 +309,36 @@ export default function Home() {
                 </span>
               </h2>
               
-              <p className="text-lg md:text-xl text-gray-700 max-w-2xl md:max-w-3xl leading-relaxed mb-8">
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed mb-6 sm:mb-8">
               The Open-Source Leg software is designed to be modular and flexible to allow for easy integration with a wide variety of sensors and robotics frameworks.
               The software library is written in Python and is compatible with Python 3.9 and above.
               </p>
 
               {/* Action buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
                 <Button
                   href="https://github.com/neurobionics/opensourceleg"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[var(--light-blue)] text-white border border-black hover:text-black hover:bg-[var(--light-green)] rounded-md px-6 py-6 text-base font-medium"
+                  className="bg-[var(--light-blue)] text-white border border-black hover:text-black hover:bg-[var(--light-green)] rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                 >
-                  <Github className="w-5 h-5 mr-2" />
+                  <Github className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                   View on GitHub
                 </Button>
                 <Button
                   href="https://neurobionics.github.io/opensourceleg/"
                   target="_blank"
                   variant="outline"
-                  className="bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  className="bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                 >
-                  Documentation <ArrowRight className="w-5 h-5 ml-2" />
+                  Documentation <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
                 <Button
                   href="/software"
                   variant="outline"
-                  className="bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  className="bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                 >
-                  Read more <ArrowRight className="w-5 h-5 ml-2" />
+                  Read more <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
               </div>
             </div>
@@ -347,15 +347,15 @@ export default function Home() {
       </div>
 
       {/* Research Section */}
-      <div className="bg-[var(--light-blue)] max-w-7xl mx-auto rounded-[2rem] text-white py-20 px-20 mb-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="bg-[var(--light-blue)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-12 sm:py-20 px-6 sm:px-12 lg:px-20 mb-12 sm:mb-20">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8 flex flex-col gap-4 justify-center">
+          <div className="space-y-6 sm:space-y-8 flex flex-col gap-3 sm:gap-4 justify-center">
             {/* Main headline */}
-            <h2 className="text-4xl md:text-5xl font-light leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
               Built for <span className="relative text-[var(--light-green)] italic font-medium">researchers
                 <svg 
-                  className="absolute -bottom-1 left-0 w-full h-3" 
+                  className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                   viewBox="0 0 200 12" 
                   fill="none" 
                   xmlns="http://www.w3.org/2000/svg"
@@ -370,68 +370,93 @@ export default function Home() {
                 </svg>
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-[var(--white)] max-w-2xl md:max-w-3xl leading-relaxed mb-8 text-balance">
+            <p className="text-base sm:text-lg md:text-xl text-[var(--white)] leading-relaxed mb-6 sm:mb-8 text-balance">
               The platform was founded to enable direct comparisons between different prosthetic control strategies and algorithms across standardized hardware.
               Explore cutting-edge research publications and datasets from the Open-Source Leg community.
               </p>
 
               {/* Action buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-start">
                   <Button
                     href="/downloads"
-                    className="bg-transparent text-white border border-white hover:bg-[var(--white)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--white)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
-                    Downloads <ArrowDown className="w-5 h-5 ml-2" />
+                    Downloads <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
                   <Button
                     href="/datasets"
-                    className="bg-transparent text-white border border-white hover:bg-[var(--white)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--white)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
-                    Datasets <ArrowRight className="w-5 h-5 ml-2" />
+                    Datasets <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>   
                   <Button
                     href="/research"
-                    className="bg-[var(--light-green)] text-black border hover:bg-[var(--white)] rounded-lg px-6 py-6 text-lg flex items-center gap-2"
+                    className="bg-[var(--light-green)] text-black border hover:bg-[var(--white)] rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
                   >
-                    Add Your Publication <ArrowRight className="w-5 h-5 ml-2" />
+                    Add Your Publication <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                   </Button>                                
               </div>
               
             </div>
 
-          {/* Right Content - Research Papers */}
-          <div className="relative h-[28rem] w-full">
-            {researchPapers.slice().reverse().map((paper) => (
-              <a 
-                key={paper.id}
-                href={paper.href} 
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`absolute ${paper.position.top} ${paper.position.left} w-72 h-90 group cursor-pointer transform ${paper.rotation} ${paper.zIndex}`}
-              >
-                <Image 
-                  src={paper.image} 
-                  alt={paper.title} 
-                  fill 
-                  className="object-cover rounded-md border-2 border-black group-hover:border-[var(--light-green)] shadow-lg group-hover:shadow-2xl group-hover:scale-105 group-hover:z-50 transition-all duration-300"
-                />
-              </a>
-            ))}
+          {/* Right Content - Research Papers - Mobile Responsive */}
+          <div className="relative">
+                         {/* Mobile Layout - Stacked */}
+             <div className="block lg:hidden space-y-4">
+               {researchPapers.slice().reverse().slice(0, 3).map((paper) => (
+                 <a 
+                   key={paper.id}
+                   href={paper.href} 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="block group cursor-pointer"
+                 >
+                  <div className="relative w-full h-32 sm:h-40 rounded-lg overflow-hidden">
+                    <Image 
+                      src={paper.image} 
+                      alt={paper.title} 
+                      fill 
+                      className="object-cover border-2 border-black group-hover:border-[var(--light-green)] shadow-lg group-hover:shadow-2xl transition-all duration-300"
+                    />
+                  </div>
+                </a>
+              ))}
+            </div>
+
+            {/* Desktop Layout - Absolute Positioned */}
+            <div className="hidden lg:block relative h-[28rem] w-full">
+              {researchPapers.slice().reverse().map((paper) => (
+                <a 
+                  key={paper.id}
+                  href={paper.href} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`absolute ${paper.position.top} ${paper.position.left} w-72 h-90 group cursor-pointer transform ${paper.rotation} ${paper.zIndex}`}
+                >
+                  <Image 
+                    src={paper.image} 
+                    alt={paper.title} 
+                    fill 
+                    className="object-cover rounded-md border-2 border-black group-hover:border-[var(--light-green)] shadow-lg group-hover:shadow-2xl group-hover:scale-105 group-hover:z-50 transition-all duration-300"
+                  />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>  
 
       {/* Stats Section */}
-      <div className="pt-10 pb-24 px-6">
+      <div className="pt-8 sm:pt-10 pb-16 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-light mb-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light mb-6 sm:mb-8">
               Built and tested by the{" "}
                 <span className="relative font-medium italic">
                   Community
                   <svg 
-                    className="absolute -bottom-1 left-0 w-full h-3" 
+                    className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                     viewBox="0 0 200 12" 
                     fill="none" 
                     xmlns="http://www.w3.org/2000/svg"
@@ -446,39 +471,39 @@ export default function Home() {
                   </svg>
                 </span>
             </h2>
-              <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed text-balance">
+              <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-2xl sm:max-w-3xl mx-auto leading-relaxed text-balance px-2">
                 Our open-source tools are continuously improved through community contributions &
                 testing across research institutions worldwide.
               </p>
           </div>
 
           {/* stats panels */}
-          <div className="grid md:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
             {statsPanels.map((stat) => {
               const TrendIcon = stat.trend === "up" ? TrendingUpIcon : TrendingDownIcon
               const trendColor = stat.trend === "up" ? "text-green-600" : "text-red-600"
               
               return (
                 <Card key={stat.id} className="@container/card bg-[var(--black)] text-white border-gray-700">
-                  <CardHeader>
-                    <CardDescription className="text-gray-300">{stat.title}</CardDescription>
-                    <CardTitle className="py-2 text-3xl font-bold tabular-nums @[250px]/card:text-4xl text-[var(--white)]">
+                  <CardHeader className="pb-3">
+                    <CardDescription className="text-gray-300 text-sm">{stat.title}</CardDescription>
+                    <CardTitle className="py-1 sm:py-2 text-2xl sm:text-3xl font-bold tabular-nums @[250px]/card:text-4xl text-[var(--white)]">
                       {stat.value.toLocaleString()}
                     </CardTitle>
                     <CardAction>
-                      <Badge variant="outline" className={`${trendColor} font-semibold p-2 text-sm border-gray-600`}>
+                      <Badge variant="outline" className={`${trendColor} font-semibold p-1.5 sm:p-2 text-xs sm:text-sm border-gray-600`}>
                         <TrendIcon className="w-3 h-3 mr-1"/>
                         +{stat.trendValue}%
                       </Badge>
                     </CardAction>
                   </CardHeader>
-                  <CardFooter className="flex-col items-start gap-1.5 text-sm">
+                  <CardFooter className="flex-col items-start gap-1.5 text-xs sm:text-sm pt-2">
                     <div className="line-clamp-1 flex gap-2 font-medium">
                       <a href={stat.href} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--light-blue)] transition-colors">
                         View {stat.title} →
                       </a>
                     </div>
-                    <div className="text-gray-400">
+                    <div className="text-gray-400 text-xs leading-relaxed">
                       {stat.description}
                     </div>
                   </CardFooter>
@@ -488,7 +513,7 @@ export default function Home() {
           </div>
           
           {/* Data timeframe note */}
-          <div className="text-center mt-8">
+          <div className="text-center mt-6 sm:mt-8">
             <p className="text-xs text-muted-foreground">
               Based on data collected over the last 6 months.
             </p>
@@ -497,16 +522,16 @@ export default function Home() {
       </div>
 
         {/* Community Section */}
-        <div className="bg-[var(--light-blue)] py-20 px-6">
+        <div className="bg-[var(--light-blue)] py-12 sm:py-20 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               {/* Left Content */}
-              <div className="space-y-8">
-                <h2 className="text-3xl md:text-5xl font-light text-white">
+              <div className="space-y-6 sm:space-y-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white">
                   <span className="relative font-medium italic">
                     Join
                     <svg 
-                      className="absolute -bottom-1 left-0 w-full h-3" 
+                      className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                       viewBox="0 0 200 12" 
                       fill="none" 
                       xmlns="http://www.w3.org/2000/svg"
@@ -522,60 +547,93 @@ export default function Home() {
                   </span> the community!
                 </h2>
                 
-                <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
                   Join our wonderful community of students, engineers, and researchers driving groundbreaking advancements in prosthetics.
                 </p>
 
                 {/* Action buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Button
                     href="https://discourse.opensourceleg.org"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                    className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
-                    Forum <ArrowUpRight className="w-5 h-5 ml-2" />
+                    Forum <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
                   <Button
                     href="/about"
                     variant="outline"
-                    className="bg-transparent text-white border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
                     Read More
                   </Button>
                 </div>
               </div>
 
-              {/* Right Content - Community Images */}
-              <div className="relative h-96">
-                {/* Image 1 - Top Left */}
-                <div className="absolute top-0 left-0 w-80 h-64 rounded-2xl overflow-hidden shadow-lg transform -rotate-2 border-4 border-[var(--white)]">
-                  <Image 
-                    src="/community/ssnr.jpg" 
-                    alt="Community member working on prosthetics" 
-                    fill 
-                    className="object-cover"
-                  />
+              {/* Right Content - Community Images - Mobile Responsive */}
+              <div className="relative">
+                {/* Mobile Layout - Simple Grid */}
+                <div className="block lg:hidden">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="w-full h-32 sm:h-40 rounded-xl overflow-hidden shadow-lg border-2 border-[var(--white)]">
+                      <Image 
+                        src="/community/ssnr.jpg" 
+                        alt="Community member working on prosthetics" 
+                        fill 
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="w-full h-32 sm:h-40 rounded-xl overflow-hidden shadow-lg border-2 border-[var(--white)]">
+                      <Image 
+                        src="/community/iros.webp" 
+                        alt="Research team collaboration" 
+                        fill 
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="mt-4 w-full h-24 sm:h-32 rounded-xl overflow-hidden shadow-lg border-2 border-[var(--white)]">
+                    <Image 
+                      src="/community/fsu.jpg" 
+                      alt="Open source hardware development" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
-                
-                {/* Image 2 - Center Right */}
-                <div className="absolute top-16 right-0 w-64 h-48 rounded-2xl overflow-hidden shadow-lg transform rotate-4 border-4 border-[var(--white)]">
-                  <Image 
-                    src="/community/iros.webp" 
-                    alt="Research team collaboration" 
-                    fill 
-                    className="object-cover"
-                  />
-                </div>
-                
-                {/* Image 3 - Bottom Left */}
-                <div className="absolute -bottom-4 left-60 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2 border-4 border-[var(--white)]">
-                  <Image 
-                    src="/community/fsu.jpg" 
-                    alt="Open source hardware development" 
-                    fill 
-                    className="object-cover"
-                  />
+
+                {/* Desktop Layout - Absolute Positioned */}
+                <div className="hidden lg:block relative h-96">
+                  {/* Image 1 - Top Left */}
+                  <div className="absolute top-0 left-0 w-80 h-64 rounded-2xl overflow-hidden shadow-lg transform -rotate-2 border-4 border-[var(--white)]">
+                    <Image 
+                      src="/community/ssnr.jpg" 
+                      alt="Community member working on prosthetics" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  {/* Image 2 - Center Right */}
+                  <div className="absolute top-16 right-0 w-64 h-48 rounded-2xl overflow-hidden shadow-lg transform rotate-4 border-4 border-[var(--white)]">
+                    <Image 
+                      src="/community/iros.webp" 
+                      alt="Research team collaboration" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  {/* Image 3 - Bottom Left */}
+                  <div className="absolute -bottom-4 left-60 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2 border-4 border-[var(--white)]">
+                    <Image 
+                      src="/community/fsu.jpg" 
+                      alt="Open source hardware development" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
