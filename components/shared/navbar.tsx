@@ -100,11 +100,11 @@ export default function Navbar() {
                             <NavigationMenuTrigger>{section.title}</NavigationMenuTrigger>
                             <NavigationMenuContent>
                               {section.type === 'featured' && section.featured ? (
-                                <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                                  <li className="row-span-3">
+                                <div className="flex gap-3 p-2 md:w-[400px] lg:w-[500px]">
+                                  <div className="flex-[0.75]">
                                     <NavigationMenuLink asChild>
                                       <Link
-                                        className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md"
+                                        className="from-muted/50 to-muted flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-6 no-underline outline-hidden select-none focus:shadow-md min-h-[150px]"
                                         href={section.featured.href}
                                       >
                                         <div className="mt-4 mb-2 text-lg font-medium">
@@ -115,13 +115,22 @@ export default function Navbar() {
                                         </p>
                                       </Link>
                                     </NavigationMenuLink>
-                                  </li>
-                                  {section.items?.map((item) => (
-                                    <ListItem key={item.title} href={item.href} title={item.title}>
-                                      {item.description}
-                                    </ListItem>
-                                  ))}
-                                </ul>
+                                  </div>
+                                  <div className="flex-1 flex flex-col justify-center space-y-2">
+                                    {section.items?.map((item) => (
+                                      <div key={item.title} className="flex-1 flex items-center">
+                                        <NavigationMenuLink asChild className="w-full">
+                                          <Link href={item.href} className="block p-3 rounded-md hover:bg-accent transition-colors h-full flex flex-col justify-center">
+                                            <div className="text-sm leading-none font-medium mb-1">{item.title}</div>
+                                            <p className="text-muted-foreground text-xs leading-snug">
+                                              {item.description}
+                                            </p>
+                                          </Link>
+                                        </NavigationMenuLink>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
                               ) : section.type === 'dropdown' && section.items ? (
                                 <ul className={`grid ${
                                   section.items.length > 3 
