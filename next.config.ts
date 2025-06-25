@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import type { NextConfig } from "next";
+import createMDX from '@next/mdx'
+
+const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   
@@ -7,14 +9,15 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   
-  // GitHub Pages basePath configuration
-  basePath: process.env.GITHUB_PAGES ? '/opensourceleg.org' : '',
-  assetPrefix: process.env.GITHUB_PAGES ? '/opensourceleg.org' : '',
-  
   // Disable image optimization for static export
   images: {
     unoptimized: true
   }
-}
+};
 
-module.exports = nextConfig
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+})
+
+// Merge MDX config with Next.js config
+export default withMDX(nextConfig)
