@@ -283,8 +283,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Content - Software Screenshot */}
-            <div className="w-full rounded-2xl sm:rounded-[2rem] overflow-hidden border-2 border-[var(--black)]">
-              <Image src="/software.png" alt="Open-Source Leg Software" width={800} height={600} className="w-full h-auto object-contain" />
+            <div className="w-[90%] rounded-2xl sm:rounded-[2rem] overflow-hidden border-2 border-[var(--black)]">
+              <Image src="/software.png" alt="Open-Source Leg Software" width={800} height={800} className="w-full h-auto object-contain" />
             </div>
 
             {/* Right Content - Description */}
