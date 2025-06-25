@@ -16,7 +16,7 @@ export default function ArticlesPage() {
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
             Community Articles
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-black/70 max-w-3xl mx-auto leading-relaxed">
             Discover insights, tutorials, and research findings from the Open-Source Leg community.
             Learn from engineers, researchers, and developers building the future of prosthetics.
           </p>
@@ -116,7 +116,7 @@ export default function ArticlesPage() {
                      </svg>
              </span> Your Knowledge
             </h2>
-          <p className="text-lg text-white mb-8 leading-relaxed">
+          <p className="text-lg text-white/70 mb-8 leading-relaxed text-balance">
             Have insights about prosthetics, robotics, or the Open-Source Leg platform? <br/>
             Contribute your knowledge to help the community grow.
           </p>

@@ -1,5 +1,3 @@
-"use client"
-
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import {
@@ -17,6 +15,7 @@ import { statsPanels } from "@/lib/stats"
 import { researchPapers } from "@/lib/research"
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { LatestArticleStrip } from "@/components/latest-article-strip"
 
 export default function Home() {
   return (
@@ -59,11 +58,16 @@ export default function Home() {
             </Button>
           </div>
         </main>
+
+        {/* Latest Article Strip - positioned at bottom of hero section */}
+        <div className="absolute bottom-24 sm:bottom-28 left-0 right-0 z-20">
+          <LatestArticleStrip />
+        </div>
       </div>
 
       {/* Features Section */}
-      <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-16 sm:-mt-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[70vh] sm:h-[90vh] flex items-center -mt-10 sm:-mt-20">
+      <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-24 sm:-mt-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[70vh] sm:h-[80vh] flex items-center -mt-10 sm:-mt-20">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full h-full py-20 sm:py-20">
             {/* Left Content - Video */}
             <div className="h-full flex items-center order-2 lg:order-1">
@@ -254,7 +258,7 @@ export default function Home() {
                   </Button>
                   <Button
                     href="/tutorials"
-                    className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+                    className="max-xl:hidden bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
                     Tutorials <VideotapeIcon className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
@@ -279,7 +283,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Content - Software Screenshot */}
-            <div className="w-[90%] rounded-2xl sm:rounded-[2rem] overflow-hidden border-2 border-[var(--black)]">
+            <div className="w-[70%] lg:w-[80%] xl:w-[90%] rounded-2xl sm:rounded-[2rem] overflow-hidden border-2 border-[var(--black)]">
               <Image src="/software.png" alt="Open-Source Leg Software" width={800} height={800} className="w-full h-auto object-contain" />
             </div>
 
@@ -325,7 +329,7 @@ export default function Home() {
                   href="https://neurobionics.github.io/opensourceleg/"
                   target="_blank"
                   variant="outline"
-                  className="bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+                  className="max-xl:hidden bg-transparent text-black border border-black hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                 >
                   Documentation <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
@@ -398,14 +402,14 @@ export default function Home() {
           {/* Right Content - Research Papers */}
           <div className="relative">
             {/* Desktop Layout - Absolute Positioned */}
-            <div className="hidden lg:block relative h-[28rem] w-full">
+            <div className="hidden lg:block relative h-[24rem] lg:h-[26rem] xl:h-[28rem] w-full">
               {researchPapers.slice().reverse().map((paper) => (
                 <a 
                   key={paper.id}
                   href={paper.href} 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`absolute ${paper.position.top} ${paper.position.left} w-72 h-90 group cursor-pointer transform ${paper.rotation} ${paper.zIndex}`}
+                  className={`absolute ${paper.position.top} ${paper.position.left} w-48 xl:w-72 h-64 xl:h-90 group cursor-pointer transform ${paper.rotation} ${paper.zIndex}`}
                 >
                   <Image 
                     src={paper.image} 
@@ -452,7 +456,7 @@ export default function Home() {
           </div>
 
           {/* stats panels */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
             {statsPanels.map((stat) => {
               const TrendIcon = stat.trend === "up" ? TrendingUpIcon : TrendingDownIcon
               const trendColor = stat.trend === "up" ? "text-green-600" : "text-red-600"
@@ -547,9 +551,9 @@ export default function Home() {
 
               <div className="relative">
                 {/* Desktop Layout - Absolute Positioned */}
-                <div className="hidden lg:block relative h-96">
+                <div className="hidden lg:block relative h-80 lg:h-88 xl:h-96">
                   {/* Image 1 - Top Left */}
-                  <div className="absolute top-0 left-0 w-80 h-64 rounded-2xl overflow-hidden shadow-lg transform -rotate-2 border-4 border-[var(--white)]">
+                  <div className="absolute top-0 left-0 w-60 lg:w-72 xl:w-80 h-40 lg:h-48 xl:h-64 rounded-2xl overflow-hidden shadow-lg transform -rotate-2 border-4 border-[var(--white)]">
                     <Image 
                       src="/community/ssnr.jpg" 
                       alt="Community member working on prosthetics" 
@@ -559,7 +563,7 @@ export default function Home() {
                   </div>
                   
                   {/* Image 2 - Center Right */}
-                  <div className="absolute top-16 right-0 w-64 h-48 rounded-2xl overflow-hidden shadow-lg transform rotate-4 border-4 border-[var(--white)]">
+                  <div className="absolute top-12 lg:top-16 right-0 w-48 lg:w-56 xl:w-64 h-32 lg:h-40 xl:h-48 rounded-2xl overflow-hidden shadow-lg transform rotate-4 border-4 border-[var(--white)]">
                     <Image 
                       src="/community/iros.webp" 
                       alt="Research team collaboration" 
@@ -569,7 +573,7 @@ export default function Home() {
                   </div>
                   
                   {/* Image 3 - Bottom Left */}
-                  <div className="absolute -bottom-4 left-60 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2 border-4 border-[var(--white)]">
+                  <div className="absolute -bottom-4 left-44 lg:left-52 xl:left-60 w-36 lg:w-40 xl:w-48 h-24 lg:h-28 xl:h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2 border-4 border-[var(--white)]">
                     <Image 
                       src="/community/fsu.jpg" 
                       alt="Open source hardware development" 

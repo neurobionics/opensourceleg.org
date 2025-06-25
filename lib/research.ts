@@ -53,7 +53,7 @@ export const researchPapers: ResearchPaper[] = [
     title: "Research Paper 4",
     image: "/research/p4.png",
     href: "https://ieeexplore.ieee.org/abstract/document/10807510",
-    rotation: "rotate-10",
+    rotation: "rotate-7",
     position: {
       top: "top-30",
       left: "left-70"
