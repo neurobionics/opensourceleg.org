@@ -9,10 +9,12 @@ import {
   VideotapeIcon,
   TrendingUpIcon,
   TrendingDownIcon,
-  ArrowUpRight
+  ArrowUpRight,
+  ArrowDown
 } from "lucide-react"
 import { toolPanels } from "@/lib/assets"
 import { statsPanels } from "@/lib/stats"
+import { researchPapers } from "@/lib/research"
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
@@ -56,8 +58,6 @@ export default function Home() {
               View on Onshape
             </Button>
           </div>
-
-          <p className="text-gray-500 text-sm">Built for researchers, by researchers</p>
         </main>
       </div>
 
@@ -94,7 +94,7 @@ export default function Home() {
                 
                 <blockquote className="text-white pl-12">
                   <p className="text-2xl md:text-3xl font-light leading-relaxed mb-8">
-                    To give people access to the tools needed to overcome the barriers preventing these technologies from impacting the lives of people with disabilities.
+                    We want to give people access to the tools needed to overcome the barriers preventing these technologies from impacting the lives of people with disabilities.
                   </p>
                   <footer className="text-white/60 text-lg">
                     <cite>— Prof. Elliott Rouse, University of Michigan</cite>
@@ -225,7 +225,7 @@ export default function Home() {
           <div className="space-y-8 flex flex-col gap-4 justify-center">
             {/* Main headline */}
             <h2 className="text-4xl md:text-5xl font-light leading-tight">
-              Built for <span className="relative text-[var(--light-green)] italic font-medium">researchers
+              Built for <span className="relative text-[var(--light-green)] italic font-medium">engineers
                 <svg 
                   className="absolute -bottom-1 left-0 w-full h-3" 
                   viewBox="0 0 200 12" 
@@ -279,7 +279,7 @@ export default function Home() {
       </div>  
 
       {/* Software Section */}
-      <div className="py-32 px-6">
+      <div className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content - Software Screenshot */}
@@ -345,10 +345,84 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+
+      {/* Research Section */}
+      <div className="bg-[var(--light-blue)] max-w-7xl mx-auto rounded-[2rem] text-white py-20 px-20 mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8 flex flex-col gap-4 justify-center">
+            {/* Main headline */}
+            <h2 className="text-4xl md:text-5xl font-light leading-tight">
+              Built for <span className="relative text-[var(--light-green)] italic font-medium">researchers
+                <svg 
+                  className="absolute -bottom-1 left-0 w-full h-3" 
+                  viewBox="0 0 200 12" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M2 10C60 6 140 6 198 8" 
+                    stroke="var(--white)" 
+                    strokeWidth="4" 
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-[var(--white)] max-w-2xl md:max-w-3xl leading-relaxed mb-8 text-balance">
+              The platform was founded to enable direct comparisons between different prosthetic control strategies and algorithms across standardized hardware.
+              Explore cutting-edge research publications and datasets from the Open-Source Leg community.
+              </p>
+
+              {/* Action buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                  <Button
+                    href="/downloads"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--white)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  >
+                    Downloads <ArrowDown className="w-5 h-5 ml-2" />
+                  </Button>
+                  <Button
+                    href="/datasets"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--white)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
+                  >
+                    Datasets <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>   
+                  <Button
+                    href="/research"
+                    className="bg-[var(--light-green)] text-black border hover:bg-[var(--white)] rounded-lg px-6 py-6 text-lg flex items-center gap-2"
+                  >
+                    Add Your Publication <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>                                
+              </div>
+              
+            </div>
+
+          {/* Right Content - Research Papers */}
+          <div className="relative h-[28rem] w-full">
+            {researchPapers.slice().reverse().map((paper) => (
+              <a 
+                key={paper.id}
+                href={paper.href} 
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`absolute ${paper.position.top} ${paper.position.left} w-72 h-90 group cursor-pointer transform ${paper.rotation} ${paper.zIndex}`}
+              >
+                <Image 
+                  src={paper.image} 
+                  alt={paper.title} 
+                  fill 
+                  className="object-cover rounded-md border-2 border-black group-hover:border-[var(--light-green)] shadow-lg group-hover:shadow-2xl group-hover:scale-105 group-hover:z-50 transition-all duration-300"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>  
 
       {/* Stats Section */}
-      <div className="pt-10 pb-20 px-6">
+      <div className="pt-10 pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-16">
@@ -429,7 +503,23 @@ export default function Home() {
               {/* Left Content */}
               <div className="space-y-8">
                 <h2 className="text-3xl md:text-5xl font-light text-white">
-                  <span className="font-medium italic">Join</span> the community!
+                  <span className="relative font-medium italic">
+                    Join
+                    <svg 
+                      className="absolute -bottom-1 left-0 w-full h-3" 
+                      viewBox="0 0 200 12" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path 
+                        d="M2 10C60 6 140 6 198 8" 
+                        stroke="var(--light-green)" 
+                        strokeWidth="12" 
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                    </svg>
+                  </span> the community!
                 </h2>
                 
                 <p className="text-lg md:text-xl text-white/90 leading-relaxed">
@@ -444,7 +534,7 @@ export default function Home() {
                     rel="noopener noreferrer"
                     className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-6 py-6 text-base font-medium"
                   >
-                    Join Forum <ArrowUpRight className="w-5 h-5 ml-2" />
+                    Forum <ArrowUpRight className="w-5 h-5 ml-2" />
                   </Button>
                   <Button
                     href="/about"
@@ -459,9 +549,9 @@ export default function Home() {
               {/* Right Content - Community Images */}
               <div className="relative h-96">
                 {/* Image 1 - Top Left */}
-                <div className="absolute top-0 left-0 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2">
+                <div className="absolute top-0 left-0 w-80 h-64 rounded-2xl overflow-hidden shadow-lg transform -rotate-2 border-4 border-[var(--white)]">
                   <Image 
-                    src="/community-1.jpg" 
+                    src="/community/ssnr.jpg" 
                     alt="Community member working on prosthetics" 
                     fill 
                     className="object-cover"
@@ -469,9 +559,9 @@ export default function Home() {
                 </div>
                 
                 {/* Image 2 - Center Right */}
-                <div className="absolute top-16 right-0 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform -rotate-3">
+                <div className="absolute top-16 right-0 w-64 h-48 rounded-2xl overflow-hidden shadow-lg transform rotate-4 border-4 border-[var(--white)]">
                   <Image 
-                    src="/community-2.jpg" 
+                    src="/community/iros.webp" 
                     alt="Research team collaboration" 
                     fill 
                     className="object-cover"
@@ -479,9 +569,9 @@ export default function Home() {
                 </div>
                 
                 {/* Image 3 - Bottom Left */}
-                <div className="absolute bottom-0 left-8 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-1">
+                <div className="absolute -bottom-4 left-60 w-48 h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2 border-4 border-[var(--white)]">
                   <Image 
-                    src="/community-3.jpg" 
+                    src="/community/fsu.jpg" 
                     alt="Open source hardware development" 
                     fill 
                     className="object-cover"

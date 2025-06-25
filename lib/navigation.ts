@@ -75,50 +75,45 @@ export const navigationConfig: NavigationSection[] = [
       }
     ]
   },
+  // {
+  //   title: "Electronics",
+  //   type: "featured",
+  //   featured: {
+  //     title: "Electronics",
+  //     description: "Designed to be easy to use and reliable",
+  //     href: "/electronics"
+  //   },
+  //   items: [
+  //     {
+  //       title: "Downloads",
+  //       href: "/electronics/downloads",
+  //       description: "One stop shop for all things electronics"
+  //     },
+  //     {
+  //       title: "Tutorials",
+  //       href: "/electronics/tutorials",
+  //       description: "Step by step guides to use our electronics"
+  //     }
+  //   ]
+  // },
   {
-    title: "Electronics",
+    title: "Research",
     type: "featured",
     featured: {
-      title: "Electronics",
-      description: "Designed to be easy to use and reliable",
-      href: "/electronics"
+      title: "Research",
+      description: "Research papers, presentations, and other resources",
+      href: "/research"
     },
     items: [
       {
-        title: "Downloads",
-        href: "/electronics/downloads",
-        description: "One stop shop for all things electronics"
+        title: "Downloadable Controllers",
+        href: "/research/downloads",
+        description: "Controllers to try out on the Open-Source Leg"
       },
       {
-        title: "Tutorials",
-        href: "/electronics/tutorials",
-        description: "Step by step guides to use our electronics"
-      }
-    ]
-  },
-  {
-    title: "Community",
-    type: "featured",
-    featured: {
-      title: "Forum",
-      description: "Join our community to get help, share your work, and get inspired",
-      href: "https://opensourceleg.discourse.group/"
-    },
-    items: [
-      {
-        title: "Governance",
-        href: "/governance",
-        description: "How we are governed and how you can get involved"
-      },
-      {
-        title: "Code of Conduct",
-        href: "/code-of-conduct",
-        description: "Our code of conduct for the community"
-      },
-      {
-        title: "License",
-        href: "/license",
-        description: "Our licenses for the various components of the project"
+        title: "Dataset",
+        href: "/research/dataset",
+        description: "Coming soon..."
       }
     ]
   },
