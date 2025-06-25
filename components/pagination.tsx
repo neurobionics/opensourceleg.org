@@ -13,7 +13,7 @@ type PaginationProps = {
   totalPages: number
   hasNextPage: boolean
   hasPreviousPage: boolean
-  baseUrl?: string
+  basePath?: string
 }
 
 export function Pagination({ 
@@ -21,12 +21,12 @@ export function Pagination({
   totalPages, 
   hasNextPage, 
   hasPreviousPage,
-  baseUrl = '/articles'
+  basePath = '/articles'
 }: PaginationProps) {
   if (totalPages <= 1) return null
 
   const getPageUrl = (page: number) => {
-    return page === 1 ? baseUrl : `${baseUrl}?page=${page}`
+    return page === 1 ? basePath : `${basePath}/${page}`
   }
 
   const getPageNumbers = () => {

@@ -67,4 +67,4 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonOrL
 )
 Button.displayName = "Button"
 
-export { Button, buttonVariants } 
+export { Button } 
