@@ -101,24 +101,88 @@ body {
 }
 
 @layer utilities {
-  .animate-scroll {
-    animation: scroll var(--scroll-duration, 30s) linear infinite;
-    will-change: transform;
+  /* Infinite scroll carousel */
+  .logo-carousel-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
   }
   
-  @keyframes scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
+  /* Fade effects at both ends */
+  .logo-carousel-container::before,
+  .logo-carousel-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  @media (min-width: 640px) {
+    .logo-carousel-container::before,
+    .logo-carousel-container::after {
+      width: 100px;
     }
   }
-
-  /* Logo carousel utilities */
+  
+  @media (min-width: 1024px) {
+    .logo-carousel-container::before,
+    .logo-carousel-container::after {
+      width: 120px;
+    }
+  }
+  
+  .logo-carousel-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--light-blue), transparent);
+  }
+  
+  .logo-carousel-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--light-blue), transparent);
+  }
+  
+  .logo-carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: max-content;
+    animation: infinite-scroll var(--scroll-duration, 40s) linear infinite;
+  }
+  
+  .logo-carousel-track.slow {
+    --scroll-duration: 60s;
+  }
+  
+  .logo-carousel-track.fast {
+    --scroll-duration: 20s;
+  }
+  
+  @keyframes infinite-scroll {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  
+  /* Ensure smooth animation without interruption */
+  .logo-carousel-track {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Legacy classes for backward compatibility */
+  .animate-scroll {
+    animation: infinite-scroll var(--scroll-duration, 30s) linear infinite;
+  }
+  
   .logo-carousel {
     --scroll-duration: 30s;
-    --logo-gap: 2rem;
   }
   
   .logo-carousel.fast {
@@ -127,13 +191,5 @@ body {
   
   .logo-carousel.slow {
     --scroll-duration: 45s;
-  }
-  
-  .logo-carousel.tight {
-    --logo-gap: 1rem;
-  }
-  
-  .logo-carousel.wide {
-    --logo-gap: 4rem;
   }
 }

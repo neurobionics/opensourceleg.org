@@ -117,42 +117,38 @@ export default function Home() {
             </h3>
 
             {/* Researchers carousel */}
-            <div className="flex items-center justify-center overflow-hidden">
-              <div className="flex items-center animate-scroll logo-carousel slow">
-                {/* First set */}
-                <div className="flex items-center gap-4 sm:gap-8 flex-shrink-0">
-                  <Image 
-                    src="/logo-strip-1.png" 
-                    alt="Research institutions - strip 1" 
-                    width={600}
-                    height={64}
-                    className="h-12 sm:h-16 object-contain"
-                  />
-                  <Image 
-                    src="/logo-strip-2.png" 
-                    alt="Research institutions - strip 2" 
-                    width={600}
-                    height={64}
-                    className="h-12 sm:h-16 object-contain"
-                  />
-                </div>
-                {/* Duplicate set for seamless loop */}
-                <div className="flex items-center gap-4 sm:gap-8 flex-shrink-0 ml-4 sm:ml-8">
-                  <Image 
-                    src="/logo-strip-1.png" 
-                    alt="Research institutions - strip 1" 
-                    width={600}
-                    height={64}
-                    className="h-12 sm:h-16 object-contain"
-                  />
-                  <Image 
-                    src="/logo-strip-2.png" 
-                    alt="Research institutions - strip 2" 
-                    width={600}
-                    height={64}
-                    className="h-12 sm:h-16 object-contain"
-                  />
-                </div>
+            <div className="logo-carousel-container">
+              <div className="logo-carousel-track slow">
+                {/* First set of logos */}
+                <Image 
+                  src="/logo-strip-1.png" 
+                  alt="Research institutions - strip 1" 
+                  width={600}
+                  height={72}
+                  className="h-12 sm:h-16 object-contain flex-shrink-0"
+                />
+                <Image 
+                  src="/logo-strip-2.png" 
+                  alt="Research institutions - strip 2" 
+                  width={600}
+                  height={72}
+                  className="h-12 sm:h-16 object-contain flex-shrink-0"
+                />
+                {/* Duplicate set for seamless infinite loop */}
+                <Image 
+                  src="/logo-strip-1.png" 
+                  alt="Research institutions - strip 1" 
+                  width={600}
+                  height={72}
+                  className="h-12 sm:h-16 object-contain flex-shrink-0"
+                />
+                <Image 
+                  src="/logo-strip-2.png" 
+                  alt="Research institutions - strip 2" 
+                  width={600}
+                  height={72}
+                  className="h-12 sm:h-16 object-contain flex-shrink-0"
+                />
               </div>
             </div>
           </div>
