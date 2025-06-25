@@ -24,7 +24,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="min-h-screen relative overflow-hidden">
         {/* Main content */}
-        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 text-center pt-20 sm:pt-32">
+        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 text-center pt-24 sm:pt-32">
           {/* Main headline */}
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 font-semibold max-w-5xl leading-tight">
             <span className="text-black">Open-Source Leg</span>{" "}
@@ -64,7 +64,7 @@ export default function Home() {
       {/* Features Section */}
       <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-16 sm:-mt-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[70vh] sm:h-[90vh] flex items-center -mt-10 sm:-mt-20">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full h-full py-16 sm:py-20">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full h-full py-20 sm:py-20">
             {/* Left Content - Video */}
             <div className="h-full flex items-center order-2 lg:order-1">
               {/* YouTube Video Embed */}
@@ -108,7 +108,7 @@ export default function Home() {
       </div>
 
       {/* Community & Partners Section */}
-      <div className="bg-[var(--light-blue)] text-white py-12 sm:py-16 relative z-0 -mt-16 sm:-mt-24">
+      <div className="bg-[var(--light-blue)] text-white py-16 sm:py-16 relative z-0 -mt-16 sm:-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-6 sm:space-y-8">
             {/* Centered heading */}
@@ -160,7 +160,7 @@ export default function Home() {
       </div>
 
       {/* Leverage Section */}
-      <div className="py-20 sm:py-32 px-4 sm:px-6">
+      <div className="py-24 sm:py-32 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-12 sm:mb-16">
@@ -191,7 +191,7 @@ export default function Home() {
           </div>
 
           {/* Tool panels */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
             {toolPanels.map((tool) => {
               const IconComponent = tool.icon
               return (
@@ -204,12 +204,12 @@ export default function Home() {
                   <div className="flex-1 flex items-center justify-center">
                     <IconComponent 
                       className="w-16 h-16 sm:w-20 sm:h-20 text-[var(--black)] group-hover:scale-110 group-hover:text-[var(--light-blue)] transition-transform duration-300" 
-                      strokeWidth={1.5}
+                      strokeWidth={1.0}
                     />
                   </div>
                   <div className="text-center">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{tool.title}</h3>
-                    <p className="text-gray-600 text-sm leading-relaxed">{tool.description}</p>
+                    <p className="text-gray-600 text-sm leading-relaxed max-md:hidden">{tool.description}</p>
                   </div>
                 </a>
               )
@@ -219,7 +219,7 @@ export default function Home() {
       </div>
 
       {/* Hardware Section */}
-      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-12 sm:py-20 px-6 sm:px-12 lg:px-20">
+      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-16 sm:py-20 px-6 sm:px-12 lg:px-20">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8 flex flex-col gap-3 sm:gap-4 justify-center">
@@ -279,7 +279,7 @@ export default function Home() {
       </div>  
 
       {/* Software Section */}
-      <div className="py-12 sm:py-20 px-4 sm:px-6">
+      <div className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Content - Software Screenshot */}
@@ -347,7 +347,7 @@ export default function Home() {
       </div>
 
       {/* Research Section */}
-      <div className="bg-[var(--light-blue)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-12 sm:py-20 px-6 sm:px-12 lg:px-20 mb-12 sm:mb-20">
+      <div className="bg-[var(--light-blue)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-16 sm:py-20 px-6 sm:px-12 lg:px-20 mb-16 sm:mb-20">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8 flex flex-col gap-3 sm:gap-4 justify-center">
@@ -399,30 +399,8 @@ export default function Home() {
               
             </div>
 
-          {/* Right Content - Research Papers - Mobile Responsive */}
+          {/* Right Content - Research Papers */}
           <div className="relative">
-                         {/* Mobile Layout - Stacked */}
-             <div className="block lg:hidden space-y-4">
-               {researchPapers.slice().reverse().slice(0, 3).map((paper) => (
-                 <a 
-                   key={paper.id}
-                   href={paper.href} 
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="block group cursor-pointer"
-                 >
-                  <div className="relative w-full h-32 sm:h-40 rounded-lg overflow-hidden">
-                    <Image 
-                      src={paper.image} 
-                      alt={paper.title} 
-                      fill 
-                      className="object-cover border-2 border-black group-hover:border-[var(--light-green)] shadow-lg group-hover:shadow-2xl transition-all duration-300"
-                    />
-                  </div>
-                </a>
-              ))}
-            </div>
-
             {/* Desktop Layout - Absolute Positioned */}
             <div className="hidden lg:block relative h-[28rem] w-full">
               {researchPapers.slice().reverse().map((paper) => (
@@ -447,7 +425,7 @@ export default function Home() {
       </div>  
 
       {/* Stats Section */}
-      <div className="pt-8 sm:pt-10 pb-16 sm:pb-24 px-4 sm:px-6">
+      <div className="pt-12 sm:pt-10 pb-20 sm:pb-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-12 sm:mb-16">
@@ -478,7 +456,7 @@ export default function Home() {
           </div>
 
           {/* stats panels */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto">
             {statsPanels.map((stat) => {
               const TrendIcon = stat.trend === "up" ? TrendingUpIcon : TrendingDownIcon
               const trendColor = stat.trend === "up" ? "text-green-600" : "text-red-600"
@@ -491,7 +469,7 @@ export default function Home() {
                       {stat.value.toLocaleString()}
                     </CardTitle>
                     <CardAction>
-                      <Badge variant="outline" className={`${trendColor} font-semibold p-1.5 sm:p-2 text-xs sm:text-sm border-gray-600`}>
+                      <Badge variant="outline" className={`${trendColor} max-md:hidden font-semibold p-1.5 sm:p-2 text-xs sm:text-sm border-gray-600`}>
                         <TrendIcon className="w-3 h-3 mr-1"/>
                         +{stat.trendValue}%
                       </Badge>
@@ -522,7 +500,7 @@ export default function Home() {
       </div>
 
         {/* Community Section */}
-        <div className="bg-[var(--light-blue)] py-12 sm:py-20 px-4 sm:px-6">
+        <div className="bg-[var(--light-blue)] py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               {/* Left Content */}
@@ -571,38 +549,7 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right Content - Community Images - Mobile Responsive */}
               <div className="relative">
-                {/* Mobile Layout - Simple Grid */}
-                <div className="block lg:hidden">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="w-full h-32 sm:h-40 rounded-xl overflow-hidden shadow-lg border-2 border-[var(--white)]">
-                      <Image 
-                        src="/community/ssnr.jpg" 
-                        alt="Community member working on prosthetics" 
-                        fill 
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="w-full h-32 sm:h-40 rounded-xl overflow-hidden shadow-lg border-2 border-[var(--white)]">
-                      <Image 
-                        src="/community/iros.webp" 
-                        alt="Research team collaboration" 
-                        fill 
-                        className="object-cover"
-                      />
-                    </div>
-                  </div>
-                  <div className="mt-4 w-full h-24 sm:h-32 rounded-xl overflow-hidden shadow-lg border-2 border-[var(--white)]">
-                    <Image 
-                      src="/community/fsu.jpg" 
-                      alt="Open source hardware development" 
-                      fill 
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-
                 {/* Desktop Layout - Absolute Positioned */}
                 <div className="hidden lg:block relative h-96">
                   {/* Image 1 - Top Left */}
