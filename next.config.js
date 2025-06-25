@@ -7,6 +7,10 @@ const nextConfig = {
   output: 'export',
   trailingSlash: true,
   
+  // GitHub Pages basePath configuration
+  basePath: process.env.GITHUB_PAGES ? '/opensourceleg.org' : '',
+  assetPrefix: process.env.GITHUB_PAGES ? '/opensourceleg.org' : '',
+  
   // Disable image optimization for static export
   images: {
     unoptimized: true
