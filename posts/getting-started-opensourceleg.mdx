@@ -1,0 +1,168 @@
+---
+title: "Getting Started with the Open-Source Leg Platform"
+date: "2024-01-15"
+excerpt: "A comprehensive guide to setting up and using the Open-Source Leg platform for prosthetics research and development."
+author: "Senthur Ayyappan"
+---
+
+The Open-Source Leg platform is designed to make prosthetics research more accessible and reproducible. This guide will walk you through everything you need to know to get started with the platform.
+
+## What is the Open-Source Leg?
+
+The Open-Source Leg is an end-to-end open-source platform that includes:
+
+- **Hardware designs** - Complete CAD files and manufacturing instructions
+- **Software libraries** - Python-based control systems and interfaces
+- **Documentation** - Comprehensive guides and API references
+- **Community support** - Active forums and contributor network
+
+## Prerequisites
+
+Before getting started, you'll need:
+
+### Hardware Requirements
+
+- Access to a 3D printer or machining capabilities
+- Basic electronics knowledge
+- Microcontroller (Arduino or Raspberry Pi compatible)
+- Various sensors and actuators (see BOM)
+
+### Software Requirements
+
+- Python 3.9 or higher
+- Git for version control
+- Basic familiarity with robotics concepts
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/neurobionics/opensourceleg.git
+cd opensourceleg
+```
+
+### 2. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Set Up Your Development Environment
+
+We recommend using a virtual environment to avoid conflicts:
+
+```bash
+python -m venv opensourceleg-env
+source opensourceleg-env/bin/activate  # On Windows: opensourceleg-env\Scripts\activate
+pip install -r requirements.txt
+```
+
+## Basic Usage
+
+### Hardware Assembly
+
+1. **Download CAD Files**: Access the complete hardware designs on [Onshape](https://cad.onshape.com/documents/3520551dd01cf402179e8687/w/87da2fb0a553b44a27833624/e/d9c95c04904f8d6a753006a4)
+
+2. **Review the BOM**: Check the bill of materials for all required components
+
+3. **3D Print Components**: Print the mechanical parts using the provided STL files
+
+4. **Assemble the Hardware**: Follow the assembly guide in the documentation
+
+### Software Setup
+
+Once your hardware is assembled, you can start with basic software control:
+
+```python
+from opensourceleg.actuator import DephyActuator
+from opensourceleg.sensors import Loadcell
+
+# Initialize the actuator
+actuator = DephyActuator(
+    port="/dev/ttyACM0",
+    gear_ratio=50.0,
+    frequency=500
+)
+
+# Initialize sensors
+loadcell = Loadcell(gain=1000, offset=0)
+
+# Basic control loop
+try:
+    while True:
+        # Read sensor data
+        force = loadcell.read()
+        
+        # Simple proportional control
+        torque = force * 0.1
+        
+        # Send command to actuator
+        actuator.set_torque(torque)
+        
+except KeyboardInterrupt:
+    actuator.stop()
+```
+
+## Key Features
+
+### Modular Design
+
+The platform is designed to be modular, allowing researchers to:
+
+- Swap different sensors and actuators
+- Modify control algorithms
+- Adapt to different research requirements
+
+### Real-time Control
+
+Built for real-time applications with:
+
+- High-frequency control loops (up to 1kHz)
+- Low-latency sensor processing
+- Deterministic timing guarantees
+
+### Data Logging
+
+Comprehensive data logging capabilities:
+
+- Sensor data recording
+- Control signal logging
+- Performance metrics tracking
+
+## Next Steps
+
+Now that you have the basics set up, you can:
+
+1. **Explore the Examples**: Check out the `/examples` directory for more complex use cases
+2. **Read the Documentation**: Visit our [documentation site](https://neurobionics.github.io/opensourceleg/) for detailed API references
+3. **Join the Community**: Connect with other researchers on our [forum](https://discourse.opensourceleg.org)
+4. **Contribute**: Help improve the platform by contributing code, documentation, or feedback
+
+## Common Issues
+
+### Connection Problems
+
+If you're having trouble connecting to the hardware:
+
+- Check your USB connections
+- Verify the correct port is being used
+- Ensure proper permissions (you may need to add your user to the `dialout` group on Linux)
+
+### Performance Issues
+
+For optimal performance:
+
+- Use a real-time operating system when possible
+- Minimize background processes during operation
+- Consider using dedicated hardware for time-critical applications
+
+## Conclusion
+
+The Open-Source Leg platform provides a solid foundation for prosthetics research. With its modular design and comprehensive software support, you can focus on your research goals rather than rebuilding infrastructure from scratch.
+
+Happy researching! 🦾
+
+---
+
+*Have questions? Join our community discussions or check out the documentation for more detailed information.* 

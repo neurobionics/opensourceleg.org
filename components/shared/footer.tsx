@@ -36,7 +36,6 @@ export default function Footer() {
         { title: "Forum", href: "https://opensourceleg.discourse.group/" },
         { title: "Governance", href: "/governance" },
         { title: "Code of Conduct", href: "/code-of-conduct" },
-        { title: "License", href: "/license" }
       ]
     }
   ]
