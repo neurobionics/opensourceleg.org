@@ -16,6 +16,7 @@ import { researchPapers } from "@/lib/research"
 import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { LatestArticleStrip } from "@/components/latest-article-strip"
+import LottieAnimation from "@/components/lottie-animation"
 
 export default function Home() {
   return (
@@ -23,20 +24,23 @@ export default function Home() {
       {/* Hero Section */}
       <div className="min-h-screen relative overflow-hidden">
         {/* Main content */}
-        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 text-center pt-24 sm:pt-32">
+        <main className="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 text-center -mt-[20%] md:-mt-[8%]">
+          {/* Lottie Animation */}
+          <LottieAnimation />
+          
           {/* Main headline */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 sm:mb-6 font-semibold max-w-5xl leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-3 sm:mb-4 font-semibold max-w-5xl leading-tight">
             <span className="text-black">Open-Source Leg</span>{" "}
           </h1>
 
           {/* Subheading */}
-          <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl sm:max-w-3xl leading-relaxed px-2">
+          <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-4 sm:mb-6 max-w-2xl sm:max-w-3xl leading-relaxed px-2">
             An end-to-end open-source platform that makes
             prosthetics research more accessible, collaborative, and reproducible.
           </p>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
             <Button 
               href="https://github.com/neurobionics/opensourceleg"
               target="_blank"
