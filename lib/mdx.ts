@@ -45,4 +45,33 @@ export function getAllPosts(): Post[] {
     .map((slug) => getPostBySlug(slug))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
   return posts
+}
+
+export type PaginatedPosts = {
+  posts: Post[]
+  currentPage: number
+  totalPages: number
+  totalPosts: number
+  hasNextPage: boolean
+  hasPreviousPage: boolean
+}
+
+export function getPaginatedPosts(page: number = 1, postsPerPage: number = 4): PaginatedPosts {
+  const allPosts = getAllPosts()
+  const totalPosts = allPosts.length
+  const totalPages = Math.ceil(totalPosts / postsPerPage)
+  const currentPage = Math.max(1, Math.min(page, totalPages))
+  
+  const startIndex = (currentPage - 1) * postsPerPage
+  const endIndex = startIndex + postsPerPage
+  const posts = allPosts.slice(startIndex, endIndex)
+  
+  return {
+    posts,
+    currentPage,
+    totalPages,
+    totalPosts,
+    hasNextPage: currentPage < totalPages,
+    hasPreviousPage: currentPage > 1
+  }
 } 

@@ -3,13 +3,20 @@ import { formatDistanceToNow } from 'date-fns'
 import { Calendar, Clock, User, Search } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { getAllPosts } from '@/lib/mdx'
+import { getPaginatedPosts } from '@/lib/mdx'
+import { Pagination } from '@/components/pagination'
 
-export default function ArticlesPage() {
-  const posts = getAllPosts()
+type ArticlesPageProps = {
+  searchParams: Promise<{ page?: string }>
+}
+
+export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
+  const resolvedSearchParams = await searchParams
+  const currentPage = parseInt(resolvedSearchParams.page || '1', 10)
+  const { posts, totalPages, currentPage: validatedPage, hasNextPage, hasPreviousPage } = getPaginatedPosts(currentPage)
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-12">
       {/* Hero Section */}
       <div className="py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
@@ -24,8 +31,18 @@ export default function ArticlesPage() {
       </div>
 
       {/* Articles Grid */}
-      <div className="py-16 px-4 sm:px-6">
+      <div className="py-8 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
+          {/* Pagination - Top */}
+          {posts.length > 0 && (
+            <Pagination 
+              currentPage={validatedPage}
+              totalPages={totalPages}
+              hasNextPage={hasNextPage}
+              hasPreviousPage={hasPreviousPage}
+            />
+          )}
+
           {posts.length === 0 ? (
             <div className="text-center py-16">
               <Search className="w-16 h-16 text-gray-300 mx-auto mb-6" />
@@ -43,7 +60,7 @@ export default function ArticlesPage() {
               </Button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 mb-12">
               {posts.map((post) => {
                 const publishedDate = new Date(post.date)
                 const timeAgo = formatDistanceToNow(publishedDate, { addSuffix: true })
