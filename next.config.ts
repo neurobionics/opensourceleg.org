@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
   output: 'export',
   trailingSlash: true,
   
+  // React strict mode for better development experience
+  reactStrictMode: true,
+  
+  // Performance optimizations
+  compress: true,
+  poweredByHeader: false,
+  
   // Disable image optimization for static export
   images: {
     unoptimized: true
