@@ -93,7 +93,23 @@ function extractLastAuthor(authorsString: string): string {
   const authors = authorsString.split(';').map(author => author.trim())
   if (authors.length === 0) return ''
   
-  // Get the last author and return as-is (already in "Last, First Middle" format)
+  // Get the last author and extract just the last name (part before the comma)
+  const lastAuthor = authors[authors.length - 1].trim()
+  
+  // Extract last name only (e.g., "Ferris, Daniel P." -> "Ferris")
+  const lastNameMatch = lastAuthor.split(',')[0].trim()
+  
+  return lastNameMatch
+}
+
+function extractFullLastAuthor(authorsString: string): string {
+  if (!authorsString) return ''
+  
+  // Split by semicolons to get individual authors (format: "Last, First Middle; Last, First Middle")
+  const authors = authorsString.split(';').map(author => author.trim())
+  if (authors.length === 0) return ''
+  
+  // Get the last author and return the full name (e.g., "Ferris, Daniel P.")
   const lastAuthor = authors[authors.length - 1].trim()
   
   return lastAuthor
@@ -116,7 +132,7 @@ export function generateResearchAnalytics(publications: Publication[]): Research
   
   const keywords = Object.entries(keywordCounts)
     .sort(([,a], [,b]) => b - a)
-    .slice(0, 20)
+    .slice(0, 18)
     .map(([name, value]) => ({
       name: name.charAt(0).toUpperCase() + name.slice(1),
       value,
@@ -138,7 +154,7 @@ export function generateResearchAnalytics(publications: Publication[]): Research
   
   const funding = Object.entries(fundingCounts)
     .sort(([,a], [,b]) => b - a)
-    .slice(0, 15)
+    .slice(0, 18)
     .map(([name, value]) => ({
       name,
       value,
@@ -157,7 +173,7 @@ export function generateResearchAnalytics(publications: Publication[]): Research
   
   const countries = Object.entries(countryCounts)
     .sort(([,a], [,b]) => b - a)
-    .slice(0, 15)
+    .slice(0, 18)
     .map(([name, value]) => {
       const mapping = Object.values(COUNTRY_MAPPINGS).find(m => m.name === name)
       return {
@@ -169,21 +185,25 @@ export function generateResearchAnalytics(publications: Publication[]): Research
     })
   
   // Research Labs analysis (based on last author)
-  const labCounts: Record<string, number> = {}
+  const labCounts: Record<string, { count: number, fullName: string }> = {}
   validPubs.forEach(pub => {
-    const lastAuthor = extractLastAuthor(pub.authors)
-    if (lastAuthor && lastAuthor.length > 2) {
-      labCounts[lastAuthor] = (labCounts[lastAuthor] || 0) + 1
+    const fullLastAuthor = extractFullLastAuthor(pub.authors)
+    const lastNameKey = extractLastAuthor(pub.authors)
+    if (lastNameKey && lastNameKey.length > 2) {
+      if (!labCounts[lastNameKey]) {
+        labCounts[lastNameKey] = { count: 0, fullName: fullLastAuthor }
+      }
+      labCounts[lastNameKey].count += 1
     }
   })
   
   const researchLabs = Object.entries(labCounts)
-    .sort(([,a], [,b]) => b - a)
-    .slice(0, 20)
-    .map(([name, value]) => ({
-      name: name,
-      value,
-      percentage: (value / validPubs.length) * 100
+    .sort(([,a], [,b]) => b.count - a.count)
+    .slice(0, 18)
+    .map(([, data]) => ({
+      name: data.fullName,
+      value: data.count,
+      percentage: (data.count / validPubs.length) * 100
     }))
   
   // Summary stats

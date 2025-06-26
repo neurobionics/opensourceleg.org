@@ -71,10 +71,10 @@ export default async function ResearchPage() {
               {/* Left Content */}
               <div className="space-y-6 sm:space-y-8">
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white">
-                  Join the <span className="font-medium italic text-[var(--light-green)]">research</span> community!
+                  <span className="font-medium italic text-[var(--light-green)]">Join</span>{" "}the community!
                 </h2>
                 
-                <p className="text-base sm:text-lg md:text-xl text-white/80 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
                   Access our open-source hardware and software to build upon, and share your findings with a global community of researchers.
                 </p>
 

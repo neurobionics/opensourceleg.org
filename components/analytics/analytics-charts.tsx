@@ -77,12 +77,15 @@ export function TreemapChart({ data, height = 400, isFundingData = false }: Omit
           dataKey="size"
           aspectRatio={4 / 3}
           stroke="#fff"
+          isAnimationActive={false}
           content={({ depth, x, y, width, height, index, payload, name }) => {
             if (depth !== 1) return <g />
             
             // Calculate font sizes based on rectangle size with better scaling
-            const titleFontSize = Math.max(Math.min(width / 8, height / 4, 14), 9)
-            const valueFontSize = Math.max(Math.min(width / 10, height / 5, 12), 8)
+            const tileArea = width * height
+            const scaleFactor = Math.sqrt(tileArea) / 100 // More aggressive scaling based on area
+            const titleFontSize = Math.max(Math.min(width / 10, height / 5, 14, scaleFactor * 10), 8)
+            const valueFontSize = Math.max(Math.min(width / 12, height / 6, 12, scaleFactor * 8), 7)
             
             // Text wrapping function
             const wrapText = (text: string, maxWidth: number, fontSize: number) => {
@@ -123,9 +126,9 @@ export function TreemapChart({ data, height = 400, isFundingData = false }: Omit
             const tileWidth = width - (tilePadding * 2)
             const tileHeight = height - (tilePadding * 2)
             
-            // Only show text if rectangle is large enough
-            const showText = tileWidth > 50 && tileHeight > 30
-            const showValue = tileWidth > 70 && tileHeight > 50
+            // Only show text if rectangle is large enough (adjusted for better readability)
+            const showText = tileWidth > 55 && tileHeight > 30 && tileArea > 2000
+            const showValue = tileWidth > 80 && tileHeight > 50 && tileArea > 4000
             
             // Wrap the title text
             const displayText = payload?.displayName || name || ''
@@ -225,11 +228,14 @@ export function CountryTreemapChart({ data, height = 400 }: Omit<CountryTreemapP
           dataKey="size"
           aspectRatio={4 / 3}
           stroke="#fff"
+          isAnimationActive={false}
           content={({ depth, x, y, width, height, index, payload, name }) => {
             if (depth !== 1) return <g />
             
-            const titleFontSize = Math.max(Math.min(width / 8, height / 4, 14), 9)
-            const valueFontSize = Math.max(Math.min(width / 10, height / 5, 12), 8)
+            const tileArea = width * height
+            const scaleFactor = Math.sqrt(tileArea) / 100 // More aggressive scaling based on area
+            const titleFontSize = Math.max(Math.min(width / 10, height / 5, 14, scaleFactor * 10), 8)
+            const valueFontSize = Math.max(Math.min(width / 12, height / 6, 12, scaleFactor * 8), 7)
             
             // Text wrapping function
             const wrapText = (text: string, maxWidth: number, fontSize: number) => {
@@ -268,8 +274,8 @@ export function CountryTreemapChart({ data, height = 400 }: Omit<CountryTreemapP
             const tileWidth = width - (tilePadding * 2)
             const tileHeight = height - (tilePadding * 2)
             
-            const showText = tileWidth > 50 && tileHeight > 30
-            const showValue = tileWidth > 70 && tileHeight > 50
+            const showText = tileWidth > 55 && tileHeight > 30 && tileArea > 2000
+            const showValue = tileWidth > 80 && tileHeight > 50 && tileArea > 4000
             
             const titleLines = showText ? wrapText(name || '', tileWidth - 10, titleFontSize) : []
             const lineHeight = titleFontSize + 2
@@ -375,7 +381,7 @@ export function SummaryStats({ analytics }: SummaryStatsProps) {
       id: 'country',
       title: 'Leading Country', 
       value: analytics.countries[0]?.country || 'N/A',
-      description: `${analytics.countries[0]?.value || 0} publications (${analytics.countries[0]?.percentage.toFixed(1) || 0}% of total)`
+      description: `${analytics.countries[0]?.value || 0} publications (${analytics.countries[0]?.percentage.toFixed(1) || 0}% of all citations)`
     },
   ]
 

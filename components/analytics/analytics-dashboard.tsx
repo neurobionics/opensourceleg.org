@@ -40,15 +40,15 @@ interface AnalyticsDashboardProps {
 }
 
 export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
-  const [firstChart, setFirstChart] = useState<'topics' | 'funding'>('topics')
-  const [secondChart, setSecondChart] = useState<'geographic' | 'labs'>('geographic')
+  const [firstChart, setFirstChart] = useState<'geographic' | 'labs'>('labs')
+  const [secondChart, setSecondChart] = useState<'topics' | 'funding'>('funding')
   const [isFirstTransitioning, setIsFirstTransitioning] = useState(false)
   const [isSecondTransitioning, setIsSecondTransitioning] = useState(false)
 
   const handleFirstChartToggle = () => {
     setIsFirstTransitioning(true)
     setTimeout(() => {
-      setFirstChart(firstChart === 'topics' ? 'funding' : 'topics')
+      setFirstChart(firstChart === 'geographic' ? 'labs' : 'geographic')
       setIsFirstTransitioning(false)
     }, 150)
   }
@@ -56,7 +56,7 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
   const handleSecondChartToggle = () => {
     setIsSecondTransitioning(true)
     setTimeout(() => {
-      setSecondChart(secondChart === 'geographic' ? 'labs' : 'geographic')
+      setSecondChart(secondChart === 'topics' ? 'funding' : 'topics')
       setIsSecondTransitioning(false)
     }, 150)
   }
@@ -79,23 +79,23 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
         {/* First Section: Text Left, Chart Right */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center my-12">
           {/* Text Content */}
-          <div className="lg:col-span-1 flex flex-col justify-between mx-auto min-h-[400px]">
+          <div className="lg:col-span-1 flex flex-col justify-between mx-auto min-h-[400px] py-12">
             <div className={`transition-all duration-300 ease-in-out ${isFirstTransitioning ? 'opacity-0 translate-x-2' : 'opacity-100 translate-x-0'}`}>
               <h2 className="text-2xl md:text-3xl font-light mb-4 text-gray-900">
-                {firstChart === 'topics' ? (
-                  <span className="font-light">Research Topics</span>
+                {firstChart === 'geographic' ? (
+                  <span className="font-light">Research Reach</span>
                 ) : (
-                  <span className="font-light">Funding Sources</span>
+                  <span className="font-light">Research Labs</span>
                 )}
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                {firstChart === 'topics' ? (
+                {firstChart === 'geographic' ? (
                   <>
-                    <span className="font-semibold text-gray-900">{analytics.keywords[0]?.name}</span> emerges as the most prominent research area with <span className="font-semibold text-gray-900">{analytics.keywords[0]?.value} publications</span> ({analytics.keywords[0]?.percentage.toFixed(1)}% of total research). This reflects the community&rsquo;s primary focus and research priorities within the Open-Source Leg ecosystem.
+                    <span className="font-semibold text-gray-900">{analytics.countries[0]?.country}</span> leads the global research community with <span className="font-semibold text-gray-900">{analytics.countries[0]?.value} publications</span> ({analytics.countries[0]?.percentage.toFixed(1)}% of total).
                   </>
                 ) : (
                   <>
-                    <span className="font-semibold text-gray-900">{analytics.funding[0]?.name ? extractAcronym(analytics.funding[0].name) : 'N/A'}</span> leads research funding with <span className="font-semibold text-gray-900">{analytics.funding[0]?.value} supported publications</span> ({analytics.funding[0]?.percentage.toFixed(1)}% of funded research). This highlights the key organizations driving innovation in prosthetic technology research.
+                    <span className="font-semibold text-gray-900 text-balance">{analytics.researchLabs[0]?.name}</span> et al. have published <span className="font-semibold text-gray-900">{analytics.researchLabs[0]?.value}</span> articles that cite the Open-Source Leg platform ({analytics.researchLabs[0]?.percentage.toFixed(1)}% of all citations).
                   </>
                 )}
               </p>
@@ -104,14 +104,32 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
               onClick={handleFirstChartToggle}
               className="cursor-pointer bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-3 text-base font-medium transition-colors duration-200 flex items-center gap-2 mt-6"
             >
-              {firstChart === 'topics' ? 'Show Funding Agencies' : 'Show Research Topics'}
+              {firstChart === 'geographic' ? 'Show Research Labs' : 'Show Geographic Data'}
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
           {/* Chart */}
-          <div className={`lg:col-span-2 p-4 transition-all duration-300 ease-in-out ${isFirstTransitioning ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100 translate-y-0'}`}>
-            {firstChart === 'topics' ? (
+          <div className={`lg:col-span-2 p-4 transition-opacity duration-300 ease-in-out ${isFirstTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+            {firstChart === 'geographic' ? (
+              <CountryTreemapChart 
+                data={analytics.countries} 
+                height={400}
+              />
+            ) : (
+              <TreemapChart 
+                data={analytics.researchLabs} 
+                height={400}
+              />
+            )}
+          </div>
+        </div>
+
+        {/* Second Section: Chart Left, Text Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center my-12">
+          {/* Chart */}
+          <div className={`lg:col-span-2 p-4 transition-opacity duration-300 ease-in-out ${isSecondTransitioning ? 'opacity-0' : 'opacity-100'}`}>
+            {secondChart === 'topics' ? (
               <TreemapChart 
                 data={analytics.keywords} 
                 height={400}
@@ -124,43 +142,25 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
               />
             )}
           </div>
-        </div>
-
-        {/* Second Section: Chart Left, Text Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center my-12">
-          {/* Chart */}
-          <div className={`lg:col-span-2 p-4 transition-all duration-300 ease-in-out ${isSecondTransitioning ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 scale-100 translate-y-0'}`}>
-            {secondChart === 'geographic' ? (
-              <CountryTreemapChart 
-                data={analytics.countries} 
-                height={400}
-              />
-            ) : (
-              <TreemapChart 
-                data={analytics.researchLabs} 
-                height={400}
-              />
-            )}
-          </div>
 
           {/* Text Content */}
-          <div className="lg:col-span-1 flex flex-col justify-between mx-auto min-h-[400px]">
+          <div className="lg:col-span-1 flex flex-col justify-between mx-auto min-h-[400px] py-12">
             <div className={`transition-all duration-300 ease-in-out ${isSecondTransitioning ? 'opacity-0 translate-x-2' : 'opacity-100 translate-x-0'}`}>
               <h2 className="text-2xl md:text-3xl font-light mb-4 text-gray-900">
-                {secondChart === 'geographic' ? (
-                  <span className="font-light">Research Reach</span>
+                {secondChart === 'topics' ? (
+                  <span className="font-light">Research Topics</span>
                 ) : (
-                  <span className="font-light">Research Labs</span>
+                  <span className="font-light">Funding Sources</span>
                 )}
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                {secondChart === 'geographic' ? (
+                {secondChart === 'topics' ? (
                   <>
-                    <span className="font-semibold text-gray-900">{analytics.countries[0]?.country}</span> leads the global research community with <span className="font-semibold text-gray-900">{analytics.countries[0]?.value} publications</span> ({analytics.countries[0]?.percentage.toFixed(1)}% of total). This demonstrates the international collaboration and widespread adoption of open-source prosthetic research.
+                    <span className="font-semibold text-gray-900">{analytics.keywords[0]?.name}</span> emerges as the most prominent research area with <span className="font-semibold text-gray-900">{analytics.keywords[0]?.value} publications</span> ({analytics.keywords[0]?.percentage.toFixed(1)}% of total research).
                   </>
                 ) : (
                   <>
-                    <span className="font-semibold text-gray-900">{analytics.researchLabs[0]?.name}</span> stands out as the most active research institution with <span className="font-semibold text-gray-900">{analytics.researchLabs[0]?.value} publications</span> ({analytics.researchLabs[0]?.percentage.toFixed(1)}% of institutional research). This highlights the key academic partnerships advancing the field.
+                    <span className="font-semibold text-gray-900">{analytics.funding[0]?.name ? extractAcronym(analytics.funding[0].name) : 'N/A'}</span> leads research funding with <span className="font-semibold text-gray-900">{analytics.funding[0]?.value} supported publications</span> ({analytics.funding[0]?.percentage.toFixed(1)}% of funded research).
                   </>
                 )}
               </p>
@@ -169,7 +169,7 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
               onClick={handleSecondChartToggle}
               className="cursor-pointer bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-3 text-base font-medium transition-colors duration-200 flex items-center gap-2 mt-6"
             >
-              {secondChart === 'geographic' ? 'Show Research Labs' : 'Show Geographic Data'}
+              {secondChart === 'topics' ? 'Show Funding Agencies' : 'Show Research Topics'}
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
