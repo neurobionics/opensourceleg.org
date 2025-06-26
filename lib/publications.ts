@@ -13,6 +13,11 @@ export interface Publication {
   submittedDate?: string
   approvedBy?: string
   approvedDate?: string
+  // Analytics fields
+  addresses?: string
+  affiliations?: string
+  fundingAgencies?: string[]
+  publicationType?: string
 }
 
 // Hardcoded publications as fallback and initial data
@@ -100,6 +105,12 @@ export async function fetchPublications(): Promise<Publication[]> {
     const urlIndex = headers.findIndex((h: string) => h.toLowerCase() === 'doi link')
     const abstractIndex = headers.findIndex((h: string) => h.toLowerCase() === 'abstract')
     
+    // Analytics fields
+    const addressesIndex = headers.findIndex((h: string) => h.toLowerCase() === 'addresses')
+    const affiliationsIndex = headers.findIndex((h: string) => h.toLowerCase() === 'affiliations')
+    const fundingIndex = headers.findIndex((h: string) => h.toLowerCase() === 'funding name')
+    const publicationTypeIndex = headers.findIndex((h: string) => h.toLowerCase() === 'publication type')
+    
 
     
     const publications: Publication[] = rows.map((row: string[], index: number) => {
@@ -123,6 +134,15 @@ export async function fetchPublications(): Promise<Publication[]> {
       // Extract description from abstract (first 200 characters)
       const description = abstract ? abstract.substring(0, 200) + (abstract.length > 200 ? '...' : '') : undefined
       
+      // Analytics fields
+      const addresses = addressesIndex >= 0 ? (row[addressesIndex] || undefined) : undefined
+      const affiliations = affiliationsIndex >= 0 ? (row[affiliationsIndex] || undefined) : undefined
+      const fundingName = fundingIndex >= 0 ? (row[fundingIndex] || "") : ""
+      const fundingAgencies = fundingName 
+        ? fundingName.split(/[;,]/).map(agency => agency.trim()).filter(agency => agency.length > 0)
+        : []
+      const publicationType = publicationTypeIndex >= 0 ? (row[publicationTypeIndex] || undefined) : undefined
+      
         return {
           id: (index + 1).toString(),
           title,
@@ -135,7 +155,11 @@ export async function fetchPublications(): Promise<Publication[]> {
           description,
           tags,
           submittedBy: "OSL Research Database",
-          submittedDate: new Date().toISOString().split('T')[0]
+          submittedDate: new Date().toISOString().split('T')[0],
+          addresses,
+          affiliations,
+          fundingAgencies,
+          publicationType
         }
     })
 
