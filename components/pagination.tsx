@@ -14,6 +14,8 @@ type PaginationProps = {
   hasNextPage: boolean
   hasPreviousPage: boolean
   basePath?: string
+  useSearchParams?: boolean
+  onPageChange?: (page: number) => void
 }
 
 export function Pagination({ 
@@ -21,12 +23,27 @@ export function Pagination({
   totalPages, 
   hasNextPage, 
   hasPreviousPage,
-  basePath = '/articles'
+  basePath = '/articles',
+  useSearchParams = false,
+  onPageChange
 }: PaginationProps) {
   if (totalPages <= 1) return null
 
   const getPageUrl = (page: number) => {
+    if (onPageChange) {
+      return '#' // Return placeholder for callback-based pagination
+    }
+    if (useSearchParams) {
+      return page === 1 ? basePath : `${basePath}?page=${page}`
+    }
     return page === 1 ? basePath : `${basePath}/${page}`
+  }
+
+  const handlePageClick = (page: number, e?: React.MouseEvent) => {
+    if (onPageChange) {
+      e?.preventDefault()
+      onPageChange(page)
+    }
   }
 
   const getPageNumbers = () => {
@@ -52,7 +69,10 @@ export function Pagination({
         {/* Previous button */}
         <PaginationItem>
           {hasPreviousPage ? (
-            <PaginationPrevious href={getPageUrl(currentPage - 1)} />
+            <PaginationPrevious 
+              href={getPageUrl(currentPage - 1)} 
+              onClick={(e) => handlePageClick(currentPage - 1, e)}
+            />
           ) : (
             <PaginationPrevious 
               href="#" 
@@ -66,7 +86,12 @@ export function Pagination({
         {currentPage > 3 && (
           <>
             <PaginationItem>
-              <PaginationLink href={getPageUrl(1)}>1</PaginationLink>
+              <PaginationLink 
+                href={getPageUrl(1)}
+                onClick={(e) => handlePageClick(1, e)}
+              >
+                1
+              </PaginationLink>
             </PaginationItem>
             {currentPage > 4 && (
               <PaginationItem>
@@ -82,6 +107,7 @@ export function Pagination({
             <PaginationLink 
               href={getPageUrl(pageNum)} 
               isActive={pageNum === currentPage}
+              onClick={(e) => handlePageClick(pageNum, e)}
             >
               {pageNum}
             </PaginationLink>
@@ -97,7 +123,12 @@ export function Pagination({
               </PaginationItem>
             )}
             <PaginationItem>
-              <PaginationLink href={getPageUrl(totalPages)}>{totalPages}</PaginationLink>
+              <PaginationLink 
+                href={getPageUrl(totalPages)}
+                onClick={(e) => handlePageClick(totalPages, e)}
+              >
+                {totalPages}
+              </PaginationLink>
             </PaginationItem>
           </>
         )}
@@ -105,7 +136,10 @@ export function Pagination({
         {/* Next button */}
         <PaginationItem>
           {hasNextPage ? (
-            <PaginationNext href={getPageUrl(currentPage + 1)} />
+            <PaginationNext 
+              href={getPageUrl(currentPage + 1)} 
+              onClick={(e) => handlePageClick(currentPage + 1, e)}
+            />
           ) : (
             <PaginationNext 
               href="#" 
