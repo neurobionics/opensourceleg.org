@@ -89,22 +89,12 @@ function extractCountriesFromText(text: string): string[] {
 function extractLastAuthor(authorsString: string): string {
   if (!authorsString) return ''
   
-  // Split by common delimiters and get the last author
-  const authors = authorsString.split(/[,;]/).map(author => author.trim())
+  // Split by semicolons to get individual authors (format: "Last, First Middle; Last, First Middle")
+  const authors = authorsString.split(';').map(author => author.trim())
   if (authors.length === 0) return ''
   
-  const lastAuthor = authors[authors.length - 1]
-  
-  // Extract last name (assuming format like "John A. Smith" or "Smith, J.A.")
-  const nameParts = lastAuthor.split(/[\s,]/).filter(part => part.length > 1)
-  if (nameParts.length > 0) {
-    // If comma-separated format (Smith, J.A.), take the first part
-    if (lastAuthor.includes(',')) {
-      return nameParts[0]
-    }
-    // Otherwise take the last part (John A. Smith -> Smith)
-    return nameParts[nameParts.length - 1]
-  }
+  // Get the last author and return as-is (already in "Last, First Middle" format)
+  const lastAuthor = authors[authors.length - 1].trim()
   
   return lastAuthor
 }
@@ -191,7 +181,7 @@ export function generateResearchAnalytics(publications: Publication[]): Research
     .sort(([,a], [,b]) => b - a)
     .slice(0, 20)
     .map(([name, value]) => ({
-      name: name + ' Lab',
+      name: name,
       value,
       percentage: (value / validPubs.length) * 100
     }))
