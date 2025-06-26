@@ -60,8 +60,13 @@ const SUBMISSIONS_SHEET_NAME = process.env.NEXT_PUBLIC_SUBMISSIONS_SHEET_NAME ||
 
 
 export async function fetchPublications(): Promise<Publication[]> {
+  console.log('🔍 Fetching publications...')
+  console.log('📊 Sheets ID exists:', !!GOOGLE_SHEETS_ID)
+  console.log('🔑 API Key exists:', !!GOOGLE_API_KEY)
+  console.log('📋 Sheet Name:', SHEET_NAME)
+  
   if (!GOOGLE_SHEETS_ID || !GOOGLE_API_KEY) {
-    console.warn("Google Sheets credentials not configured, using fallback data")
+    console.warn("❌ Google Sheets credentials not configured, using fallback data")
     return fallbackPublications
   }
 
@@ -69,8 +74,10 @@ export async function fetchPublications(): Promise<Publication[]> {
     const range = `${SHEET_NAME}!A2:P1000` // Fetch all columns (A through P) with data starting from row 2
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${range}?key=${GOOGLE_API_KEY}`
     
+    console.log('🌐 Fetching from URL:', url.substring(0, 100) + '...')
+    
     const response = await fetch(url, {
-      cache: 'force-cache' // Cache permanently for static export
+      cache: 'no-store' // Temporarily disable cache to debug production issue
     })
 
     if (!response.ok) {
@@ -85,9 +92,12 @@ export async function fetchPublications(): Promise<Publication[]> {
     // Let's fetch headers first to map properly
     const headersRange = `${SHEET_NAME}!A1:Z1`
     const headersUrl = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${headersRange}?key=${GOOGLE_API_KEY}`
-    const headersResponse = await fetch(headersUrl, { cache: 'force-cache' })
+    const headersResponse = await fetch(headersUrl, { cache: 'no-store' })
     const headersData = await headersResponse.json()
     const headers = headersData.values?.[0] || []
+    
+    console.log('📋 Headers found:', headers)
+    console.log('💰 Funding column index:', headers.findIndex((h: string) => h.toLowerCase() === 'funding name'))
     
     // Find column indices dynamically based on exact column names
     const titleIndex = headers.findIndex((h: string) => h.toLowerCase() === 'article title')
@@ -162,6 +172,23 @@ export async function fetchPublications(): Promise<Publication[]> {
 
     // Filter out publications with empty titles (likely empty rows)
     const validPublications = publications.filter(pub => pub.title.trim() !== "")
+
+    // Debug: Log funding sources
+    const fundingSources = validPublications
+      .map(pub => pub.fundingSource)
+      .filter((funding): funding is string => funding !== undefined && funding.trim() !== "")
+    
+    console.log('💰 Total publications with funding:', fundingSources.length)
+    const fundingCounts = fundingSources.reduce((counts, funding) => {
+      counts[funding] = (counts[funding] || 0) + 1
+      return counts
+    }, {} as Record<string, number>)
+    
+    const topFunders = Object.entries(fundingCounts)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 5)
+    
+    console.log('🏆 Top 5 funding sources:', topFunders)
 
     // For now, we'll only show the Google Sheets data (not combining with fallback)
     // since the user has a real research database
