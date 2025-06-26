@@ -15,7 +15,7 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
       role="navigation"
       aria-label="pagination"
       data-slot="pagination"
-      className={cn("mx-auto flex w-full justify-center", className)}
+      className={cn("mx-auto flex w-full justify-center overflow-hidden", className)}
       {...props}
     />
   )
@@ -28,7 +28,8 @@ function PaginationContent({
   return (
     <ul
       data-slot="pagination-content"
-      className={cn("flex flex-row items-center gap-1", className)}
+      className={cn("flex flex-row items-center gap-1 sm:gap-1 overflow-x-auto px-2 sm:px-0 [&::-webkit-scrollbar]:hidden", className)}
+      style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       {...props}
     />
   )
@@ -59,7 +60,7 @@ function PaginationLink({
           variant: isActive ? "outline" : "ghost",
           size,
         }),
-        "border border-black hover:bg-[var(--light-green)] hover:text-black",
+        "border border-black hover:bg-[var(--light-green)] hover:text-black shrink-0",
         isActive && "bg-[var(--light-blue)] text-white border-black",
         className
       )}
@@ -76,10 +77,10 @@ function PaginationPrevious({
     <PaginationLink
       aria-label="Go to previous page"
       size="default"
-      className={cn("gap-1 px-2.5 sm:pl-2.5 border border-black hover:bg-[var(--light-green)] hover:text-black", className)}
+      className={cn("gap-1 px-2 sm:px-2.5 border border-black hover:bg-[var(--light-green)] hover:text-black shrink-0", className)}
       {...props}
     >
-      <ChevronLeftIcon />
+      <ChevronLeftIcon className="w-4 h-4" />
       <span className="hidden sm:block">Previous</span>
     </PaginationLink>
   )
@@ -93,11 +94,11 @@ function PaginationNext({
     <PaginationLink
       aria-label="Go to next page"
       size="default"
-      className={cn("gap-1 px-2.5 sm:pr-2.5 border border-black hover:bg-[var(--light-green)] hover:text-black", className)}
+      className={cn("gap-1 px-2 sm:px-2.5 border border-black hover:bg-[var(--light-green)] hover:text-black shrink-0", className)}
       {...props}
     >
       <span className="hidden sm:block">Next</span>
-      <ChevronRightIcon />
+      <ChevronRightIcon className="w-4 h-4" />
     </PaginationLink>
   )
 }

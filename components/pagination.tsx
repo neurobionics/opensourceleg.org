@@ -48,7 +48,8 @@ export function Pagination({
 
   const getPageNumbers = () => {
     const pages = []
-    const showPages = 5
+    // Show fewer pages to prevent overflow on smaller screens
+    const showPages = 3
     let start = Math.max(1, currentPage - Math.floor(showPages / 2))
     const end = Math.min(totalPages, start + showPages - 1)
     
@@ -82,8 +83,8 @@ export function Pagination({
           )}
         </PaginationItem>
 
-        {/* Show first page if not in range */}
-        {currentPage > 3 && (
+        {/* Show first page if not in range (more conservative on mobile) */}
+        {currentPage > 2 && totalPages > 4 && (
           <>
             <PaginationItem>
               <PaginationLink 
@@ -93,7 +94,7 @@ export function Pagination({
                 1
               </PaginationLink>
             </PaginationItem>
-            {currentPage > 4 && (
+            {currentPage > 3 && (
               <PaginationItem>
                 <PaginationEllipsis />
               </PaginationItem>
@@ -114,10 +115,10 @@ export function Pagination({
           </PaginationItem>
         ))}
 
-        {/* Show last page if not in range */}
-        {currentPage < totalPages - 2 && (
+        {/* Show last page if not in range (more conservative on mobile) */}
+        {currentPage < totalPages - 1 && totalPages > 4 && (
           <>
-            {currentPage < totalPages - 3 && (
+            {currentPage < totalPages - 2 && (
               <PaginationItem>
                 <PaginationEllipsis />
               </PaginationItem>

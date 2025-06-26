@@ -5,35 +5,7 @@ import { ArrowRight } from 'lucide-react'
 import { ResearchAnalytics } from '@/lib/research-analytics'
 import { TreemapChart, CountryTreemapChart, SummaryStats } from './analytics-charts'
 
-// Utility function to extract acronym from funding source names
-function extractAcronym(text: string): string {
-  // Find all text in parentheses, brackets, or braces
-  const allMatches = text.match(/\(([^)]+)\)|\[([^\]]+)\]|\{([^}]+)\}/g)
-  
-  if (allMatches) {
-    // Extract the content from each match and find the best acronym
-    const acronyms = allMatches.map(match => {
-      const content = match.slice(1, -1) // Remove brackets/parentheses
-      return content.trim()
-    }).filter(content => {
-      // Look for likely acronyms: short, mostly caps, letters/numbers/common symbols
-      return content.length <= 8 && /^[A-Z][A-Z0-9&\-\s]*$/i.test(content)
-    }).sort((a, b) => a.length - b.length) // Prefer shorter acronyms
-    
-    if (acronyms.length > 0) {
-      return acronyms[0]
-    }
-  }
-  
-  // If no suitable acronym found, try to truncate intelligently
-  const words = text.split(' ')
-  if (words.length <= 3) {
-    return text // Short enough already
-  }
-  
-  // Return first 3 words + "..." if longer
-  return words.slice(0, 3).join(' ') + '...'
-}
+
 
 interface AnalyticsDashboardProps {
   analytics: ResearchAnalytics
@@ -160,7 +132,7 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
                   </>
                 ) : (
                   <>
-                    <span className="font-semibold text-gray-900">{analytics.funding[0]?.name ? extractAcronym(analytics.funding[0].name) : 'N/A'}</span> leads research funding with <span className="font-semibold text-gray-900">{analytics.funding[0]?.value} supported publications</span> ({analytics.funding[0]?.percentage.toFixed(1)}% of funded research).
+                    <span className="font-semibold text-gray-900">{analytics.funding[0]?.name || 'N/A'}</span> leads research funding with <span className="font-semibold text-gray-900">{analytics.funding[0]?.value} supported publications</span> ({analytics.funding[0]?.percentage.toFixed(1)}% of funded research).
                   </>
                 )}
               </p>

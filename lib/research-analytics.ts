@@ -142,13 +142,11 @@ export function generateResearchAnalytics(publications: Publication[]): Research
   // Funding analysis
   const fundingCounts: Record<string, number> = {}
   validPubs.forEach(pub => {
-    if (pub.fundingAgencies) {
-      pub.fundingAgencies.forEach(agency => {
-        const cleanAgency = agency.trim()
-        if (cleanAgency.length > 2) {
-          fundingCounts[cleanAgency] = (fundingCounts[cleanAgency] || 0) + 1
-        }
-      })
+    if (pub.fundingSource) {
+      const cleanAgency = pub.fundingSource.trim()
+      if (cleanAgency.length > 2) {
+        fundingCounts[cleanAgency] = (fundingCounts[cleanAgency] || 0) + 1
+      }
     }
   })
   

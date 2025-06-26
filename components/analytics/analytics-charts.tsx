@@ -7,35 +7,7 @@ import {
 import { KeywordData, FundingData, CountryData, ResearchLabData } from '@/lib/research-analytics'
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card'
 
-// Utility function to extract acronym from funding source names
-function extractAcronym(text: string): string {
-  // Find all text in parentheses, brackets, or braces
-  const allMatches = text.match(/\(([^)]+)\)|\[([^\]]+)\]|\{([^}]+)\}/g)
-  
-  if (allMatches) {
-    // Extract the content from each match and find the best acronym
-    const acronyms = allMatches.map(match => {
-      const content = match.slice(1, -1) // Remove brackets/parentheses
-      return content.trim()
-    }).filter(content => {
-      // Look for likely acronyms: short, mostly caps, letters/numbers/common symbols
-      return content.length <= 8 && /^[A-Z][A-Z0-9&\-\s]*$/i.test(content)
-    }).sort((a, b) => a.length - b.length) // Prefer shorter acronyms
-    
-    if (acronyms.length > 0) {
-      return acronyms[0]
-    }
-  }
-  
-  // If no suitable acronym found, try to truncate intelligently
-  const words = text.split(' ')
-  if (words.length <= 3) {
-    return text // Short enough already
-  }
-  
-  // Return first 3 words + "..." if longer
-  return words.slice(0, 3).join(' ') + '...'
-}
+
 
 // Add CSS for forcing black text
 const treemapTextStyle = `
@@ -62,7 +34,7 @@ interface TreemapProps {
 export function TreemapChart({ data, height = 400, isFundingData = false }: Omit<TreemapProps, 'title'>) {
   const treemapData = data.map((item, index) => ({
     name: item.name,
-    displayName: isFundingData ? extractAcronym(item.name) : item.name,
+    displayName: item.name,
     size: item.value,
     percentage: item.percentage,
     fill: TREEMAP_COLORS[index % TREEMAP_COLORS.length]
@@ -84,39 +56,67 @@ export function TreemapChart({ data, height = 400, isFundingData = false }: Omit
             // Calculate font sizes based on rectangle size with better scaling
             const tileArea = width * height
             const scaleFactor = Math.sqrt(tileArea) / 100 // More aggressive scaling based on area
-            const titleFontSize = Math.max(Math.min(width / 10, height / 5, 14, scaleFactor * 10), 8)
-            const valueFontSize = Math.max(Math.min(width / 12, height / 6, 12, scaleFactor * 8), 7)
             
-            // Text wrapping function
+            // For funding data, be more conservative with font size to allow better text fitting
+            // Better scaling for more consistent appearance across different tile sizes
+            const maxFontSize = isFundingData ? 11 : 14
+            const minFontSize = isFundingData ? 8 : 8
+            const titleFontSize = Math.max(Math.min(width / 14, height / 7, maxFontSize, scaleFactor * 6), minFontSize)
+            const valueFontSize = Math.max(Math.min(width / 16, height / 9, 9, scaleFactor * 5), 7)
+            
+            // Enhanced text wrapping function with better accuracy
             const wrapText = (text: string, maxWidth: number, fontSize: number) => {
+              // Create a more accurate way to measure text width
+              // This is a better approximation for common fonts
+              const getTextWidth = (str: string, fontSizePx: number) => {
+                // Average character widths for common characters in Inter font
+                const avgCharWidth = fontSizePx * 0.48 // More accurate for Inter font
+                return str.length * avgCharWidth
+              }
+              
               const words = text.split(' ')
               const lines: string[] = []
               let currentLine = ''
-              
-              // Rough character width estimation (varies by font)
-              const charWidth = fontSize * 0.6
-              const maxCharsPerLine = Math.floor(maxWidth / charWidth)
+              const availableWidth = maxWidth - (isFundingData ? 20 : 16) // Account for padding
               
               for (const word of words) {
                 const testLine = currentLine ? `${currentLine} ${word}` : word
-                if (testLine.length <= maxCharsPerLine) {
+                const testWidth = getTextWidth(testLine, fontSize)
+                
+                if (testWidth <= availableWidth) {
                   currentLine = testLine
                 } else {
                   if (currentLine) {
                     lines.push(currentLine)
                     currentLine = word
                   } else {
-                    // Word is too long, truncate it
-                    lines.push(word.substring(0, maxCharsPerLine - 3) + '...')
-                    currentLine = ''
+                    // Handle very long single words
+                    if (getTextWidth(word, fontSize) > availableWidth) {
+                      // Try to fit as much as possible, then truncate
+                      let truncated = word
+                      while (getTextWidth(truncated + '...', fontSize) > availableWidth && truncated.length > 3) {
+                        truncated = truncated.slice(0, -1)
+                      }
+                      lines.push(truncated + (truncated.length < word.length ? '...' : ''))
+                      currentLine = ''
+                    } else {
+                      currentLine = word
+                    }
                   }
                 }
               }
+              
               if (currentLine) {
                 lines.push(currentLine)
               }
               
-              return lines.slice(0, 3) // Max 3 lines
+              // Smart line limiting based on tile height
+              const estimatedLineHeight = fontSize + 4
+              const maxPossibleLines = Math.floor((tileHeight - 20) / estimatedLineHeight)
+              const idealMaxLines = isFundingData ? 5 : 3
+              const actualMaxLines = Math.min(idealMaxLines, Math.max(1, maxPossibleLines))
+              
+              return lines.slice(0, actualMaxLines)
             }
             
             // Add padding around each tile
@@ -127,15 +127,24 @@ export function TreemapChart({ data, height = 400, isFundingData = false }: Omit
             const tileHeight = height - (tilePadding * 2)
             
             // Only show text if rectangle is large enough (adjusted for better readability)
-            const showText = tileWidth > 55 && tileHeight > 30 && tileArea > 2000
-            const showValue = tileWidth > 80 && tileHeight > 50 && tileArea > 4000
+            // More generous thresholds for funding data since names are typically longer
+            const textThreshold = isFundingData ? { width: 45, height: 30, area: 1200 } : { width: 55, height: 30, area: 2000 }
+            const valueThreshold = isFundingData ? { width: 65, height: 50, area: 3000 } : { width: 80, height: 50, area: 4000 }
+            
+            const showText = tileWidth > textThreshold.width && tileHeight > textThreshold.height && tileArea > textThreshold.area
+            const showValue = tileWidth > valueThreshold.width && tileHeight > valueThreshold.height && tileArea > valueThreshold.area
             
             // Wrap the title text
             const displayText = payload?.displayName || name || ''
-            const titleLines = showText ? wrapText(displayText, tileWidth - 10, titleFontSize) : []
-            const lineHeight = titleFontSize + 2
-            const totalTextHeight = titleLines.length * lineHeight + (showValue ? valueFontSize + 5 : 0)
-            const startY = tileY + (tileHeight - totalTextHeight) / 2 + titleFontSize
+            const availableWidth = tileWidth - (isFundingData ? 16 : 12) // Extra padding for funding data
+            const titleLines = showText ? wrapText(displayText, availableWidth, titleFontSize) : []
+            const lineHeight = titleFontSize + 4 // Better line height for readability
+            
+            // Better vertical centering calculation
+            const textBlockHeight = titleLines.length * lineHeight - 4 // Remove extra padding from last line
+            const valueHeight = showValue ? valueFontSize + 6 : 0
+            const totalContentHeight = textBlockHeight + valueHeight
+            const startY = tileY + (tileHeight - totalContentHeight) / 2 + titleFontSize
             
             return (
               <g>
@@ -154,14 +163,16 @@ export function TreemapChart({ data, height = 400, isFundingData = false }: Omit
                   }}
                 />
                 
-                {/* Clipping path to prevent text overflow */}
-                <defs>
-                  <clipPath id={`clip-${x}-${y}`}>
-                    <rect x={tileX + 2} y={tileY + 2} width={tileWidth - 4} height={tileHeight - 4} rx={5} ry={5} />
-                  </clipPath>
-                </defs>
+                {/* Clipping path to prevent text overflow - disabled for funding data to prevent clipping */}
+                {!isFundingData && (
+                  <defs>
+                    <clipPath id={`clip-${x}-${y}`}>
+                      <rect x={tileX + 1} y={tileY + 1} width={tileWidth - 2} height={tileHeight - 2} rx={7} ry={7} />
+                    </clipPath>
+                  </defs>
+                )}
                 
-                <g clipPath={`url(#clip-${x}-${y})`}>
+                <g clipPath={!isFundingData ? `url(#clip-${x}-${y})` : undefined}>
                   {/* Render title lines */}
                   {titleLines.map((line, i) => (
                     <text
@@ -183,7 +194,7 @@ export function TreemapChart({ data, height = 400, isFundingData = false }: Omit
                   {showValue && (
                     <text
                       x={tileX + tileWidth / 2}
-                      y={startY + titleLines.length * lineHeight + valueFontSize + 5}
+                      y={startY + textBlockHeight + valueFontSize + 2}
                       textAnchor="middle"
                       fill="#000000"
                       fontSize={valueFontSize}
@@ -374,7 +385,7 @@ export function SummaryStats({ analytics }: SummaryStatsProps) {
     { 
       id: 'funding',
       title: 'Top Funding Source', 
-      value: analytics.funding[0]?.name ? extractAcronym(analytics.funding[0].name) : 'N/A',
+      value: analytics.funding[0]?.name || 'N/A',
       description: `${analytics.funding[0]?.value || 0} publications (${analytics.funding[0]?.percentage.toFixed(1) || 0}% of funded research)`
     },
     { 

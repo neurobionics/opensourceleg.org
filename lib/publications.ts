@@ -16,7 +16,7 @@ export interface Publication {
   // Analytics fields
   addresses?: string
   affiliations?: string
-  fundingAgencies?: string[]
+  fundingSource?: string
   publicationType?: string
 }
 
@@ -137,10 +137,7 @@ export async function fetchPublications(): Promise<Publication[]> {
       // Analytics fields
       const addresses = addressesIndex >= 0 ? (row[addressesIndex] || undefined) : undefined
       const affiliations = affiliationsIndex >= 0 ? (row[affiliationsIndex] || undefined) : undefined
-      const fundingName = fundingIndex >= 0 ? (row[fundingIndex] || "") : ""
-      const fundingAgencies = fundingName 
-        ? fundingName.split(/[;,]/).map(agency => agency.trim()).filter(agency => agency.length > 0)
-        : []
+      const fundingSource = fundingIndex >= 0 ? (row[fundingIndex] || undefined) : undefined
       const publicationType = publicationTypeIndex >= 0 ? (row[publicationTypeIndex] || undefined) : undefined
       
         return {
@@ -158,7 +155,7 @@ export async function fetchPublications(): Promise<Publication[]> {
           submittedDate: new Date().toISOString().split('T')[0],
           addresses,
           affiliations,
-          fundingAgencies,
+          fundingSource,
           publicationType
         }
     })
