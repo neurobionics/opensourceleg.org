@@ -13,15 +13,17 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { formatAuthors, getPublicationUrl, type Publication } from "@/lib/publications"
-import { ExternalLink, X } from "lucide-react"
+import { ExternalLink, X, Search } from "lucide-react"
 import Link from "next/link"
 import { Pagination } from "@/components/pagination"
+import Fuse from 'fuse.js'
 
 interface ResearchPageClientProps {
   publications: Publication[]
 }
 
 const PUBLICATIONS_PER_PAGE = 10
+const TOP_KEYWORDS_COUNT = 5
 
 type SortOption = 'year-desc' | 'year-asc' | 'citations-desc' | 'citations-asc'
 
@@ -29,8 +31,27 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
   const [currentPage, setCurrentPage] = useState(1)
   const [activeFilter, setActiveFilter] = useState<string | null>(null)
   const [sortBy, setSortBy] = useState<SortOption>('year-desc')
+  const [searchTerm, setSearchTerm] = useState('')
   
-  // Calculate top 7 most common keywords
+  // Configure Fuse.js for fuzzy search
+  const fuse = useMemo(() => {
+    return new Fuse(publications, {
+      keys: [
+        { name: 'title', weight: 0.7 },
+        { name: 'authors', weight: 0.3 },
+        { name: 'journal', weight: 0.2 },
+        { name: 'tags', weight: 0.1 }
+      ],
+      threshold: 0.2, // 0.0 = exact match, 1.0 = match anything
+      distance: 100, // how far to search
+      minMatchCharLength: 2, // minimum character length to trigger search
+      ignoreLocation: true, // ignore where in the string the match is found
+      includeScore: false,
+      shouldSort: false // we handle sorting separately
+    })
+  }, [publications])
+  
+  // Calculate top keywords
   const topKeywords = useMemo(() => {
     const keywordCounts = new Map<string, number>()
     
@@ -45,7 +66,7 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
     
     return Array.from(keywordCounts.entries())
       .sort(([,a], [,b]) => b - a)
-      .slice(0, 7)
+      .slice(0, TOP_KEYWORDS_COUNT)
       .map(([keyword]) => keyword)
   }, [publications])
   
@@ -53,9 +74,15 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
   const filteredAndSortedPublications = useMemo(() => {
     let filtered = publications
     
-    // Apply filter
+    // Apply fuzzy search filter
+    if (searchTerm.trim()) {
+      const searchResults = fuse.search(searchTerm.trim())
+      filtered = searchResults.map(result => result.item)
+    }
+    
+    // Apply keyword filter
     if (activeFilter) {
-      filtered = publications.filter(pub => 
+      filtered = filtered.filter(pub => 
         pub.tags?.some(tag => tag.toLowerCase().includes(activeFilter.toLowerCase()))
       )
     }
@@ -77,7 +104,7 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
     })
     
     return sorted
-  }, [publications, activeFilter, sortBy])
+  }, [publications, activeFilter, sortBy, searchTerm, fuse])
   
   // Calculate pagination for filtered results
   const totalPublications = filteredAndSortedPublications.length
@@ -107,6 +134,11 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
     setCurrentPage(1) // Reset to first page when sort changes
   }
 
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value)
+    setCurrentPage(1) // Reset to first page when search changes
+  }
+
   // Create a custom pagination component that mimics the URL-based one but uses state
   const PaginationWrapper = () => {
     if (totalPages <= 1) return null
@@ -126,25 +158,15 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
     )
   }
 
-  if (totalPublications === 0) {
-    return (
-      <Card className="border-black mt-8">
-        <CardContent className="p-8 text-center">
-          <p className="text-gray-600">No publications found.</p>
-        </CardContent>
-      </Card>
-    )
-  }
-
   return (
     <>
-      {/* Filters and Sort */}
+      {/* Filters, Search, and Sort */}
       <div className="mt-8">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           {/* Keyword Filters */}
           {topKeywords.length > 0 && (
             <div className="flex flex-col gap-2">
-              <span className="text-sm text-center font-light italic text-black/50">Filter By Top Keywords</span>
+              <span className="text-sm text-center font-light italic text-black/70">Filter By Top {TOP_KEYWORDS_COUNT} Keywords</span>
               <div className="flex flex-wrap gap-2">
                 {topKeywords.map((keyword) => (
                   <Button
@@ -168,9 +190,32 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
             </div>
           )}
 
+          {/* Search Bar */}
+          <div className="flex flex-col gap-2 min-w-0 flex-1 max-w-md">
+            <span className="text-sm text-center font-light italic text-black/70">Search</span>
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                placeholder="Search by title, author, journal, or keyword..."
+                className="w-full text-sm bg-white border border-black rounded-md pl-10 pr-4 py-1.5 hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-black transition-colors"
+              />
+              {searchTerm && (
+                <button
+                  onClick={() => handleSearchChange('')}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-black"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+          </div>
+
           {/* Sort Dropdown */}
           <div className="flex flex-col gap-2">
-            <span className="text-sm italic text-center font-light text-black/50">Sort By</span>
+            <span className="text-sm italic text-center font-light text-black/70">Sort By</span>
             <select 
               value={sortBy}
               onChange={(e) => handleSortChange(e.target.value as SortOption)}
@@ -188,32 +233,64 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
       {/* Publications Table */}
       <Card className="border-black mt-8">
         <CardContent>
-          <div className="rounded-md border border-gray-200">
-            <Table>
-                                <TableHeader>
-                    <TableRow className="border-gray-200">
-                      <TableHead className="w-[30%] text-gray-900 font-semibold">Title & Authors</TableHead>
-                      <TableHead className="w-[20%] text-gray-900 font-semibold">Journal/Conference</TableHead>
-                      <TableHead className="w-[10%] text-gray-900 font-semibold">Citations</TableHead>
-                      <TableHead className="w-[8%] text-gray-900 font-semibold">Year</TableHead>
-                      <TableHead className="w-[25%] text-gray-900 font-semibold">Keywords</TableHead>
-                      <TableHead className="w-[7%] text-gray-900 font-semibold">Link</TableHead>
-                    </TableRow>
-                  </TableHeader>
-              <TableBody>
-                {currentPublications.map((publication) => (
-                  <TableRow key={publication.id} className="border-gray-200 hover:bg-gray-50">
-                    <TableCell>
-                      <div className="space-y-1">
-                        <h4 className="font-medium text-sm leading-tight text-gray-900">
-                          {publication.title || "NO TITLE"}
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          {formatAuthors(publication.authors) || "NO AUTHORS"}
-                        </p>
-                      </div>
-                    </TableCell>
-                                          <TableCell>
+          {totalPublications === 0 ? (
+            // No Results State
+            <div className="p-12 text-center">
+              <div className="max-w-md mx-auto">
+                <Search className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No publications found</h3>
+                                 <p className="text-sm text-gray-600 mb-4">
+                   {searchTerm ? (
+                     <>No results match your search for <strong>&ldquo;{searchTerm}&rdquo;</strong></>
+                   ) : activeFilter ? (
+                     <>No publications found with the keyword <strong>&ldquo;{activeFilter}&rdquo;</strong></>
+                   ) : (
+                     'Try adjusting your search or filter criteria'
+                   )}
+                 </p>
+                <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                  {activeFilter && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => handleFilterChange(activeFilter)}
+                      className="bg-white text-black border-black hover:bg-[var(--light-green)] hover:text-black"
+                    >
+                      <X className="h-4 w-4 mr-1" />
+                      Remove filter
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : (
+            // Results Table
+            <div className="rounded-md border border-gray-200">
+              <Table>
+                <TableHeader>
+                  <TableRow className="border-gray-200">
+                    <TableHead className="w-[30%] text-gray-900 font-semibold">Title & Authors</TableHead>
+                    <TableHead className="w-[20%] text-gray-900 font-semibold">Journal/Conference</TableHead>
+                    <TableHead className="w-[10%] text-gray-900 font-semibold">Citations</TableHead>
+                    <TableHead className="w-[8%] text-gray-900 font-semibold">Year</TableHead>
+                    <TableHead className="w-[25%] text-gray-900 font-semibold">Keywords</TableHead>
+                    <TableHead className="w-[7%] text-gray-900 font-semibold">Link</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {currentPublications.map((publication) => (
+                    <TableRow key={publication.id} className="border-gray-200 hover:bg-gray-50">
+                      <TableCell>
+                        <div className="space-y-1">
+                          <h4 className="font-medium text-sm leading-tight text-gray-900">
+                            {publication.title || "NO TITLE"}
+                          </h4>
+                          <p className="text-xs text-gray-600">
+                            {formatAuthors(publication.authors) || "NO AUTHORS"}
+                          </p>
+                        </div>
+                      </TableCell>
+                      <TableCell>
                         <div className="text-sm text-gray-900">{publication.journal || "NO JOURNAL"}</div>
                       </TableCell>
                       <TableCell>
@@ -247,11 +324,12 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
                           </Button>
                         </Link>
                       </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          )}
 
           {/* Simple Contribution CTA */}
           <div className="mt-6 text-center p-4 bg-[var(--light-blue)] rounded-lg">
