@@ -237,7 +237,7 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
             // No Results State
             <div className="p-12 text-center">
               <div className="max-w-md mx-auto">
-                <Search className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+                <Search className="h-8 w-8 text-black/70 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900 mb-2">No publications found</h3>
                                  <p className="text-sm text-gray-600 mb-4">
                    {searchTerm ? (
@@ -265,10 +265,10 @@ export function ResearchPageClient({ publications }: ResearchPageClientProps) {
             </div>
           ) : (
             // Results Table
-            <div className="rounded-md border border-gray-200">
+            <div className="rounded-md border border-black/40">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-gray-200">
+                  <TableRow className="border-black/40">
                     <TableHead className="w-[30%] text-gray-900 font-semibold">Title & Authors</TableHead>
                     <TableHead className="w-[20%] text-gray-900 font-semibold">Journal/Conference</TableHead>
                     <TableHead className="w-[10%] text-gray-900 font-semibold">Citations</TableHead>
