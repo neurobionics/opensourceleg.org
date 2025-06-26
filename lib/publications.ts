@@ -33,7 +33,8 @@ export const fallbackPublications: Publication[] = [
     description: "Conceptual design and proof of concept for open-source lower limb prosthetics",
     tags: ["prosthetics", "open-source", "design"],
     submittedBy: "OSL Team",
-    submittedDate: "2024-01-01"
+    submittedDate: "2024-01-01",
+    fundingSource: "FALLBACK_DATA_FUNDING_1"
   },
   {
     id: "2", 
@@ -46,7 +47,8 @@ export const fallbackPublications: Publication[] = [
     description: "Design and validation of an open-source bionic leg system",
     tags: ["bionic", "validation", "mechatronics"],
     submittedBy: "OSL Team",
-    submittedDate: "2024-01-01"
+    submittedDate: "2024-01-01",
+    fundingSource: "FALLBACK_DATA_FUNDING_2"
   }
 ]
 
@@ -77,7 +79,7 @@ export async function fetchPublications(): Promise<Publication[]> {
     console.log('🌐 Fetching from URL:', url.substring(0, 100) + '...')
     
     const response = await fetch(url, {
-      cache: 'no-store' // Temporarily disable cache to debug production issue
+      cache: 'force-cache' // Use force-cache for static generation
     })
 
     if (!response.ok) {
@@ -92,7 +94,7 @@ export async function fetchPublications(): Promise<Publication[]> {
     // Let's fetch headers first to map properly
     const headersRange = `${SHEET_NAME}!A1:Z1`
     const headersUrl = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${headersRange}?key=${GOOGLE_API_KEY}`
-    const headersResponse = await fetch(headersUrl, { cache: 'no-store' })
+    const headersResponse = await fetch(headersUrl, { cache: 'force-cache' })
     const headersData = await headersResponse.json()
     const headers = headersData.values?.[0] || []
     
@@ -194,7 +196,8 @@ export async function fetchPublications(): Promise<Publication[]> {
     // since the user has a real research database
     return validPublications.sort((a, b) => b.year - a.year)
   } catch (error) {
-    console.error("Error fetching publications from Google Sheets:", error)
+    console.error("❌ Error fetching publications from Google Sheets:", error)
+    console.log("🔄 Using fallback data instead")
     // If there's an error, show fallback data
     return fallbackPublications
   }
