@@ -62,10 +62,7 @@ const SUBMISSIONS_SHEET_NAME = process.env.NEXT_PUBLIC_SUBMISSIONS_SHEET_NAME ||
 
 
 export async function fetchPublications(): Promise<Publication[]> {
-  console.log('🔍 Fetching publications...')
-  console.log('📊 Sheets ID exists:', !!GOOGLE_SHEETS_ID)
-  console.log('🔑 API Key exists:', !!GOOGLE_API_KEY)
-  console.log('📋 Sheet Name:', SHEET_NAME)
+  console.log('🔍 Fetching publications from Google Sheets...')
   
   if (!GOOGLE_SHEETS_ID || !GOOGLE_API_KEY) {
     console.warn("❌ Google Sheets credentials not configured, using fallback data")
@@ -74,12 +71,19 @@ export async function fetchPublications(): Promise<Publication[]> {
 
   try {
     const range = `${SHEET_NAME}!A2:P1000` // Fetch all columns (A through P) with data starting from row 2
+    
+    // Create a build-time identifier to get fresh data during each build
+    const buildId = process.env.GITHUB_RUN_ID || Date.now().toString()
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${range}?key=${GOOGLE_API_KEY}`
     
-    console.log('🌐 Fetching from URL:', url.substring(0, 100) + '...')
+    console.log('🔄 Build ID for cache differentiation:', buildId)
     
     const response = await fetch(url, {
-      cache: 'force-cache' // Use force-cache for static generation
+      cache: 'force-cache', // Use force-cache for static generation but with unique build ID
+      headers: {
+        'X-Build-Id': buildId,
+        'User-Agent': `OpenSourceLeg-Build-${buildId}`
+      }
     })
 
     if (!response.ok) {
@@ -94,12 +98,17 @@ export async function fetchPublications(): Promise<Publication[]> {
     // Let's fetch headers first to map properly
     const headersRange = `${SHEET_NAME}!A1:Z1`
     const headersUrl = `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SHEETS_ID}/values/${headersRange}?key=${GOOGLE_API_KEY}`
-    const headersResponse = await fetch(headersUrl, { cache: 'force-cache' })
+    const headersResponse = await fetch(headersUrl, { 
+      cache: 'force-cache',
+      headers: {
+        'X-Build-Id': buildId,
+        'User-Agent': `OpenSourceLeg-Build-${buildId}-headers`
+      }
+    })
     const headersData = await headersResponse.json()
     const headers = headersData.values?.[0] || []
     
-    console.log('📋 Headers found:', headers)
-    console.log('💰 Funding column index:', headers.findIndex((h: string) => h.toLowerCase() === 'funding name'))
+    console.log('💰 Funding column found at index:', headers.findIndex((h: string) => h.toLowerCase() === 'funding name'))
     
     // Find column indices dynamically based on exact column names
     const titleIndex = headers.findIndex((h: string) => h.toLowerCase() === 'article title')
