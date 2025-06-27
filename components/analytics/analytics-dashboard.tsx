@@ -74,7 +74,7 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
             </div>
             <button
               onClick={handleFirstChartToggle}
-              className="cursor-pointer bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-3 text-base font-medium transition-colors duration-200 flex items-center gap-2 mt-6"
+              className="cursor-pointer bg-[var(--black)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-3 text-base font-medium transition-colors duration-200 flex items-center gap-2 mt-6"
             >
               {firstChart === 'geographic' ? 'Show Research Labs' : 'Show Geographic Data'}
               <ArrowRight className="w-4 h-4" />
@@ -139,7 +139,7 @@ export function AnalyticsDashboard({ analytics }: AnalyticsDashboardProps) {
             </div>
             <button
               onClick={handleSecondChartToggle}
-              className="cursor-pointer bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-3 text-base font-medium transition-colors duration-200 flex items-center gap-2 mt-6"
+              className="cursor-pointer bg-[var(--black)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-3 text-base font-medium transition-colors duration-200 flex items-center gap-2 mt-6"
             >
               {secondChart === 'topics' ? 'Show Funding Agencies' : 'Show Research Topics'}
               <ArrowRight className="w-4 h-4" />

@@ -19,9 +19,9 @@ const treemapTextStyle = `
 `
 
 const TREEMAP_COLORS = [
-  '#E7F77E', '#E1F184ff', '#DBEB8Aff', '#D6E691ff', '#D0E097ff', '#CADA9Dff',
-  '#C4D4A3ff', '#BFCEAAff', '#B9C8B0ff', '#B3C3B6ff', '#ADBDBCff', '#A8B7C3ff',
-  '#A2B1C9ff', '#9CABCFff', '#96A5D5ff', '#91A0DCff', '#8B9AE2ff', '#8594E8ff'
+  '#8594E8ff', '#8B9AE2ff', '#91A0DCff', '#96A5D5ff', '#9CABCFff', '#A2B1C9ff',
+  '#A8B7C3ff', '#ADBDBCff', '#B3C3B6ff', '#B9C8B0ff', '#BFCEAAff', '#C4D4A3ff',
+  '#CADA9Dff', '#D0E097ff', '#D6E691ff', '#DBEB8Aff', '#E1F184ff', '#E7F77E',  
 ]
 
 interface TreemapProps {
