@@ -192,4 +192,183 @@ body {
   .logo-carousel.slow {
     --scroll-duration: 45s;
   }
+
+  /* Mermaid mindmap custom styles */
+  .mermaid-container {
+    background: transparent;
+    border-radius: 0.75rem;
+  }
+  
+  .mermaid-container svg {
+    max-width: 100%;
+    height: auto;
+    background: transparent;
+  }
+  
+  /* Override Mermaid's default colors with distinct group colors */
+  
+
+  
+  /* Root node - Dark Blue */
+  #ecosystem-mindmap .section-root rect,
+  #ecosystem-mindmap .section-root circle,
+  #ecosystem-mindmap .section--1 rect,
+  #ecosystem-mindmap .section--1 circle {
+    fill: var(--black) !important;
+  }
+
+  #ecosystem-mindmap .section-root text,
+  #ecosystem-mindmap .section--1 text {
+    fill: var(--white) !important;
+  }
+
+  /* Hardware group - Blue shades */
+  #ecosystem-mindmap .section-0 rect,
+  #ecosystem-mindmap .section-0 circle {
+    fill: #8594E8ff !important; /* Slightly darker blue */
+  }  
+
+  
+  /* Hardware group - Blue shades */
+  #ecosystem-mindmap .section-1 rect,
+  #ecosystem-mindmap .section-1 circle {
+    fill: #BFCEAAff !important; /* Slightly darker blue */
+  }
+  
+  /* Section 2 - Light purple-blue */
+  #ecosystem-mindmap .section-2 rect,
+  #ecosystem-mindmap .section-2 circle {
+    fill: #A8B7C3ff !important;
+  }
+  
+  /* Section 3 - Light blue-green */
+  #ecosystem-mindmap .section-3 rect,
+  #ecosystem-mindmap .section-3 circle {
+    fill: #9CABCFff !important;
+  }
+  
+  /* Section 4 - Light green */
+  #ecosystem-mindmap .section-4 rect,
+  #ecosystem-mindmap .section-4 circle {
+    fill: #B3C3B6ff !important;
+  }
+  
+  /* Software group - Blue-Purple transition */
+  #ecosystem-mindmap .section-5 rect,
+  #ecosystem-mindmap .section-5 circle {
+    fill: #91A0DCff !important; /* Purple-blue */
+  }
+  
+  /* Ensure all nodes have black borders and rounded corners */
+  #ecosystem-mindmap rect,
+  #ecosystem-mindmap circle {
+    stroke: var(--black) !important;
+    stroke-width: 1px !important;
+  }
+  
+  /* Add rounded corners to all mindmap rectangles */
+  #ecosystem-mindmap rect {
+    rx: 12 !important;
+    ry: 12 !important;
+  }
+  
+  /* Section-specific edge colors to match node colors */
+  #ecosystem-mindmap .section-edge-0 {
+    stroke: #8594E8ff !important;
+  }
+  
+  #ecosystem-mindmap .section-edge-1 {
+    stroke: #BFCEAAff !important;
+  }
+  
+  #ecosystem-mindmap .section-edge-2 {
+    stroke: #A8B7C3ff !important;
+  }
+  
+  #ecosystem-mindmap .section-edge-3 {
+    stroke: #9CABCFff !important;
+  }
+  
+  #ecosystem-mindmap .section-edge-4 {
+    stroke: #B3C3B6ff !important;
+  }
+  
+  #ecosystem-mindmap .section-edge-5 {
+    stroke: #BFCEAAff !important;
+  }
+  
+  /* Ensure text is readable */
+  #ecosystem-mindmap text {
+    font-family: var(--font-sans) !important;
+    font-weight: 500 !important;
+    fill: #1E1C19 !important;
+  }
+  
+  /* Clickable nodes hover effect */
+  #ecosystem-mindmap .clickable-node {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  #ecosystem-mindmap .clickable-node:hover rect,
+  #ecosystem-mindmap .clickable-node:hover circle {
+    stroke-width: 2px !important;
+    fill: var(--light-green) !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(226, 239, 182, 0.4);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .mermaid-container svg {
+      transform: scale(0.8);
+      transform-origin: center;
+    }
+  }
+
+  /* Timeline styles */
+  .timeline-container {
+    background: transparent;
+    border-radius: 0.75rem;
+  }
+  
+  .timeline-container svg {
+    max-width: 100%;
+    height: auto;
+    background: transparent;
+  }
+
+  /* Timeline text styling for dark background */
+  #nsf-timeline text {
+    font-family: var(--font-sans) !important;
+    font-weight: 500 !important;
+  }
+
+  #nsf-timeline .timeline-node.section--1 .node-bkg {
+    fill: #474747ff !important;
+  }
+  
+  #nsf-timeline .timeline-node.section-0 .node-bkg {
+    fill: #8594E8ff !important;
+  }
+  
+  #nsf-timeline .timeline-node.section-1 .node-bkg {
+    fill: #474747ff !important;
+  }
+  
+  #nsf-timeline .timeline-node.section-2 .node-bkg {
+    fill: #8594E8ff !important;
+  }
+  
+  #nsf-timeline .timeline-node.section-3 .node-bkg {
+    fill: #CADA9Dff !important;
+  }
+
+  /* Timeline responsive adjustments */
+  @media (max-width: 768px) {
+    .timeline-container svg {
+      transform: scale(0.9);
+      transform-origin: center;
+    }
+  }
 }

@@ -39,20 +39,19 @@ export default async function ArticlesPage({ params }: Props) {
   return (
     <div className="min-h-screen pt-12">
       {/* Hero Section */}
-      <div className="py-16 px-4 sm:px-6">
+      <div className="py-12 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
             Community Articles
           </h1>
           <p className="text-lg md:text-xl text-black/70 max-w-3xl mx-auto leading-relaxed">
             Discover insights, tutorials, and research findings from the Open-Source Leg community.
-            Learn from engineers, researchers, and developers building the future of prosthetics.
           </p>
         </div>
       </div>
 
       {/* Articles Grid */}
-      <div className="py-8 px-4 sm:px-6">
+      <div className="py-4 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Pagination - Top */}
           {posts.length > 0 && totalPages > 1 && (
