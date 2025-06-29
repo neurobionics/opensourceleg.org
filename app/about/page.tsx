@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin } from "lucide-react"
+import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin, ArrowDown } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import EcosystemFlow from "@/components/ecosystem-flow"
 import NSFTimeline from "@/components/nsf-timeline"
@@ -10,9 +10,25 @@ export default function About() {
   return (
     <div className="min-h-screen pt-12">
       <PageHero 
-        title="About"
-        description="A collaborative effort to lower the barrier to entry for researchers studying the control of robotic prosthetic legs."
-      />
+        title={
+          <>
+            About{" "}
+            <span className="font-bold italic">Open-Source Leg</span>
+          </>
+        }
+        description="A collaborative effort to lower the barrier to entry for researchers studying the control of robotic prosthetic legs"
+        primaryButton={{
+          href: "#team-section",
+          text: "View Team",
+          icon: <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
+        }}
+        secondaryButton={{
+          href: "mailto:opensourceleg@gmail.com",
+          text: "Contact Us",
+          icon: <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />,
+          target: "_blank"
+        }}
+      />      
 
       {/* Project Overview */}
       <div className="bg-[var(--light-blue)] py-24 sm:py-20 px-4 sm:px-6 lg:px-12 xl:px-20 sm:my-10">

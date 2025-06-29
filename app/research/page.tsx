@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { generateResearchAnalytics } from "@/lib/research-analytics"
 import { AnalyticsDashboard } from "@/components/analytics/analytics-dashboard"
 import { PublicationsByYearChart } from '@/components/analytics/publications-by-year-chart'
+import { PageHero } from "@/components/page-hero"
 
 export const metadata = {
   title: "Research - OpenSourceLeg",
@@ -20,38 +21,26 @@ export default async function ResearchPage() {
 
   return (
     <div className="min-h-screen pt-12">
-      {/* Hero Section */}
-      <div className="py-16 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-light mb-6 text-gray-900">
+      <PageHero 
+        title={
+          <>
             Research &{" "}
             <span className="font-bold italic">Publications</span>
-          </h1>
-          <p className="text-lg md:text-xl text-black/70 max-w-3xl mx-auto leading-relaxed text-balance">
-            Explore academic research and publications that use or cite the Open-Source Leg platform. 
-            Our open-source approach enables researchers worldwide to advance the field of prosthetics.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 items-center justify-center">
-            <Button 
-              href="#insights-section"
-              className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
-            >
-              <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
-              View Analytics
-            </Button>
-            <Button
-              href={process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              className="text-black border-black hover:bg-[var(--light-blue)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
-            >
-              <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-              Add Publication
-            </Button>
-          </div>
-        </div>
-      </div>
+          </>
+        }
+        description="Explore academic research and publications that use or cite the Open-Source Leg platform"
+        primaryButton={{
+          href: "#insights-section",
+          text: "View Analytics",
+          icon: <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />
+        }}
+        secondaryButton={{
+          href: process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "#",
+          text: "Add Publication",
+          icon: <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />,
+          target: "_blank"
+        }}
+      />
 
       {/* Publications Section */}
       <div className="py-4 px-4 sm:px-6">
