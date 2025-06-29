@@ -6,16 +6,16 @@ import mermaid from 'mermaid';
 // Timeline definition for NSF grants
 const timelineDefinition = `
 timeline    
-    2017 : NRI Award #*
+    2017 : NRI FND COLLAB
          : An Open-Source Robotic Leg Platform that Lowers the Barrier for Academic Research
          
-    2020 : NRI Collaborative Research
+    2020 : NRI INT Collaborative Research
          : An Open-Source Framework for Continuous Torque Control of Intuitive Robotic Prosthetic Legs
          
-    2022 : POSE Award #*
-         : Advancement of an open-source hardware and software ecosystem for the Open Source Bionic Leg
+    2022 : NSF POSE Phase I
+         : Advancement of an open-source hardware and software ecosystem for the Open Source Leg
          
-    2023 : Community Growth
+    2024 : NSF POSE Phase II
          : 25+ institutions across 5 countries actively using the platform
 `;
 
@@ -59,7 +59,7 @@ export default function NSFTimeline() {
       <div 
         className="w-full max-w-6xl mx-auto items-center flex justify-center"
         style={{ 
-          minHeight: '300px',
+          minHeight: '200px',
           overflow: 'visible'
         }}
       >
@@ -70,8 +70,8 @@ export default function NSFTimeline() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '70%',
-            height: '70%'
+            width: '60%',
+            height: '100%'
           }}
         />
       </div>

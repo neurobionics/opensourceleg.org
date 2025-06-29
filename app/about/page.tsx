@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button"
-import { Github, Users, BookOpen, ExternalLink, Globe, Code } from "lucide-react"
+import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import EcosystemFlow from "@/components/ecosystem-flow"
 import NSFTimeline from "@/components/nsf-timeline"
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
 
 export default function About() {
@@ -14,16 +15,16 @@ export default function About() {
       />
 
       {/* Project Overview */}
-      <div className="bg-[var(--light-blue)] py-24 sm:py-20 px-4 sm:px-6 lg:px-12 xl:px-20 sm:my-10 w-full">
+      <div className="bg-[var(--light-blue)] py-24 sm:py-20 px-4 sm:px-6 lg:px-12 xl:px-20 sm:my-10">
         <div className="grid lg:grid-cols-2 gap-8 xl:gap-16 items-center max-w-6xl mx-auto">
           {/* Image */}
-          <div className="order-2 lg:order-1 border-3 border-[var(--white)] rounded-lg">
+          <div className="order-2 lg:order-1">
             <Image 
               src="/make.webp" 
               alt="Research lab with robotic leg systems" 
               width={600}
               height={400}
-              className="rounded-lg shadow-2xl w-full h-auto"
+              className=" border-3 border-[var(--white)] rounded-2xl shadow-2xl w-full h-auto"
             />
           </div>
           
@@ -97,7 +98,7 @@ export default function About() {
       </div>
 
       {/* NSF Support */}
-      <div className="bg-[var(--black)] text-white py-16 sm:py-24 px-4 sm:px-6 mx-auto max-w-7xl rounded-3xl">
+      <div className="bg-[var(--black)] text-white py-16 sm:py-24 px-4 sm:px-6">
         <div className="mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-8">
@@ -137,7 +138,7 @@ export default function About() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
-              Research{" "}
+              Our{" "}
               <span className="relative font-medium italic">
                 Community
                 <svg 
@@ -157,31 +158,318 @@ export default function About() {
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Our platform is actively used by researchers and institutions worldwide, 
+              Our platform is actively used by researchers, engineers, students, and institutions worldwide, 
               fostering collaboration and advancing prosthetics research globally.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center border border-gray-200 shadow-sm">
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--light-blue)] mb-2">25+</div>
-              <div className="text-gray-600 font-medium">Research Institutions</div>
-            </div>
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center border border-gray-200 shadow-sm">
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--light-green)] mb-2">50+</div>
-              <div className="text-gray-600 font-medium">Active Contributors</div>
-            </div>
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center border border-gray-200 shadow-sm">
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--light-blue)] mb-2">15+</div>
-              <div className="text-gray-600 font-medium">Published Studies</div>
-            </div>
-            <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 text-center border border-gray-200 shadow-sm">
-              <div className="text-3xl sm:text-4xl font-bold text-[var(--light-green)] mb-2">12</div>
-              <div className="text-gray-600 font-medium">Countries</div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
+            <Card className="@container/card bg-[var(--black)] text-white border-gray-700">
+              <CardHeader className="pb-3">
+                <CardDescription className="text-gray-300 text-sm flex items-center gap-2">
+                  <Building2 className="w-4 h-4" />
+                  Research Institutions
+                </CardDescription>
+                <CardTitle className="py-1 sm:py-2 text-2xl sm:text-3xl font-bold tabular-nums @[250px]/card:text-4xl text-[var(--white)]">
+                  28+
+                </CardTitle>
+              </CardHeader>
+              <CardFooter className="flex-col items-start gap-1.5 text-xs sm:text-sm pt-2">
+                <div className="line-clamp-1 flex gap-2 font-medium">
+                  <a href="/research" className="text-white hover:text-[var(--light-blue)] transition-colors">
+                    View Research →
+                  </a>
+                </div>
+                <div className="text-gray-400 text-xs leading-relaxed">
+                  Universities worldwide using OSL
+                </div>
+              </CardFooter>
+            </Card>
+
+            <Card className="@container/card bg-[var(--black)] text-white border-gray-700">
+              <CardHeader className="pb-3">
+                <CardDescription className="text-gray-300 text-sm flex items-center gap-2">
+                  <Users className="w-4 h-4" />
+                  Active Contributors
+                </CardDescription>
+                <CardTitle className="py-1 sm:py-2 text-2xl sm:text-3xl font-bold tabular-nums @[250px]/card:text-4xl text-[var(--white)]">
+                  20+
+                </CardTitle>
+              </CardHeader>
+              <CardFooter className="flex-col items-start gap-1.5 text-xs sm:text-sm pt-2">
+                <div className="line-clamp-1 flex gap-2 font-medium">
+                  <a href="https://github.com/neurobionics/opensourceleg" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--light-blue)] transition-colors">
+                    View Contributors →
+                  </a>
+                </div>
+                <div className="text-gray-400 text-xs leading-relaxed">
+                  Researchers, engineers & developers
+                </div>
+              </CardFooter>
+            </Card>
+
+            <Card className="@container/card bg-[var(--black)] text-white border-gray-700">
+              <CardHeader className="pb-3">
+                <CardDescription className="text-gray-300 text-sm flex items-center gap-2">
+                  <MapPin className="w-4 h-4" />
+                  Countries
+                </CardDescription>
+                <CardTitle className="py-1 sm:py-2 text-2xl sm:text-3xl font-bold tabular-nums @[250px]/card:text-4xl text-[var(--white)]">
+                  18+
+                </CardTitle>
+              </CardHeader>
+              <CardFooter className="flex-col items-start gap-1.5 text-xs sm:text-sm pt-2">
+                <div className="line-clamp-1 flex gap-2 font-medium">
+                  <a href="https://opensourceleg.discourse.group/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-[var(--light-blue)] transition-colors">
+                    Global Reach →
+                  </a>
+                </div>
+                <div className="text-gray-400 text-xs leading-relaxed">
+                  Countries using the platform
+                </div>
+              </CardFooter>
+            </Card>
           </div>
         </div>
       </div>
+
+
+       {/* Governance Section */}
+       <div className="py-16 sm:py-20 px-4 sm:px-6">
+         <div className="max-w-7xl mx-auto flex flex-col gap-8">
+           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-8 sm:mb-12 text-left">
+             <span className="relative font-medium italic">
+               Governance
+               <svg 
+                 className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                 viewBox="0 0 200 12" 
+                 fill="none" 
+                 xmlns="http://www.w3.org/2000/svg"
+               >
+                 <path 
+                   d="M2 10C60 6 140 6 198 8" 
+                   stroke="var(--light-blue)" 
+                   strokeWidth="6" 
+                   strokeLinecap="round"
+                   fill="none"
+                 />
+               </svg>
+             </span>
+           </h2>
+           
+           <div className="grid lg:grid-cols-2 gap-8 xl:gap-16 items-start">
+             {/* Left Content */}
+             <div className="space-y-6 flex flex-col justify-between h-full">
+               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed text-justify">
+                 Our project operates under a <span className="font-bold italic">Benevolent Dictator for Life (BDFL)</span> model with <span className="font-bold">Prof. Elliott Rouse</span> serving as the principal investigator, supported by a Governance Advisory Board comprising esteemed professors and directors from research groups that contributed during the project&apos;s foundational phase.
+               </p>
+               
+               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                 <Button
+                   href="http://oss-watch.ac.uk/resources/benevolentdictatorgovernancemodel"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="bg-[var(--light-green)] text-black border border-black hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium flex items-center justify-center gap-2"
+                 >
+                   <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                   Read More
+                 </Button>
+                 <Button
+                   href="mailto:opensourceleg@gmail.com"
+                   className="bg-transparent text-black border border-black hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium flex items-center justify-center gap-2"
+                 >
+                   <Users className="w-4 h-4 sm:w-5 sm:h-5" />
+                   Contact Team
+                 </Button>
+               </div>
+             </div>
+             
+             {/* Right Content - Image */}
+             <div>
+               <Image 
+                 src="/governance.webp" 
+                 alt="Research lab with robotic leg systems" 
+                 width={600}
+                 height={400}
+                 className="border-3 border-[var(--black)] rounded-lg shadow-2xl w-full h-auto"
+               />
+             </div>
+           </div>
+           
+           {/* Full-width bottom content */}
+           <div className="mt-8">
+             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed text-justify">
+               This structure balances focused leadership with collaborative decision-making, ensuring both efficiency and inclusivity in our development process. While the BDFL model provides clear direction and consistent vision, we distribute core responsibilities among key community members to minimize dependency on single leadership and foster project resilience. Through biannual board meetings, transparent communication channels, and active community engagement, we maintain alignment with our original goals while adapting to new challenges and opportunities.
+             </p>
+           </div>
+         </div>
+       </div>
+
+        {/* Code of Conduct Section */}
+       <div className="py-16 sm:py-20 px-4 sm:px-6">
+         <div className="max-w-7xl mx-auto flex flex-col gap-8">
+           <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-8 sm:mb-12 text-right">
+             <span className="relative font-medium italic">
+               Code of Conduct
+               <svg 
+                 className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                 viewBox="0 0 200 12" 
+                 fill="none" 
+                 xmlns="http://www.w3.org/2000/svg"
+               >
+                 <path 
+                   d="M2 10C60 6 140 6 198 8" 
+                   stroke="var(--light-blue)" 
+                   strokeWidth="6" 
+                   strokeLinecap="round"
+                   fill="none"
+                 />
+               </svg>
+             </span>
+           </h2>
+           
+           <div className="grid lg:grid-cols-2 gap-8 xl:gap-16 items-start">
+             {/* Left Content - Image */}
+             <div>
+               <Image 
+                 src="/coc.jpg" 
+                 alt="Research lab with robotic leg systems" 
+                 width={600}
+                 height={400}
+                 className="border-3 border-[var(--black)] rounded-lg shadow-2xl w-full h-auto"
+               />
+             </div>
+             
+             {/* Right Content */}
+             <div className="space-y-6 flex flex-col justify-between h-full">
+               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed text-justify">
+                 We are committed to making participation in our project a <span className="font-bold italic">harassment-free experience for everyone</span>, regardless of age, disability, ethnicity, gender identity, experience level, education, nationality, race, religion, or sexual orientation. Our standards emphasize <span className="font-bold">welcoming and inclusive language</span>, respect for differing viewpoints, graceful acceptance of constructive criticism, and empathy towards community members.
+               </p>
+               
+               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-end">
+                 <Button
+                   href="https://www.contributor-covenant.org/version/1/4/code-of-conduct/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="bg-[var(--light-green)] text-black border border-black hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium flex items-center justify-center gap-2"
+                 >
+                   <BookOpen className="w-4 h-4 sm:w-5 sm:h-5" />
+                   Read More
+                 </Button>
+                 <Button
+                   href="mailto:opensourceleg@gmail.com?subject=Code%20of%20Conduct%20Report"
+                   className="bg-transparent text-black border border-black hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium flex items-center justify-center gap-2"
+                 >
+                   <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                   Report Issue
+                 </Button>
+               </div>
+             </div>
+           </div>
+           
+           {/* Full-width bottom content */}
+           <div className="mt-8">
+             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed text-justify">
+               Project maintainers are responsible for clarifying standards of acceptable behavior and taking appropriate corrective action in response to violations. Instances of unacceptable behavior may be reported by contacting the project team at <span className="font-bold">opensourceleg@gmail.com</span>. All complaints will be reviewed confidentially and investigated, resulting in responses deemed necessary and appropriate to the circumstances.
+             </p>
+           </div>
+         </div>
+       </div>
+
+       {/* Licensing Section */}
+       <div className="py-16 sm:py-20 px-4 sm:px-6">
+         <div className="max-w-7xl mx-auto">
+           <div className="text-center mb-12 sm:mb-16">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
+               Open Source{" "}
+               <span className="relative font-medium italic">
+                 Licensing
+                 <svg 
+                   className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                   viewBox="0 0 200 12" 
+                   fill="none" 
+                   xmlns="http://www.w3.org/2000/svg"
+                 >
+                   <path 
+                     d="M2 10C60 6 140 6 198 8" 
+                     stroke="var(--light-green)" 
+                     strokeWidth="6" 
+                     strokeLinecap="round"
+                     fill="none"
+                   />
+                 </svg>
+               </span>
+             </h2>
+             <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+               All components of the Open-Source Leg are released under permissive open-source licenses to maximize 
+               accessibility and enable both academic research and commercial applications.
+             </p>
+           </div>
+
+           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+             {/* Software Licenses */}
+             <div className="bg-white rounded-2xl sm:rounded-3xl p-8 border border-gray-200 shadow-sm">
+               <div className="flex items-center mb-6">
+                 <Code className="w-8 h-8 text-[var(--light-blue)] mr-3" />
+                 <h3 className="text-2xl font-semibold text-gray-900">Software Components</h3>
+               </div>
+               <div className="space-y-4">
+                 <div>
+                   <h4 className="font-semibold text-gray-900 mb-2">Python Libraries</h4>
+                   <p className="text-sm text-gray-600 mb-2">MIT License - Maximum flexibility for integration</p>
+                 </div>
+                 <div>
+                   <h4 className="font-semibold text-gray-900 mb-2">Control Algorithms</h4>
+                   <p className="text-sm text-gray-600 mb-2">Apache 2.0 - Patent protection included</p>
+                 </div>
+                 <div>
+                   <h4 className="font-semibold text-gray-900 mb-2">Documentation</h4>
+                   <p className="text-sm text-gray-600 mb-2">Creative Commons - Free sharing and adaptation</p>
+                 </div>
+               </div>
+             </div>
+
+             {/* Hardware Licenses */}
+             <div className="bg-white rounded-2xl sm:rounded-3xl p-8 border border-gray-200 shadow-sm">
+               <div className="flex items-center mb-6">
+                 <Users className="w-8 h-8 text-[var(--light-green)] mr-3" />
+                 <h3 className="text-2xl font-semibold text-gray-900">Hardware Components</h3>
+               </div>
+               <div className="space-y-4">
+                 <div>
+                   <h4 className="font-semibold text-gray-900 mb-2">Mechanical Designs</h4>
+                   <p className="text-sm text-gray-600 mb-2">CERN-OHL-P v2 - Permissive hardware license</p>
+                 </div>
+                 <div>
+                   <h4 className="font-semibold text-gray-900 mb-2">Electronics</h4>
+                   <p className="text-sm text-gray-600 mb-2">CERN-OHL-P v2 - Open hardware standard</p>
+                 </div>
+                 <div>
+                   <h4 className="font-semibold text-gray-900 mb-2">Manufacturing Guides</h4>
+                   <p className="text-sm text-gray-600 mb-2">CC BY-SA 4.0 - Share-alike documentation</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           {/* License Resources */}
+           <div className="mt-12 text-center">
+             <p className="text-gray-600 mb-6">
+               For detailed licensing information and legal terms:
+             </p>
+             <Button
+               href="https://github.com/neurobionics/opensourceleg/blob/main/LICENSE"
+               target="_blank"
+               rel="noopener noreferrer"
+               variant="outline"
+               className="border-gray-300 text-gray-700 hover:bg-gray-50"
+             >
+               <Code className="w-4 h-4 mr-2" />
+               View License Terms
+             </Button>
+           </div>
+         </div>
+       </div>
 
       {/* Getting Involved */}
       <div className="bg-[var(--light-green)] py-16 sm:py-20 px-4 sm:px-6">
@@ -276,170 +564,7 @@ export default function About() {
             </Button>
           </div>
         </div>
-             </div>
-
-       {/* Governance, Code of Conduct & License */}
-       <div className="py-16 sm:py-20 px-4 sm:px-6">
-         <div className="max-w-7xl mx-auto">
-           <div className="text-center mb-12 sm:mb-16">
-             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
-               Project{" "}
-               <span className="relative font-medium italic">
-                 Governance
-                 <svg 
-                   className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
-                   viewBox="0 0 200 12" 
-                   fill="none" 
-                   xmlns="http://www.w3.org/2000/svg"
-                 >
-                   <path 
-                     d="M2 10C60 6 140 6 198 8" 
-                     stroke="var(--light-green)" 
-                     strokeWidth="6" 
-                     strokeLinecap="round"
-                     fill="none"
-                   />
-                 </svg>
-               </span>
-             </h2>
-             <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-               Our open-source project operates under clear governance structures, community guidelines, and licensing terms 
-               to ensure transparency, inclusivity, and sustainable development.
-             </p>
-           </div>
-
-           <div className="grid lg:grid-cols-3 gap-8">
-             {/* Governance */}
-             <div className="bg-white rounded-2xl sm:rounded-3xl p-8 border border-gray-200 shadow-sm">
-               <div className="flex items-center mb-6">
-                 <Users className="w-8 h-8 text-[var(--light-blue)] mr-3" />
-                 <h3 className="text-2xl font-semibold text-gray-900">Governance</h3>
-               </div>
-               <p className="text-gray-600 mb-6 leading-relaxed">
-                 The project follows a Benevolent Dictator for Life (BDFL) model with Prof. Elliott Rouse as the PI, 
-                 supported by a technical steering committee and community advisory board.
-               </p>
-               <div className="space-y-4">
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Decision Making</h4>
-                   <ul className="text-sm text-gray-600 space-y-1">
-                     <li>• Technical decisions by steering committee</li>
-                     <li>• Community input through forums and issues</li>
-                     <li>• Regular governance reviews</li>
-                   </ul>
-                 </div>
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Contribution Process</h4>
-                   <ul className="text-sm text-gray-600 space-y-1">
-                     <li>• Pull request review system</li>
-                     <li>• Automated testing and validation</li>
-                     <li>• Documentation requirements</li>
-                   </ul>
-                 </div>
-               </div>
-             </div>
-
-             {/* Code of Conduct */}
-             <div className="bg-white rounded-2xl sm:rounded-3xl p-8 border border-gray-200 shadow-sm">
-               <div className="flex items-center mb-6">
-                 <Globe className="w-8 h-8 text-[var(--light-green)] mr-3" />
-                 <h3 className="text-2xl font-semibold text-gray-900">Code of Conduct</h3>
-               </div>
-               <p className="text-gray-600 mb-6 leading-relaxed">
-                 We are committed to fostering an inclusive, respectful, and collaborative environment for all contributors, 
-                 regardless of background, experience level, or affiliation.
-               </p>
-               <div className="space-y-4">
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Our Standards</h4>
-                   <ul className="text-sm text-gray-600 space-y-1">
-                     <li>• Respectful and professional communication</li>
-                     <li>• Inclusive language and behavior</li>
-                     <li>• Constructive feedback and collaboration</li>
-                   </ul>
-                 </div>
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Enforcement</h4>
-                   <ul className="text-sm text-gray-600 space-y-1">
-                     <li>• Clear reporting mechanisms</li>
-                     <li>• Fair and transparent investigation process</li>
-                     <li>• Graduated response to violations</li>
-                   </ul>
-                 </div>
-               </div>
-             </div>
-
-             {/* License */}
-             <div className="bg-white rounded-2xl sm:rounded-3xl p-8 border border-gray-200 shadow-sm">
-               <div className="flex items-center mb-6">
-                 <Code className="w-8 h-8 text-[var(--light-blue)] mr-3" />
-                 <h3 className="text-2xl font-semibold text-gray-900">Licensing</h3>
-               </div>
-               <p className="text-gray-600 mb-6 leading-relaxed">
-                 All components of the Open-Source Leg are released under permissive open-source licenses to maximize 
-                 accessibility and enable both academic research and commercial applications.
-               </p>
-               <div className="space-y-4">
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Software Components</h4>
-                   <ul className="text-sm text-gray-600 space-y-1">
-                     <li>• Python libraries: MIT License</li>
-                     <li>• Control algorithms: Apache 2.0</li>
-                     <li>• Documentation: Creative Commons</li>
-                   </ul>
-                 </div>
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Hardware Components</h4>
-                   <ul className="text-sm text-gray-600 space-y-1">
-                     <li>• Mechanical designs: CERN-OHL-P v2</li>
-                     <li>• Electronics: CERN-OHL-P v2</li>
-                     <li>• Manufacturing guides: CC BY-SA 4.0</li>
-                   </ul>
-                 </div>
-               </div>
-             </div>
-           </div>
-
-           {/* Additional Resources */}
-           <div className="mt-12 text-center">
-             <p className="text-gray-600 mb-6">
-               For detailed information about our governance, policies, and licensing terms:
-             </p>
-             <div className="flex flex-wrap gap-4 justify-center">
-               <Button
-                 href="https://github.com/neurobionics/opensourceleg/blob/main/GOVERNANCE.md"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 variant="outline"
-                 className="border-gray-300 text-gray-700 hover:bg-gray-50"
-               >
-                 <BookOpen className="w-4 h-4 mr-2" />
-                 Governance Guidelines
-               </Button>
-               <Button
-                 href="https://github.com/neurobionics/opensourceleg/blob/main/CODE_OF_CONDUCT.md"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 variant="outline"
-                 className="border-gray-300 text-gray-700 hover:bg-gray-50"
-               >
-                 <Users className="w-4 h-4 mr-2" />
-                 Code of Conduct
-               </Button>
-               <Button
-                 href="https://github.com/neurobionics/opensourceleg/blob/main/LICENSE"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 variant="outline"
-                 className="border-gray-300 text-gray-700 hover:bg-gray-50"
-               >
-                 <Code className="w-4 h-4 mr-2" />
-                 License Terms
-               </Button>
-             </div>
-           </div>
-         </div>
-       </div>
+      </div>
 
     </div>
   )
