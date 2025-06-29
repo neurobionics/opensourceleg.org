@@ -97,7 +97,7 @@ export default function About() {
       </div>
 
       {/* NSF Support */}
-      <div className="bg-[var(--black)] text-white py-16 sm:py-16 px-4 sm:px-6 mx-auto max-w-7xl rounded-3xl">
+      <div className="bg-[var(--black)] text-white py-16 sm:py-24 px-4 sm:px-6 mx-auto max-w-7xl rounded-3xl">
         <div className="mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-8">
