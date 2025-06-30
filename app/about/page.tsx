@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button"
-import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin, ArrowDown, Settings } from "lucide-react"
+import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin, ArrowDown, Settings, ArrowUpRight, ArrowRight } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import EcosystemFlow from "@/components/ecosystem-flow"
 import NSFTimeline from "@/components/nsf-timeline"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
+import { team } from "@/lib/team"
 
 export default function About() {
   return (
@@ -510,14 +511,14 @@ export default function About() {
          </div>
        </div>
 
-      {/* Getting Involved */}
-      <div className="bg-[var(--light-green)] py-16 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Meet the Team */}
+      <div id="team-section" className="py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-black mb-6 sm:mb-8">
-              Get{" "}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
+              Meet the{" "}
               <span className="relative font-medium italic">
-                Involved
+                Team
                 <svg 
                   className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                   viewBox="0 0 200 12" 
@@ -526,84 +527,227 @@ export default function About() {
                 >
                   <path 
                     d="M2 10C60 6 140 6 198 8" 
-                    stroke="var(--black)" 
-                    strokeWidth="4" 
+                    stroke="var(--light-green)" 
+                    strokeWidth="6" 
                     strokeLinecap="round"
                     fill="none"
                   />
                 </svg>
               </span>
             </h2>
-            <p className="text-lg sm:text-xl text-black/80 max-w-4xl mx-auto leading-relaxed">
-              The Open-Source Leg project welcomes contributions from researchers, engineers, students, and anyone 
-              interested in advancing prosthetics technology.
+            <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Our diverse team of researchers, engineers, and students from around the world collaborates 
+              to advance prosthetics technology and make it accessible to everyone.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-black/10 rounded-2xl p-8">
-              <h4 className="text-xl font-semibold text-black mb-4">For Researchers</h4>
-              <ul className="space-y-3 text-black/80">
-                <li>• Use OSL hardware for control algorithm development</li>
-                <li>• Contribute datasets and experimental results</li>
-                <li>• Participate in collaborative studies</li>
-                <li>• Share improvements and modifications</li>
-              </ul>
-            </div>
-            <div className="bg-black/10 rounded-2xl p-8">
-              <h4 className="text-xl font-semibold text-black mb-4">For Developers</h4>
-              <ul className="space-y-3 text-black/80">
-                <li>• Contribute to software libraries and tools</li>
-                <li>• Improve documentation and tutorials</li>
-                <li>• Develop testing and validation frameworks</li>
-                <li>• Create educational resources</li>
-              </ul>
+
+          {/* Core Team */}
+          <div className="mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              {team.slice(0, 3).map((member, index) => {
+                const CardContent = (
+                  <>
+                    <Image
+                      src={member.imageUrl}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    
+                    {/* Content */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                      <h4 className="font-semibold mb-2 text-lg">{member.name}</h4>
+                      <p className="text-[var(--light-green)] font-medium mb-1">{member.role}</p>
+                      {member.title && (
+                        <p className="text-sm text-gray-200 mb-1">{member.title}</p>
+                      )}
+                      <p className="text-sm text-gray-300">{member.affliation}</p>
+                    </div>
+                  </>
+                );
+
+                if (member.profileUrl) {
+                  return (
+                    <a
+                      key={index}
+                      href={member.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative rounded-xl border-2 border-black hover:border-[6px] hover:border-[var(--light-blue)] overflow-hidden aspect-[3/4] group hover:scale-105 transition-all duration-300 cursor-pointer"
+                    >
+                      {CardContent}
+                    </a>
+                  );
+                }
+
+                return (
+                  <div key={index} className="relative rounded-xl border-2 border-black hover:border-[6px] hover:border-[var(--light-blue)] overflow-hidden aspect-[3/4] group hover:scale-105 transition-all duration-300">
+                    {CardContent}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button
-              href="https://github.com/neurobionics/opensourceleg"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[var(--black)] text-white border border-black hover:bg-[var(--light-blue)] rounded-lg px-6 py-4 text-lg flex items-center justify-center gap-2"
-            >
-              <Github className="w-5 h-5" />
-              View Source Code
-            </Button>
-            <Button
-              href="https://discourse.opensourceleg.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              className="bg-transparent text-black border border-black hover:bg-[var(--black)] hover:text-white rounded-lg px-6 py-4 text-lg flex items-center justify-center gap-2"
-            >
-              <Users className="w-5 h-5" />
-              Join Forum
-            </Button>
-            <Button
-              href="https://neurobionics.github.io/opensourceleg/"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              className="bg-transparent text-black border border-black hover:bg-[var(--black)] hover:text-white rounded-lg px-6 py-4 text-lg flex items-center justify-center gap-2"
-            >
-              <BookOpen className="w-5 h-5" />
-              Documentation
-            </Button>
-            <Button
-              href="https://cad.onshape.com/documents/3520551dd01cf402179e8687/w/87da2fb0a553b44a27833624/e/d9c95c04904f8d6a753006a4"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              className="bg-transparent text-black border border-black hover:bg-[var(--black)] hover:text-white rounded-lg px-6 py-4 text-lg flex items-center justify-center gap-2"
-            >
-              <ExternalLink className="w-5 h-5" />
-              Hardware Designs
-            </Button>
+                    {/* Contributors */}
+          <div>
+              <h3 className="text-2xl sm:text-3xl text-center mb-12">Our Amazing <span className="relative font-bold italic">
+               Contributors
+               <svg 
+                 className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                 viewBox="0 0 200 12" 
+                 fill="none" 
+                 xmlns="http://www.w3.org/2000/svg"
+               >
+                 <path 
+                   d="M2 10C60 6 140 6 198 8" 
+                   stroke="var(--light-green)" 
+                   strokeWidth="6" 
+                   strokeLinecap="round"
+                   fill="none"
+                 />
+               </svg>
+             </span></h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              {team.slice(3).map((member, index) => {
+                const CardContent = (
+                  <>
+                    <Image
+                      src={member.imageUrl}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                    />
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    
+                    {/* Content */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                      <h4 className="font-semibold mb-1 text-sm">{member.name}</h4>
+                      {member.title && (
+                        <p className="text-xs text-gray-200 mb-1">{member.title}</p>
+                      )}
+                      <p className="text-xs text-gray-300">{member.affliation}</p>
+                    </div>
+                  </>
+                );
+
+                if (member.profileUrl) {
+                  return (
+                    <a
+                      key={index}
+                      href={member.profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="relative rounded-lg border-2 border-black hover:border-[6px] hover:border-[var(--light-blue)] overflow-hidden aspect-[3/4] group hover:scale-105 transition-all duration-300 cursor-pointer"
+                    >
+                      {CardContent}
+                    </a>
+                  );
+                }
+
+                return (
+                  <div key={index} className="relative rounded-lg border-2 border-black hover:border-[6px] hover:border-[var(--light-blue)] overflow-hidden aspect-[3/4] group hover:scale-105 transition-all duration-300">
+                    {CardContent}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
+
+        {/* Community Section */}
+        <div className="bg-[var(--light-blue)] py-16 sm:py-20 px-4 sm:px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              {/* Left Content */}
+              <div className="space-y-6 sm:space-y-8">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white">
+                  <span className="relative font-medium italic">
+                    Join
+                    <svg 
+                      className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                      viewBox="0 0 200 12" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path 
+                        d="M2 10C60 6 140 6 198 8" 
+                        stroke="var(--light-green)" 
+                        strokeWidth="12" 
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                    </svg>
+                  </span> the community!
+                </h2>
+                
+                <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
+                  Join our wonderful community of students, engineers, and researchers driving groundbreaking advancements in prosthetics.
+                </p>
+
+                {/* Action buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <Button
+                    href="https://discourse.opensourceleg.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+                  >
+                    Forum <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                  </Button>
+                  <Button
+                    href="/hardware"
+                    variant="outline"
+                    className="bg-transparent text-white border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+                  >
+                    Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                  </Button>
+                </div>
+              </div>
+
+              <div className="relative">
+                {/* Desktop Layout - Absolute Positioned */}
+                <div className="hidden lg:block relative h-80 lg:h-88 xl:h-96">
+                  {/* Image 1 - Top Left */}
+                  <div className="absolute top-0 left-0 w-60 lg:w-72 xl:w-80 h-40 lg:h-48 xl:h-64 rounded-2xl overflow-hidden shadow-lg transform -rotate-2 border-4 border-[var(--white)]">
+                    <Image 
+                      src="/community/ssnr.jpg" 
+                      alt="Community member working on prosthetics" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  {/* Image 2 - Center Right */}
+                  <div className="absolute top-12 lg:top-16 right-0 w-48 lg:w-56 xl:w-64 h-32 lg:h-40 xl:h-48 rounded-2xl overflow-hidden shadow-lg transform rotate-4 border-4 border-[var(--white)]">
+                    <Image 
+                      src="/community/iros.webp" 
+                      alt="Research team collaboration" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  {/* Image 3 - Bottom Left */}
+                  <div className="absolute -bottom-4 left-44 lg:left-52 xl:left-60 w-36 lg:w-40 xl:w-48 h-24 lg:h-28 xl:h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2 border-4 border-[var(--white)]">
+                    <Image 
+                      src="/community/fsu.jpg" 
+                      alt="Open source hardware development" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
     </div>
   )
