@@ -114,10 +114,11 @@ export default function About() {
       </div>
 
       {/* NSF Support */}
-      <div className="py-12 sm:py-16 px-4 sm:px-6">
-        <div className="mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-8">
+      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-16 sm:py-20 px-6 sm:px-12 lg:px-20">
+        <div className="grid lg:grid-cols-5 gap-8 sm:gap-12 items-center">
+          {/* Left Content */}
+          <div className="lg:col-span-2 space-y-6 sm:space-y-8 flex flex-col gap-3 sm:gap-4 justify-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light leading-tight">
               Backed by the{" "}
               <span className="relative text-[var(--light-blue)] italic font-medium">
                 NSF
@@ -138,20 +139,20 @@ export default function About() {
               </span>
             </h2>
             
-            <p className="text-xl text-black leading-relaxed max-w-4xl mx-auto">
+            <p className="text-base sm:text-lg text-[var(--white)] leading-relaxed mb-6 sm:mb-8 text-justify">
               The Open-Source Leg project has been continuously supported by the National Science Foundation (NSF) through multiple grant programs, 
               enabling sustained development and community growth over seven years.
             </p>
           </div>
 
-          {/* Timeline */}
-          <div className="max-w-6xl mx-auto flex justify-center">
+          {/* Right Content - Timeline Image */}
+          <div className="lg:col-span-3 relative w-full h-64 sm:h-80 lg:h-96 bg-white rounded-xl sm:rounded-2xl overflow-hidden mt-8 lg:mt-0 p-4">
             <Image 
               src="/nsf-timeline.png" 
               alt="NSF funding timeline showing continuous support over seven years" 
               width={800}
               height={600}
-              className="w-2/3 h-auto rounded-lg border-2 border-black"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
