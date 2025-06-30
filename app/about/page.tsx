@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button"
-import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin, ArrowDown, Settings, ArrowUpRight, ArrowRight } from "lucide-react"
+import { Users, BookOpen, ExternalLink, Code, Building2, MapPin, ArrowDown, Settings, ArrowUpRight, ArrowRight } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import EcosystemFlow from "@/components/ecosystem-flow"
-import NSFTimeline from "@/components/nsf-timeline"
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
 import { team } from "@/lib/team"
@@ -115,13 +114,13 @@ export default function About() {
       </div>
 
       {/* NSF Support */}
-      <div className="bg-[var(--black)] text-white py-16 sm:py-24 px-4 sm:px-6">
+      <div className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-8">
-              Backed by the{" "}
-              <span className="relative text-[var(--light-green)] italic font-medium">
-                National Science Foundation
+              Backed by{" "}
+              <span className="relative text-[var(--light-blue)] italic font-medium">
+                NSF
                 <svg 
                   className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
                   viewBox="0 0 200 12" 
@@ -130,7 +129,7 @@ export default function About() {
                 >
                   <path 
                     d="M2 10C60 6 140 6 198 8" 
-                    stroke="var(--light-blue)" 
+                    stroke="var(--light-green)" 
                     strokeWidth="4" 
                     strokeLinecap="round"
                     fill="none"
@@ -139,21 +138,29 @@ export default function About() {
               </span>
             </h2>
             
-            <p className="text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-              The Open-Source Leg project has been continuously supported by the NSF through multiple grant programs, 
+            <p className="text-xl text-black leading-relaxed max-w-4xl mx-auto">
+              The Open-Source Leg project has been continuously supported by the National Science Foundation (NSF) through multiple grant programs, 
               enabling sustained development and community growth over seven years.
             </p>
           </div>
 
           {/* Timeline */}
-          <NSFTimeline />
+          <div className="max-w-6xl mx-auto flex justify-center">
+            <Image 
+              src="/nsf-timeline.png" 
+              alt="NSF funding timeline showing continuous support over seven years" 
+              width={800}
+              height={600}
+              className="w-2/3 h-auto rounded-lg border-2 border-black"
+            />
+          </div>
         </div>
       </div>
 
       {/* Community Stats */}
       <div className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
               Our{" "}
               <span className="relative font-medium italic">
@@ -178,6 +185,17 @@ export default function About() {
               Our platform is actively used by researchers, engineers, students, and institutions worldwide, 
               fostering collaboration and advancing prosthetics research globally.
             </p>
+          </div>
+
+          {/* Map */}
+          <div className="max-w-6xl mx-auto flex justify-center mb-12">
+            <Image 
+              src="/map.webp" 
+              alt="Map of countries using the Open-Source Leg" 
+              width={800}
+              height={600}
+              className="w-1/2 h-auto"
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">

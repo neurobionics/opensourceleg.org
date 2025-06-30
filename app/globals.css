@@ -225,38 +225,32 @@ body {
   /* Hardware group - Blue shades */
   #ecosystem-mindmap .section-0 rect,
   #ecosystem-mindmap .section-0 circle {
-    fill: #8594E8ff !important; /* Slightly darker blue */
+    fill: #8594E8 !important; /* Slightly darker blue */
   }  
 
   
   /* Hardware group - Blue shades */
   #ecosystem-mindmap .section-1 rect,
   #ecosystem-mindmap .section-1 circle {
-    fill: #BFCEAAff !important; /* Slightly darker blue */
+    fill: #9EADCE !important; /* Slightly darker blue */
   }
   
   /* Section 2 - Light purple-blue */
   #ecosystem-mindmap .section-2 rect,
   #ecosystem-mindmap .section-2 circle {
-    fill: #A8B7C3ff !important;
+    fill: #B6C6B3 !important;
   }
   
   /* Section 3 - Light blue-green */
   #ecosystem-mindmap .section-3 rect,
   #ecosystem-mindmap .section-3 circle {
-    fill: #9CABCFff !important;
+    fill: #CFDE99 !important;
   }
   
   /* Section 4 - Light green */
   #ecosystem-mindmap .section-4 rect,
   #ecosystem-mindmap .section-4 circle {
-    fill: #B3C3B6ff !important;
-  }
-  
-  /* Software group - Blue-Purple transition */
-  #ecosystem-mindmap .section-5 rect,
-  #ecosystem-mindmap .section-5 circle {
-    fill: #91A0DCff !important; /* Purple-blue */
+    fill: #D3E393 !important;
   }
   
   /* Ensure all nodes have black borders and rounded corners */
@@ -274,27 +268,23 @@ body {
   
   /* Section-specific edge colors to match node colors */
   #ecosystem-mindmap .section-edge-0 {
-    stroke: #8594E8ff !important;
+    stroke: #8594E8 !important;
   }
   
   #ecosystem-mindmap .section-edge-1 {
-    stroke: #BFCEAAff !important;
+    stroke: #9EADCE !important;
   }
   
   #ecosystem-mindmap .section-edge-2 {
-    stroke: #A8B7C3ff !important;
+    stroke: #B6C6B3 !important;
   }
   
   #ecosystem-mindmap .section-edge-3 {
-    stroke: #9CABCFff !important;
+    stroke: #CFDE99 !important;
   }
   
   #ecosystem-mindmap .section-edge-4 {
-    stroke: #B3C3B6ff !important;
-  }
-  
-  #ecosystem-mindmap .section-edge-5 {
-    stroke: #BFCEAAff !important;
+    stroke: #D3E393 !important;
   }
   
   /* Ensure text is readable */
