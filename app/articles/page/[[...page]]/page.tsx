@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import { formatDistanceToNow } from 'date-fns'
-import { Calendar, Clock, User, Search } from 'lucide-react'
+import { Calendar, Clock, User, Search, ExternalLink, ArrowUpRight } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { getPaginatedPosts, getAllPosts } from '@/lib/mdx'
 import { Pagination } from '@/components/pagination'
+import { PageHero } from '@/components/page-hero'
 
 type Props = {
   params: Promise<{ page?: string[] }>
@@ -39,16 +40,27 @@ export default async function ArticlesPage({ params }: Props) {
   return (
     <div className="min-h-screen pt-12">
       {/* Hero Section */}
-      <div className="py-12 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-            Community Articles
-          </h1>
-          <p className="text-lg md:text-xl text-black/70 max-w-3xl mx-auto leading-relaxed">
-            Discover insights, tutorials, and research findings from the Open-Source Leg community.
-          </p>
-        </div>
-      </div>
+      <PageHero 
+        title={
+          <>
+            Community{" "}
+            <span className="font-bold italic">Articles</span>
+          </>
+        }
+        description="            Have insights about prosthetics, robotics, or the Open-Source Leg platform? Contribute your knowledge to help the community grow."
+        primaryButton={{
+          href: "https://github.com/opensourceleg/opensourceleg.org",
+          target: "_blank",
+          text: "Contribute",
+          icon: <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
+        }}
+        secondaryButton={{
+          href: "https://opensourceleg.discourse.group/",
+          text: "Join Discussions",
+          icon: <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />,
+          target: "_blank"
+        }}
+      />    
 
       {/* Articles Grid */}
       <div className="py-4 px-4 sm:px-6">
@@ -129,57 +141,6 @@ export default async function ArticlesPage({ params }: Props) {
               })}
             </div>
           )}
-
-
-        </div>
-      </div>
-
-      {/* Call to Action */}
-      <div className="bg-[var(--black)] max-w-6xl mx-auto rounded-2xl sm:rounded-[2rem] py-16 px-4 sm:px-6 mt-18">
-        <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-light mb-6 text-white">
-             <span className="relative font-medium italic">
-                 Share
-                 <svg 
-                       className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
-                       viewBox="0 0 200 12" 
-                       fill="none" 
-                       xmlns="http://www.w3.org/2000/svg"
-                     >
-                       <path 
-                         d="M2 10C60 6 140 6 198 8" 
-                         stroke="var(--light-green)" 
-                         strokeWidth="12" 
-                         strokeLinecap="round"
-                         fill="none"
-                       />
-                     </svg>
-             </span> Your Knowledge
-            </h2>
-          <p className="text-lg text-white/70 mb-8 leading-relaxed text-balance">
-            Have insights about prosthetics, robotics, or the Open-Source Leg platform? <br/>
-            Contribute your knowledge to help the community grow.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <Button
-              href="https://github.com/neurobionics/opensourceleg"
-              variant='outline'
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[var(--light-green)] text-black border border-black hover:text-white hover:bg-[var(--light-blue)] rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
-            >
-              Contribute on GitHub
-            </Button>
-            <Button
-              href="https://discourse.opensourceleg.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="outline"
-              className="bg-transparent text-white border border-white hover:bg-[var(--light-blue)] hover:text-white rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
-            >
-              Join Discussions
-            </Button>
-          </div>
         </div>
       </div>
     </div>

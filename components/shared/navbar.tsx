@@ -164,7 +164,7 @@ export default function Navbar() {
                 
                 {/* Forum Button */}
                 <Link
-                  href="https://discourse.opensourceleg.org"
+                  href="https://opensourceleg.discourse.group/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[var(--light-green)] text-black border border-black rounded-md px-4 py-2 text-sm font-medium hover:bg-[var(--light-blue)] transition-colors -mr-2"
@@ -283,7 +283,7 @@ export default function Navbar() {
               {/* Mobile Forum Button */}
               <div className="pt-4 border-t border-border">
                 <Link
-                  href="https://discourse.opensourceleg.org"
+                  href="https://opensourceleg.discourse.group/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-[var(--light-green)] text-black border border-black rounded-lg px-3 py-2 text-center font-medium hover:bg-[var(--light-green)]/80 transition-colors"

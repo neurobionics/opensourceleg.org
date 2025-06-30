@@ -536,7 +536,7 @@ export default function Home() {
                 {/* Action buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Button
-                    href="https://discourse.opensourceleg.org"
+                    href="https://opensourceleg.discourse.group/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"

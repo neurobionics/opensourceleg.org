@@ -12,7 +12,7 @@ export default function About() {
       <PageHero 
         title={
           <>
-            About{" "}
+            About the{" "}
             <span className="font-bold italic">Open-Source Leg</span>
           </>
         }
@@ -118,7 +118,7 @@ export default function About() {
         <div className="mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-8">
-              Backed by{" "}
+              Backed by the{" "}
               <span className="relative text-[var(--light-blue)] italic font-medium">
                 NSF
                 <svg 
@@ -712,7 +712,7 @@ export default function About() {
                 {/* Action buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Button
-                    href="https://discourse.opensourceleg.org"
+                    href="https://opensourceleg.discourse.group/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"

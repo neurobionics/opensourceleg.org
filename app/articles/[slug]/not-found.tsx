@@ -56,7 +56,7 @@ export default function ArticleNotFound() {
             <ul className="text-left text-gray-600 space-y-2">
               <li>• Check the article URL for typos</li>
               <li>• Browse our <Link href="/articles" className="text-[var(--light-blue)] hover:underline">articles page</Link> to find what you&apos;re looking for</li>
-              <li>• Visit our <Link href="https://discourse.opensourceleg.org" target="_blank" className="text-[var(--light-blue)] hover:underline">community forum</Link> for discussions</li>
+              <li>• Visit our <Link href="https://opensourceleg.discourse.group/" target="_blank" className="text-[var(--light-blue)] hover:underline">community forum</Link> for discussions</li>
               <li>• Contribute your own article by following our <Link href="https://github.com/neurobionics/opensourceleg" target="_blank" className="text-[var(--light-blue)] hover:underline">contribution guidelines</Link></li>
             </ul>
           </div>

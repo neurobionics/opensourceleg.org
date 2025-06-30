@@ -128,7 +128,7 @@ Check out the existing articles in this directory for examples:
 ## Need Help?
 
 - **Technical Issues**: Open an issue on GitHub
-- **Content Questions**: Join our [forum discussions](https://discourse.opensourceleg.org)
+- **Content Questions**: Join our [forum discussions](https://opensourceleg.discourse.group/)
 - **General Support**: Contact the community team
 
 Thank you for contributing to the Open-Source Leg community! 🦾 

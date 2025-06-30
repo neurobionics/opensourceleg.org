@@ -83,7 +83,7 @@ export default async function ResearchPage() {
                     Software <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
                   <Button
-                    href="https://discourse.opensourceleg.org"
+                    href="https://opensourceleg.discourse.group/"
                     target="_blank"
                     rel="noopener noreferrer"
                     variant="outline"
