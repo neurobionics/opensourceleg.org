@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin, ArrowDown } from "lucide-react"
+import { Github, Users, BookOpen, ExternalLink, Code, Building2, MapPin, ArrowDown, Settings } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import EcosystemFlow from "@/components/ecosystem-flow"
 import NSFTimeline from "@/components/nsf-timeline"
@@ -417,73 +417,96 @@ export default function About() {
                </span>
              </h2>
              <p className="text-lg sm:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-               All components of the Open-Source Leg are released under permissive open-source licenses to maximize 
-               accessibility and enable both academic research and commercial applications.
+               All components of the Open-Source Leg are released under carefully chosen open-source licenses that balance 
+               accessibility with practical adoption. While our licenses provide commercial flexibility, we highly encourage 
+               sharing improvements to strengthen the community.
              </p>
            </div>
 
-           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-             {/* Software Licenses */}
-             <div className="bg-white rounded-2xl sm:rounded-3xl p-8 border border-gray-200 shadow-sm">
+           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+             {/* Software License */}
+             <div className="bg-white rounded-2xl p-8 border border-black">
                <div className="flex items-center mb-6">
                  <Code className="w-8 h-8 text-[var(--light-blue)] mr-3" />
-                 <h3 className="text-2xl font-semibold text-gray-900">Software Components</h3>
+                 <h3 className="text-2xl font-semibold text-gray-900">Software</h3>
                </div>
-               <div className="space-y-4">
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Python Libraries</h4>
-                   <p className="text-sm text-gray-600 mb-2">MIT License - Maximum flexibility for integration</p>
+                               <div className="mb-6">
+                  <h4 className="font-bold text-lg text-gray-900 mb-2">LGPL v2.1</h4>
+                  <p className="text-sm text-gray-600 mb-4">
+                    User-focused weak copyleft license that protects software freedom while allowing commercial applications.
+                  </p>
+                </div>
+                                <div className="space-y-3 mb-6">
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Free to use for any purpose</p>
+                   </div>
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Build commercial software using our libraries</p>
+                   </div>
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Modifications to OSL software must remain LGPL</p>
+                   </div>
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Clear separation between OSL and your application</p>
+                   </div>
                  </div>
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Control Algorithms</h4>
-                   <p className="text-sm text-gray-600 mb-2">Apache 2.0 - Patent protection included</p>
-                 </div>
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Documentation</h4>
-                   <p className="text-sm text-gray-600 mb-2">Creative Commons - Free sharing and adaptation</p>
-                 </div>
-               </div>
+                 <Button
+                   href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="w-full bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
+                 >
+                   <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                   Read Full License
+                 </Button>
              </div>
 
-             {/* Hardware Licenses */}
-             <div className="bg-white rounded-2xl sm:rounded-3xl p-8 border border-gray-200 shadow-sm">
+             {/* Hardware License */}
+             <div className="bg-white rounded-2xl p-8 border border-black">
                <div className="flex items-center mb-6">
-                 <Users className="w-8 h-8 text-[var(--light-green)] mr-3" />
-                 <h3 className="text-2xl font-semibold text-gray-900">Hardware Components</h3>
+                 <Settings className="w-8 h-8 text-[var(--light-blue)] mr-3" />
+                 <h3 className="text-2xl font-semibold text-gray-900">Hardware</h3>
                </div>
-               <div className="space-y-4">
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Mechanical Designs</h4>
-                   <p className="text-sm text-gray-600 mb-2">CERN-OHL-P v2 - Permissive hardware license</p>
-                 </div>
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Electronics</h4>
-                   <p className="text-sm text-gray-600 mb-2">CERN-OHL-P v2 - Open hardware standard</p>
-                 </div>
-                 <div>
-                   <h4 className="font-semibold text-gray-900 mb-2">Manufacturing Guides</h4>
-                   <p className="text-sm text-gray-600 mb-2">CC BY-SA 4.0 - Share-alike documentation</p>
-                 </div>
+               <div className="mb-6">
+                 <h4 className="font-bold text-lg text-gray-900 mb-2">CERN-OHL-P v2.0</h4>
+                 <p className="text-sm text-gray-600 mb-4">
+                   Permissive open hardware license providing flexibility for commercial use without sharing obligations.
+                 </p>
                </div>
+                                <div className="space-y-3 mb-6">
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Free to use, modify, and manufacture</p>
+                   </div>
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Commercial distribution without sharing requirements</p>
+                   </div>
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Keep acknowledgments and disclaimers intact</p>
+                   </div>
+                   <div className="flex items-start gap-2">
+                     <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
+                     <p className="text-sm text-gray-700">Clearly identify and document modifications</p>
+                   </div>
+                 </div>
+                 <Button
+                   href="https://ohwr.org/cern_ohl_p_v2.txt"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="w-full bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
+                 >
+                   <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                   Read Full License
+                 </Button>
              </div>
            </div>
 
-           {/* License Resources */}
-           <div className="mt-12 text-center">
-             <p className="text-gray-600 mb-6">
-               For detailed licensing information and legal terms:
-             </p>
-             <Button
-               href="https://github.com/neurobionics/opensourceleg/blob/main/LICENSE"
-               target="_blank"
-               rel="noopener noreferrer"
-               variant="outline"
-               className="border-gray-300 text-gray-700 hover:bg-gray-50"
-             >
-               <Code className="w-4 h-4 mr-2" />
-               View License Terms
-             </Button>
-           </div>
          </div>
        </div>
 
