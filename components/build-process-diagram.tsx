@@ -48,7 +48,7 @@ export default function BuildProcessDiagram() {
   return (
     <div className="flex justify-center items-center w-full">
       <div 
-        className="w-full max-w-4xl mx-auto"
+        className="w-full max-w-6xl mx-auto"
         style={{ 
           minHeight: '400px',
           overflow: 'visible'

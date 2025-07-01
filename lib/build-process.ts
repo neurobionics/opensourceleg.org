@@ -68,7 +68,10 @@ flowchart LR
     F --> G("Complete OSL<br/>Ready for Software Setup")
     
     style A fill:#8594E8
-    style G fill:#CADA9D
-    style E fill:#f9f9f9
-    style F fill:#f9f9f9
+    style B fill:#9EADCE
+    style C fill:#9EADCE
+    style D fill:#9EADCE
+    style E fill:#CFDE99
+    style F fill:#D3E393
+    style G fill:#E7F77E
 ` 

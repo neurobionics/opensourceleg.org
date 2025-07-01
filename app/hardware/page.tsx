@@ -1,12 +1,12 @@
 import { PageHero } from "@/components/page-hero";
 import { ArrowDown, ExternalLink, Zap, Plane, DollarSign, Download, FileText, ArrowUpRight } from "lucide-react";
-import { ReactCompareSlider, ReactCompareSliderImage } from 'react-compare-slider';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { hardwareCostData, getTotalCost, formatPrice } from "@/lib/hardware-cost";
 import { hardwareSpecs, specNotes } from "@/lib/hardware-specs";
-import { buildSteps, diyBenefits, mermaidDiagram } from "@/lib/build-process";
+import { diyBenefits } from "@/lib/build-process";
 import BuildProcessDiagram from "@/components/build-process-diagram";
+import Image from "next/image";
 
 export default function Hardware() {
     return (
@@ -90,12 +90,12 @@ export default function Hardware() {
             <div className="grid md:grid-cols-3 gap-8">
               {/* Simplicity */}
               <div className="bg-[var(--black)] border border-black rounded-2xl p-6 space-y-4 shadow-2xl">
-                <h3 className="text-xl sm:text-2xl text-[var(--light-green)] font-semibold flex items-center gap-2 justify-center">
+                <h3 className="text-xl sm:text-2xl text-[var(--white)] font-semibold flex items-center gap-2 justify-center">
                   Simplicity
                   <Zap className="w-5 h-5" />
                 </h3>
                 <p className="text-sm text-white/70 leading-relaxed text-justify">
-                  The OSL is designed to be assembled, controlled, and maintained with moderate 'hands-on' skills. 
+                  The OSL is designed to be assembled, controlled, and maintained with moderate &apos;hands-on&apos; skills. 
                   We streamlined the number of components and suppliers, with the majority of parts machined from 
                   a single supplier, minimizing dependencies on precision machine components.
                 </p>
@@ -103,7 +103,7 @@ export default function Hardware() {
               
               {/* Portability */}
               <div className="bg-[var(--black)] border border-black rounded-2xl p-6 space-y-4 shadow-2xl">
-                <h3 className="text-xl sm:text-2xl font-semibold text-[var(--light-green)] flex items-center gap-2 justify-center">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[var(--white)] flex items-center gap-2 justify-center">
                   Portability
                   <Plane className="w-5 h-5" />
                 </h3>
@@ -116,7 +116,7 @@ export default function Hardware() {
               
               {/* Economical */}
               <div className="bg-[var(--black)] border border-black rounded-2xl p-6 space-y-4 shadow-2xl">
-                <h3 className="text-xl sm:text-2xl font-semibold text-[var(--light-green)] flex items-center gap-2 justify-center">
+                <h3 className="text-xl sm:text-2xl font-semibold text-[var(--white)] flex items-center gap-2 justify-center">
                   Economical
                   <DollarSign className="w-5 h-5" />
                 </h3>
@@ -180,10 +180,10 @@ export default function Hardware() {
             {/* Customization Note */}
             <p className="bg-transparent text-black/70 leading-relaxed text-justify">
               The OSL is designed to be highly customizable. Researchers have the flexibility to tailor the device to their 
-              specific needs, including adjusting the knee's series elastic element, selecting the foot type, and incorporating 
+              specific needs, including adjusting the knee&apos;s series elastic element, selecting the foot type, and incorporating 
               a load cell, among other options. Both the knee and ankle function either as a series elastic actuator (SEA) or 
               rigid actuator, and the stiffness can be selected using custom designed spring disks that fit inside the output 
-              pulley without changing the OSL's volume.
+              pulley without changing the OSL&apos;s volume.
             </p>
           </div>
         </section>
@@ -234,7 +234,7 @@ export default function Hardware() {
                   <Button 
                     href="https://docs.google.com/spreadsheets/d/1qVSoAV6mRzleJ215N53O3MT-OEZ30ZFP/edit?usp=share_link&ouid=101976074095932955884&rtpof=true&sd=true"
                     target="_blank"
-                    className="w-full flex-1 bg-[var(--white)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base font-medium flex items-center justify-center gap-2 mb-4"
+                    className="w-full flex-1 bg-[var(--white)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base sm:text-lg font-medium flex items-center justify-center gap-2 mb-4"
                   >
                     <FileText className="w-5 h-5" />
                     Bill of Materials
@@ -243,7 +243,7 @@ export default function Hardware() {
                   <Button 
                     href="/hardware/downloads"
                     target="_blank"
-                    className="w-full flex-1 bg-[var(--light-blue)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base font-medium flex items-center justify-center gap-2 mb-4"
+                    className="w-full flex-1 bg-[var(--light-blue)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base sm:text-lg font-medium flex items-center justify-center gap-2 mb-4"
                   >
                     <Download className="w-5 h-5" />
                     Download Design Files
@@ -251,7 +251,7 @@ export default function Hardware() {
                   
                   <Button 
                     href="/tutorials"
-                    className="w-full flex-1 bg-[var(--black)] text-white hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base font-medium flex items-center justify-center gap-2"
+                    className="w-full flex-1 bg-[var(--black)] text-white hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base sm:text-lg font-medium flex items-center justify-center gap-2"
                   >
                     <ArrowUpRight className="w-5 h-5" />
                     Tutorials on How to Assemble
@@ -271,10 +271,10 @@ export default function Hardware() {
             </div>
             
             {/* Commercial Option & Partnership */}
-            <div className="mt-12 bg-[var(--black)] text-white border-2 border-black rounded-2xl px-8 shadow-2xl py-12">
+            <div className="mt-36 max-w-6xl mx-auto bg-[var(--black)] text-white border-2 border-black rounded-3xl p-16 shadow-2xl">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-4">
                 <div>
-                  <h3 className="text-2xl sm:text-3xl font-semibold text-white mb-2">
+                  <h3 className="text-2xl sm:text-3xl text-white mb-2">
                     <span className="relative font-medium italic">
                       Commercial
                       <svg 
@@ -296,78 +296,65 @@ export default function Hardware() {
                   </h3>
                 </div>
                 <div className="p-3">
-                  <img 
+                  <Image 
                     src="/logo/humotech-logo.svg" 
                     alt="Humotech Logo" 
-                    className="h-8 w-auto"
+                    width={120}
+                    height={32}
+                    className="h-6 w-auto"
                   />
                 </div>
               </div>
               
-              <div className="grid lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 space-y-6 flex flex-col gap-4 justify-between h-full">
-                  <p className="text-white/90 leading-relaxed text-justify">
-                    For research groups who prefer to purchase rather than build, we have partnered with{" "}
-                    <span className="text-[var(--light-green)] font-semibold">Humotech</span> to offer professional 
-                    assembly and support services. Humotech has successfully supplied 7+ OSL systems across the USA, 
-                    Canada, and Europe.
-                  </p>
-                  
-                  <div className="bg-transparent border border-white rounded-2xl p-6">
-                    <h4 className="text-[var(--light-green)] font-semibold mb-3 flex items-center gap-2">
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                      </svg>
-                      Partnership Note
-                    </h4>
-                    <p className="text-white/80 text-sm leading-relaxed">
-                      Our collaboration with Humotech exists purely to expand access to OSL technology for the research 
-                      community. We do not profit from these commercial services—this partnership is designed to support 
-                      researchers with technical questions and make the Open-Source Leg readily available for those who prefer to purchase.
-                    </p>
+              <div className="space-y-8">
+                {/* Full Width Paragraph */}
+                <p className="text-white/90 leading-relaxed text-justify">
+                  For research groups who prefer to purchase rather than build, you can get either a preassembled Open-Source Leg or a kit of parts from{" "}
+                  <span className="text-[var(--light-green)] font-semibold">Humotech</span>, a commercial supplier of wearable robotics devices. 
+                  Humotech has supplied 7+ OSLs across USA, Canada, and Europe. <span className="font-bold">We do not profit from any of the commercial services that Humotech offers</span>, 
+                  our collaboration with Humotech is designed only to occasionally help them support their customers with any technical questions and make the Open-Source Leg platform readily accessible for the research community.
+                </p>
+                
+                {/* Pricing Boxes & Actions */}
+                <div className="grid sm:grid-cols-3 gap-6">
+                  <div className="bg-transparent text-white rounded-2xl p-6 border border-white/30 text-center shadow-xl">
+                    <div className="mb-4">
+                      <h4 className="font-medium text-lg mb-1">Fully Assembled</h4>
+                    </div>
+                    <div className="border-t border-white/40 pt-4">
+                      <p className="text-3xl font-semibold mb-1">$100,000+</p>
+                      <p className="text-white/50 text-xs uppercase tracking-wide">USD</p>
+                    </div>
                   </div>
                   
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row gap-4">
+                  <div className="bg-transparent text-white rounded-2xl p-6 border border-white/30 text-center shadow-xl">
+                    <div className="mb-4">
+                      <h4 className="font-medium text-lg mb-1">Parts Kit</h4>
+                    </div>
+                    <div className="border-t border-white/40 pt-4">
+                      <p className="text-3xl font-semibold mb-1">$55,000+</p>
+                      <p className="text-gray-500 text-xs uppercase tracking-wide">USD</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex flex-col gap-4 h-full">
                     <Button 
                       href="https://humotech.com"
                       target="_blank"
-                      className="flex-1 bg-[var(--light-blue)] text-black border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-6 text-base flex items-center justify-center gap-2"
+                      className="flex-1 bg-[var(--light-blue)] text-black border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 text-base sm:text-lg flex items-center justify-center gap-2"
                     >
-                      <ExternalLink className="w-5 h-5" />
+                      <ExternalLink className="w-4 h-4" />
                       Visit Humotech
                     </Button>
                     
                     <Button 
                       variant="outline"
                       href="/contact"
-                      className="flex-1 bg-transparent border-white text-white hover:bg-[var(--light-green)] hover:text-black hover:border-black rounded-lg px-6 py-6 text-base flex items-center justify-center gap-2"
+                      className="flex-1 bg-white border-black text-black hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 text-base sm:text-lg flex items-center justify-center gap-2"
                     >
-                      <ArrowUpRight className="w-5 h-5" />
+                      <ArrowUpRight className="w-4 h-4" />
                       Contact Us
                     </Button>
-                  </div>
-                </div>
-                
-                <div className="space-y-4 flex flex-col gap-4 justify-between h-full">
-                  <div className="bg-white rounded-2xl p-6 border border-gray-200 text-center shadow-xl">
-                    <div className="mb-4">
-                      <h4 className="font-medium text-gray-900 text-lg mb-1">Fully Assembled</h4>
-                    </div>
-                    <div className="border-t border-gray-200 pt-4">
-                      <p className="text-3xl font-semibold text-[var(--black)] mb-1">$100,000+</p>
-                      <p className="text-gray-500 text-xs uppercase tracking-wide">USD</p>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-white rounded-2xl p-6 border border-gray-200 text-center shadow-xl">
-                    <div className="mb-4">
-                      <h4 className="font-medium text-gray-900 text-lg mb-1">Parts Kit</h4>
-                    </div>
-                    <div className="border-t border-gray-200 pt-4">
-                      <p className="text-3xl font-semibold text-[var(--black)] mb-1">$55,000+</p>
-                      <p className="text-gray-500 text-xs uppercase tracking-wide">USD</p>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -377,7 +364,7 @@ export default function Hardware() {
         
         {/* Spec Sheet Section */}
         <section id="specsheet" className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-6">
                 Technical{" "}
@@ -418,8 +405,8 @@ export default function Hardware() {
                     <TableRow key={index} className="border-b border-white/10 hover:bg-white/5">
                       <TableCell className="text-white font-light py-4">{spec.property}</TableCell>
                       <TableCell className="text-right text-white py-4">
-                        <span className="font-semibold text-[var(--light-green)]">{spec.value}</span>
-                        {spec.unit && <span className="text-[var(--light-green)] ml-1">{spec.unit}</span>}
+                        <span className="font-semibold text-[var(--white)]">{spec.value}</span>
+                        {spec.unit && <span className="text-[var(--white)] ml-1">{spec.unit}</span>}
                       </TableCell>
                     </TableRow>
                   ))}
