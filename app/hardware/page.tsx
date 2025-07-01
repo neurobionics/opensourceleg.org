@@ -315,34 +315,43 @@ export default function Hardware() {
             {/* Benefits and Actions Section */}
             <div className="max-w-6xl mx-auto mb-16">
               <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-                {/* Left Column - Action Buttons */}
-                <div className="flex flex-col h-full justify-between">
-                  <Button 
-                    href="https://docs.google.com/spreadsheets/d/1qVSoAV6mRzleJ215N53O3MT-OEZ30ZFP/edit?usp=share_link&ouid=101976074095932955884&rtpof=true&sd=true"
-                    target="_blank"
-                    className="w-full flex-1 bg-[var(--white)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base sm:text-lg font-medium flex items-center justify-center gap-2 mb-4"
-                  >
-                    <FileText className="w-5 h-5" />
-                    Bill of Materials
-                  </Button>
-                  
-                  <Button 
-                    href="/hardware/downloads"
-                    target="_blank"
-                    className="w-full flex-1 bg-[var(--light-blue)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base sm:text-lg font-medium flex items-center justify-center gap-2 mb-4"
-                  >
-                    <Download className="w-5 h-5" />
-                    Download Design Files
-                  </Button>
-                  
-                  <Button 
-                    href="/tutorials"
-                    className="w-full flex-1 bg-[var(--black)] text-white hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg px-6 py-8 text-base sm:text-lg font-medium flex items-center justify-center gap-2"
-                  >
-                    <ArrowUpRight className="w-5 h-5" />
-                    Tutorials on How to Assemble
-                  </Button>
-                </div>
+                                 {/* Left Column - Action Buttons Grid */}
+                 <div className="grid grid-cols-2 grid-rows-2 gap-4 h-full w-full">
+                   <Button 
+                     href="https://docs.google.com/spreadsheets/d/1qVSoAV6mRzleJ215N53O3MT-OEZ30ZFP/edit?usp=share_link&ouid=101976074095932955884&rtpof=true&sd=true"
+                     target="_blank"
+                     className="w-full h-full bg-[var(--white)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg p-4 text-sm sm:text-base font-medium flex flex-col items-center justify-center gap-3 text-center"
+                   >
+                     <FileText className="w-6 h-6 flex-shrink-0" />
+                     <span className="leading-tight">Bill of Materials</span>
+                   </Button>
+                   
+                   <Button 
+                     href="https://cad.onshape.com/documents/3520551dd01cf402179e8687/w/87da2fb0a553b44a27833624/e/d9c95c04904f8d6a753006a4"
+                     target="_blank"
+                     className="w-full h-full bg-[var(--black)] text-white hover:bg-[var(--light-blue)] border border-black rounded-lg p-4 text-sm sm:text-base font-medium flex flex-col items-center justify-center gap-3 text-center"
+                   >
+                     <ExternalLink className="w-6 h-6 flex-shrink-0" />
+                     <span className="leading-tight">Edit on Onshape</span>
+                   </Button>
+                   
+                   <Button 
+                     href="/hardware/downloads"
+                     target="_blank"
+                     className="w-full h-full bg-[var(--black)] text-white hover:bg-[var(--light-blue)] border border-black rounded-lg p-4 text-sm sm:text-base font-medium flex flex-col items-center justify-center gap-3 text-center"
+                   >
+                     <Download className="w-6 h-6 flex-shrink-0" />
+                     <span className="leading-tight">Download Design Files</span>
+                   </Button>
+                   
+                   <Button 
+                     href="/tutorials"
+                     className="w-full h-full bg-[var(--white)] text-black hover:bg-[var(--light-green)] hover:text-black border border-black rounded-lg p-4 text-sm sm:text-base font-medium flex flex-col items-center justify-center gap-3 text-center"
+                   >
+                     <ArrowUpRight className="w-6 h-6 flex-shrink-0" />
+                     <span className="leading-tight">How to Assemble</span>
+                   </Button>
+                 </div>
                 
                 {/* Right Column - Benefits */}
                 <div className="space-y-4 border border-black rounded-2xl p-8 shadow-xl">
@@ -396,7 +405,7 @@ export default function Hardware() {
                 {/* Full Width Paragraph */}
                 <p className="text-white/90 leading-relaxed text-justify">
                   For research groups who prefer to purchase rather than build, you can get either a preassembled Open-Source Leg or a kit of parts from{" "}
-                  <span className="text-[var(--light-green)] font-semibold">Humotech</span>, a commercial supplier of wearable robotics devices. 
+                  Humotech, a commercial supplier of wearable robotics devices. 
                   Humotech has supplied 7+ OSLs across USA, Canada, and Europe. <span className="font-bold">We do not profit from any of the commercial services that Humotech offers</span>, 
                   our collaboration with Humotech is designed only to occasionally help them support their customers with any technical questions and make the Open-Source Leg platform readily accessible for the research community.
                 </p>
