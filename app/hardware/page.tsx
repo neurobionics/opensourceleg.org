@@ -7,6 +7,7 @@ import { hardwareSpecs, specNotes } from "@/lib/hardware-specs";
 import { diyBenefits } from "@/lib/build-process";
 import BuildProcessDiagram from "@/components/build-process-diagram";
 import Image from "next/image";
+import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
 
 export default function Hardware() {
     return (
@@ -188,7 +189,92 @@ export default function Hardware() {
           </div>
         </section>
 
+        {/* Hardware Comparison Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Column - Title and Changes */}
+              <div className="space-y-6 flex flex-col gap-4 justify-between h-full">
+                <h2 className="text-3xl font-light text-gray-900">
+                  Open-Source Leg <span className="relative font-bold italic">
+                    v2.0
+                    <svg 
+                      className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                      viewBox="0 0 200 12" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path 
+                        d="M2 10C60 6 140 6 198 8" 
+                        stroke="var(--light-blue)" 
+                        strokeWidth="12" 
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                    </svg>
+                  </span>
+                </h2>
+                <p className="text-lg text-gray-600 leading-relaxed text-justify">
+                  The OSL v2 represents a significant evolution informed by community feedback, 
+                  focusing on simplicity, portability, and enhanced technical capabilities.
+                </p>
 
+                <ul className="space-y-3 text-gray-600">
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-[var(--light-blue)] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>Simplified from 3-stage to single-stage belt drive transmission</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-[var(--light-blue)] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>Reduced hardware costs and simplified assembly</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-[var(--light-blue)] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>Identical knee and ankle drivetrains for part sharing</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-[var(--light-blue)] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>Doubled ankle range of motion</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="w-2 h-2 bg-[var(--light-blue)] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span>Improved belt tensioning system with precision adjustment</span>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Right Column - Comparison Slider */}
+              <div className="relative rounded-lg overflow-hidden shadow-2xl border-2 border-black">
+                <ReactCompareSlider
+                  itemOne={
+                    <ReactCompareSliderImage 
+                      src="/hardware/osl-v1-info.svg" 
+                      alt="Open-Source Leg Version 1" 
+                      style={{ objectFit: 'contain' }}
+                    />
+                  }
+                  itemTwo={
+                    <ReactCompareSliderImage 
+                      src="/hardware/osl-v2-info.svg" 
+                      alt="Open-Source Leg Version 2" 
+                      style={{ objectFit: 'contain' }}
+                    />
+                  }
+                  position={35}
+                  className="w-full aspect-auto"
+                />
+                
+                {/* Labels */}
+                <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  Version 1
+                </div>
+                <div className="absolute top-4 right-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  Version 2
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Build Your OSL Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8">
