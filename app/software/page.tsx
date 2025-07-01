@@ -43,7 +43,10 @@ export default function Software() {
             {/* Text Content */}
             <div className="space-y-6 max-w-6xl mx-auto">
               <p className="text-base text-gray-600 leading-relaxed text-justify">
-              The Open-Source Leg software platform is designed to be modular and flexible to allow for easy integration with a wide variety of sensors and robotics frameworks. The software library is written in Python and is compatible with Python 3.9 and above. The library is designed to run on debian based linux distributions. You'll find instructions below on how to setup a Raspberry Pi to control your OSL and how to install our python library.              </p>
+              The Open-Source Leg software platform is designed to be modular and flexible to allow for easy integration with a wide variety of sensors and robotics frameworks.
+              The software library is written in Python and is compatible with Python 3.9 and above. The library is designed to run on debian based linux distributions.
+              You&apos;ll find instructions below on how to setup a Raspberry Pi to control your OSL and how to install our python library.
+              </p>
             </div>
           </div>
         </section>
