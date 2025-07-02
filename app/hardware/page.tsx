@@ -485,10 +485,8 @@ export default function Hardware() {
                 </span>
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
-                The Open-Source Leg transforms electrical energy from the battery into precise mechanical energy 
-                for locomotion assistance. The system flow begins with electrical power, processes through intelligent 
-                control algorithms, and delivers coordinated actuation while continuously monitoring performance 
-                through integrated sensors.
+                The Open-Source Leg is a modular and extensible platform designed to support a wide range of research applications.
+                Researchers can swap out any of the components described below to create a custom system for their specific research needs and share their designs with the community.
               </p>
             </div>
             

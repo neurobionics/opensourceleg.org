@@ -21,7 +21,8 @@ export default function SystemOverviewDiagram() {
         secondaryColor: '#CADA9D',
         tertiaryColor: '#f9f9f9',
         fontFamily: 'Inter, system-ui, sans-serif',
-        fontSize: '11px'
+        fontSize: '11px',
+        edgeLabelBackground: '#F2F5CF'
       },
       block: {
         padding: 20,

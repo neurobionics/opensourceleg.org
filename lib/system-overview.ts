@@ -1,122 +1,72 @@
-export interface SystemComponent {
-  name: string
-  description: string
-  type: 'controller' | 'actuator' | 'sensor' | 'power' | 'optional'
-}
-
-export const systemComponents: SystemComponent[] = [
-  {
-    name: "Raspberry Pi",
-    description: "Central processing unit for control algorithms and sensor data processing",
-    type: "controller"
-  },
-  {
-    name: "Knee Actuator",
-    description: "Motor with 9:1 gearbox for knee joint actuation (Dephy, TMotor, or MAB)",
-    type: "actuator"
-  },
-  {
-    name: "Ankle Actuator", 
-    description: "Motor with 9:1 gearbox for ankle joint actuation (Dephy, TMotor, or MAB)",
-    type: "actuator"
-  },
-  {
-    name: "Knee Encoder",
-    description: "High-resolution encoder for knee joint position feedback",
-    type: "sensor"
-  },
-  {
-    name: "Ankle Encoder",
-    description: "High-resolution encoder for ankle joint position feedback", 
-    type: "sensor"
-  },
-  {
-    name: "Load Cell",
-    description: "Force sensor for ground reaction force measurement",
-    type: "sensor"
-  },
-  {
-    name: "Battery Pack",
-    description: "Rechargeable power source for the complete system",
-    type: "power"
-  },
-  {
-    name: "Additional Sensors",
-    description: "IMU, EMG, or other custom sensors as needed",
-    type: "optional"
-  }
-]
-
 export const mermaidSystemDiagram = `
 flowchart TD
     %% Central Control
-    RPI("Raspberry Pi<br/>Central Controller<br/>Control Algorithms")
+    RPI("Raspberry Pi<br/>(CM / Jetson Nano)")
     
     %% Knee Joint System (Left)
-    subgraph KNEE_SYSTEM [" "]
+    subgraph KNEE_SYSTEM ["Knee Joint"]
         direction TB
         KBAT("LiPo 9S<br/>Battery Pack<br/>33.3V")
-        KA("Knee Actuator<br/>Motor + 9:1 Gearbox<br/>(Dephy/TMotor/MAB)")
-        KBD("Knee Belt Drive<br/>Transmission System")
-        KE("Knee Joint Encoder<br/>Joint Position/Velocity<br/>Feedback")
+        KA("Actuator<br/>Motor + 9:1 Gearbox<br/>(Dephy / TMotor)")
+        KBD("5.44:1<br/>Belt Drive<br/>Transmission System")
+        KE("Knee Joint Encoder")
         
-        KBAT --> KA
-        KA --> KBD
-        KA <--> KE
+        KBAT ==>|"Power<br/>33.3V"| KA
+        KA -->|"Motor<br/>Torque"| KBD
+        KBD --> KE
     end
     
     %% Ankle Joint System (Right)
-    subgraph ANKLE_SYSTEM [" "]
+    subgraph ANKLE_SYSTEM ["Ankle Joint"]
         direction TB
         ABAT("LiPo 9S<br/>Battery Pack<br/>33.3V")
-        AA("Ankle Actuator<br/>Motor + 9:1 Gearbox<br/>(Dephy/TMotor/MAB)")
-        ABD("Ankle Belt Drive<br/>Transmission System")
-        AE("Ankle Joint Encoder<br/>Joint Position/Velocity<br/>Feedback")
+        AA("Actuator<br/>Motor + 9:1 Gearbox<br/>(Dephy / TMotor)")
+        ABD("5.44:1<br/>Belt Drive<br/>Transmission System")
+        AE("Ankle Joint Encoder")
         
-        ABAT --> AA
-        AA --> ABD
-        AA <--> AE
+        ABAT ==>|"Power<br/>33.3V"| AA
+        ABD --> AE
+        AA -->|"Motor<br/>Torque"| ABD        
     end
     
     %% Central Output
-    HUMAN("Human Subject<br/>Locomotion<br/>Assistance")
+    HUMAN("Human Subject")
     
     %% Control Connections (from center to both sides)
-    RPI --> KA
-    RPI --> AA
+    KBAT ==>|"Power<br/>5V"| RPI
+    RPI -->|"Motor<br/>Commands"| KA
+    RPI -->|"Motor<br/>Commands"| AA
     
     %% Mechanical Output (from both sides to center)
-    KBD --> HUMAN
-    ABD --> HUMAN
+    KBD ==>|"Joint<br/>Torque"| HUMAN
+    ABD ==>|"Joint<br/>Torque"| HUMAN
     
     %% Sensor Feedback (from both sides to center)
-    KE --> RPI
-    AE --> RPI
+    KE -.->|"Joint<br/>Position &<br/>Velocity"| RPI
+    AE -.->|"Joint<br/>Position &<br/>Velocity"| RPI
     
     %% External Sensing
-    LC("Load Cell<br/>Ground Reaction<br/>Forces & Torque")
-    LC --> RPI
+    LC("Load Cell<br/>+ DAQ")
+    LC -.->|"Ground Reaction Forces &<br/>Moments"| RPI
     
     %% Optional Sensors
-    AS("IMU, EMG<br/>Custom Sensors<br/>(Research Specific)")
-    AS -.-> RPI
+    AS("IMU, EMG<br/>Custom Sensors")
+    AS -.->|"Sensor<br/>Data"| RPI
     
     %% Styling with rounded corners
-    classDef electricalItem fill:#FFE5B4,stroke:#1E1C19,stroke-width:2px,color:#1E1C19,rx:15,ry:15
-    classDef controlItem fill:#8594E8,stroke:#1E1C19,stroke-width:2px,color:#1E1C19,rx:15,ry:15
-    classDef actuationItem fill:#CADA9D,stroke:#1E1C19,stroke-width:2px,color:#1E1C19,rx:15,ry:15
-    classDef transmissionItem fill:#A8D8A8,stroke:#1E1C19,stroke-width:2px,color:#1E1C19,rx:15,ry:15
-    classDef sensingItem fill:#F4C2A1,stroke:#1E1C19,stroke-width:2px,color:#1E1C19,rx:15,ry:15
-    classDef mechanicalItem fill:#B8E6B8,stroke:#1E1C19,stroke-width:2px,color:#1E1C19,rx:15,ry:15
-    classDef optionalItem fill:#E8E8E8,stroke:#1E1C19,stroke-width:2px,color:#1E1C19,rx:15,ry:15
-    classDef jointSystem fill:#f0f0f0,stroke:#1E1C19,stroke-width:3px,rx:25,ry:25
+    classDef electricalItem fill:#8594E8,stroke:#1E1C19,stroke-width:1px,color:#1E1C19,rx:10,ry:10
+    classDef controlItem fill:#95A5D6,stroke:#1E1C19,stroke-width:1px,color:#1E1C19,rx:10,ry:10
+    classDef actuationItem fill:#A6B5C5,stroke:#1E1C19,stroke-width:1px,color:#1E1C19,rx:10,ry:10
+    classDef transmissionItem fill:#B6C6B3,stroke:#1E1C19,stroke-width:1px,color:#1E1C19,rx:10,ry:10
+    classDef sensingItem fill:#C6D6A1,stroke:#1E1C19,stroke-width:1px,color:#1E1C19,rx:10,ry:10
+    classDef jointSystem fill:#f0f0f0,stroke:#1E1C19,stroke-width:1px,rx:15,ry:15
+    classDef humanSubject fill:#E7F77E,stroke:#1E1C19,stroke-width:1px,rx:10,ry:10
     
     class KBAT,ABAT electricalItem
     class RPI controlItem
     class KA,AA actuationItem
     class KBD,ABD transmissionItem
-    class KE,AE,LC sensingItem
-    class HUMAN mechanicalItem
-    class AS optionalItem
+    class KE,AE,LC,AS sensingItem
+    class HUMAN humanSubject
     class KNEE_SYSTEM,ANKLE_SYSTEM jointSystem
 ` 
