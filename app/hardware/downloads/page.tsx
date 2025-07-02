@@ -206,6 +206,36 @@ export default function Downloads() {
         </div>
         </div>
       </div>
+
+      <div className="py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
+              <span className="relative font-medium italic">
+              Bill of Materials
+                <svg 
+                  className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                  viewBox="0 0 200 12" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M2 10C60 6 140 6 198 8" 
+                    stroke="var(--light-green)" 
+                    strokeWidth="6" 
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+            </h2>
+            <p className="text-lg sm:text-xl md:text-xl text-gray-700 leading-relaxed max-w-6xl mx-auto">
+              
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }

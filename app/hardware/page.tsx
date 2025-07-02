@@ -6,6 +6,7 @@ import { hardwareCostData, getTotalCost, formatPrice } from "@/lib/hardware-cost
 import { hardwareSpecs, specNotes } from "@/lib/hardware-specs";
 import { diyBenefits } from "@/lib/build-process";
 import BuildProcessDiagram from "@/components/build-process-diagram";
+import SystemOverviewDiagram from "@/components/system-overview-diagram";
 import Image from "next/image";
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
 
@@ -453,6 +454,47 @@ export default function Hardware() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+        
+
+        
+        {/* System Overview Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-6">
+                System{" "}
+                <span className="relative font-medium italic">
+                  Overview
+                  <svg 
+                    className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                    viewBox="0 0 200 12" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M2 10C60 6 140 6 198 8" 
+                      stroke="var(--light-blue)" 
+                      strokeWidth="6" 
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
+                The Open-Source Leg transforms electrical energy from the battery into precise mechanical energy 
+                for locomotion assistance. The system flow begins with electrical power, processes through intelligent 
+                control algorithms, and delivers coordinated actuation while continuously monitoring performance 
+                through integrated sensors.
+              </p>
+            </div>
+            
+            {/* System Diagram */}
+            <div className="mb-12">
+              <SystemOverviewDiagram />
             </div>
           </div>
         </section>
