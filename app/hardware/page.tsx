@@ -277,6 +277,46 @@ export default function Hardware() {
           </div>
         </section>
 
+
+        
+        {/* System Overview Section */}
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-6">
+                System{" "}
+                <span className="relative font-medium italic">
+                  Overview
+                  <svg 
+                    className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                    viewBox="0 0 200 12" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path 
+                      d="M2 10C60 6 140 6 198 8" 
+                      stroke="var(--light-blue)" 
+                      strokeWidth="6" 
+                      strokeLinecap="round"
+                      fill="none"
+                    />
+                  </svg>
+                </span>
+              </h2>
+              <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto py-4">
+                The Open-Source Leg is a modular and extensible platform designed to support a wide range of research applications.
+                Researchers can swap out any of the components described below to create a custom system for their specific research needs and share their designs with the community.
+              </p>
+            </div>
+            
+            {/* System Diagram */}
+            <div className="mb-12">
+              <SystemOverviewDiagram />
+            </div>
+          </div>
+        </section>
+        
+
         {/* Build Your OSL Section */}
         <section className="py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
@@ -454,45 +494,6 @@ export default function Hardware() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-        
-
-        
-        {/* System Overview Section */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-light text-gray-900 mb-6">
-                System{" "}
-                <span className="relative font-medium italic">
-                  Overview
-                  <svg 
-                    className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
-                    viewBox="0 0 200 12" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path 
-                      d="M2 10C60 6 140 6 198 8" 
-                      stroke="var(--light-blue)" 
-                      strokeWidth="6" 
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                  </svg>
-                </span>
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto">
-                The Open-Source Leg is a modular and extensible platform designed to support a wide range of research applications.
-                Researchers can swap out any of the components described below to create a custom system for their specific research needs and share their designs with the community.
-              </p>
-            </div>
-            
-            {/* System Diagram */}
-            <div className="mb-12">
-              <SystemOverviewDiagram />
             </div>
           </div>
         </section>
