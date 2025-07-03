@@ -18,7 +18,7 @@ export const defaultComponentUrls: ComponentUrls = {
   beltDrive: "https://drive.google.com/drive/folders/1inqqjWO22BNM2bU8uPVI3usGM4lP8mI7?usp=drive_link",
   encoder: "https://mou.sr/3KWjNxm",
   loadCell: "https://drive.google.com/drive/folders/1BPO1_veFyFO8lNE8cSrc46x8wOkowUB-?usp=drive_link",
-  sensors: "https://drive.google.com/drive/folders/YOUR_SENSORS_FOLDER_ID"
+  sensors: "#"
 };
 
 // Interactive version without connection labels and with clickable components
@@ -146,7 +146,6 @@ export function buildDiagramWithUrls(componentUrls: ComponentUrls): string {
     .replace(/click KE "javascript:void\(0\)"/g, `click KE "${componentUrls.encoder}"`)
     .replace(/click AE "javascript:void\(0\)"/g, `click AE "${componentUrls.encoder}"`)
     .replace(/click LC "javascript:void\(0\)"/g, `click LC "${componentUrls.loadCell}"`)
-    .replace(/click AS "javascript:void\(0\)"/g, `click AS "${componentUrls.sensors}"`);
 }
 
 // Component styling configuration
