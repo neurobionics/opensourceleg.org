@@ -262,13 +262,13 @@ export default function Downloads() {
            </div>
 
            {/* Vendor-Based BOM Section */}
-           <div className="mb-12">
+           <div className="mb-12 py-12">
              <h3 className="text-2xl sm:text-3xl font-light text-gray-900 mb-6 text-center">
                <span className="relative font-medium italic">
                  By Supplier
                </span>
              </h3>
-             <p className="text-base text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+             <p className="text-base text-gray-600 text-center mb-16 max-w-4xl mx-auto">
                Browse components organized by supplier for streamlined procurement
              </p>
              
