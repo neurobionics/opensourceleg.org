@@ -2,7 +2,7 @@
 
 import { PageHero } from "@/components/page-hero";
 import { useState } from "react";
-import { Download, ExternalLink, Settings, Zap, ZapOff, Mail, FileText, ShoppingCart, FileDown, DownloadIcon, ArrowUpRight, MessageCircle } from "lucide-react";
+import { Download, ExternalLink, Settings, Zap, ZapOff, Mail, FileText, ShoppingCart, DownloadIcon, ArrowUpRight, MessageCircle, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -17,7 +17,7 @@ import {
 } from "@/lib/hardware-downloads";
 import InteractiveSystemOverview from "@/components/interactive-system-overview";
 import { defaultComponentUrls } from "@/lib/interactive-system-overview";
-import { vendors, buttonStyles, cardStyles, type VendorButton } from "@/lib/vendors";
+import { vendors, cardStyles, type VendorButton } from "@/lib/vendors";
 import { datasheets } from "@/lib/datasheets";
 
 export default function Downloads() {
@@ -71,16 +71,15 @@ export default function Downloads() {
         }
         description="Configure and download the hardware files for your Open-Source Leg system"
         primaryButton={{
+          href: "#datasheets",
+          text: "View Datasheets",
+          icon: <ArrowDown className="w-4 h-4 sm:w-5 sm:h-5" />,     
+        }}
+        secondaryButton={{
           href: "https://docs.google.com/spreadsheets/d/1qVSoAV6mRzleJ215N53O3MT-OEZ30ZFP/edit?usp=drive_link&ouid=101976074095932955884&rtpof=true&sd=true",
           target: "_blank",
           text: "View Bill of Materials",
           icon: <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-        }}
-        secondaryButton={{
-          href: "https://cad.onshape.com/documents/3520551dd01cf402179e8687/w/87da2fb0a553b44a27833624/e/d9c95c04904f8d6a753006a4",
-          text: "View CAD Models",
-          icon: <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />,
-          target: "_blank"
         }}
       />
 
@@ -332,7 +331,7 @@ export default function Downloads() {
       </div>
 
       {/* Datasheets Section */}
-      <div className="py-16 sm:py-20 px-4 sm:px-6">
+      <div id="datasheets" className="py-16 sm:py-20 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 sm:mb-16 text-right">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
