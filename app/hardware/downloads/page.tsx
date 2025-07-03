@@ -2,9 +2,10 @@
 
 import { PageHero } from "@/components/page-hero";
 import { useState } from "react";
-import { Download, ExternalLink, Settings, Zap, ZapOff, Mail, FileText, ShoppingCart } from "lucide-react";
+import { Download, ExternalLink, Settings, Zap, ZapOff, Mail, FileText, ShoppingCart, FileDown, DownloadIcon, ArrowUpRight, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { 
   type DownloadConfig, 
   type JointSelection, 
@@ -17,6 +18,7 @@ import {
 import InteractiveSystemOverview from "@/components/interactive-system-overview";
 import { defaultComponentUrls } from "@/lib/interactive-system-overview";
 import { vendors, buttonStyles, cardStyles, type VendorButton } from "@/lib/vendors";
+import { datasheets } from "@/lib/datasheets";
 
 export default function Downloads() {
   const [config, setConfig] = useState<DownloadConfig>(defaultConfig);
@@ -326,6 +328,130 @@ export default function Downloads() {
             <p className="text-sm text-gray-600 text-center max-w-4xl mx-auto">
               The Bill of Materials is directly linked to our OnShape CAD models for easy reference and part identification.
             </p>
+        </div>
+      </div>
+
+      {/* Datasheets Section */}
+      <div className="py-16 sm:py-20 px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="mb-12 sm:mb-16 text-right">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
+              Component{" "}
+              <span className="relative font-medium italic">
+                Datasheets
+                <svg 
+                  className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                  viewBox="0 0 200 12" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M2 10C60 6 140 6 198 8" 
+                    stroke="var(--light-green)" 
+                    strokeWidth="6" 
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+            </h2>
+            <p className="text-lg sm:text-xl md:text-xl text-gray-700 leading-relaxed max-w-6xl mx-auto mb-8">
+              Download technical specifications and datasheets for all components used in the Open-Source Leg system.
+            </p>
+          </div>
+
+          <div className="bg-white/80 p-6 backdrop-blur-sm rounded-xl shadow-2xl overflow-hidden">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-transparent">
+                  <TableHead className="font-semibold text-gray-900">Component</TableHead>
+                  <TableHead className="font-semibold text-gray-900">Description</TableHead>
+                  <TableHead className="font-semibold text-gray-900 text-center">Download</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {datasheets.map((datasheet) => (
+                  <TableRow key={datasheet.id} className="hover:bg-gray-50/50 transition-colors">
+                    <TableCell className="font-medium text-gray-900">
+                      {datasheet.componentName}
+                    </TableCell>
+                    <TableCell className="text-gray-700">
+                      {datasheet.description}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Button
+                        href={datasheet.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="ghost"
+                        size="sm"
+                        className="text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                      >
+                        <DownloadIcon className="w-4 h-4" />
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-gray-500 italic">
+              * All datasheets are provided by their respective manufacturers and are updated periodically
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Contribute Section */}
+      <div className="py-16 sm:py-20 px-4 sm:px-6 bg-[var(--light-blue)]">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-white">
+              <span className="relative font-medium italic">
+                Contribute
+                <svg 
+                  className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                  viewBox="0 0 200 12" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M2 10C60 6 140 6 198 8" 
+                    stroke="var(--light-green)" 
+                    strokeWidth="6" 
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+              {" "}to the Project
+            </h2>
+            
+            <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-3xl mx-auto py-8">
+              Found a better-priced component or have suggestions to improve the Open-Source Leg? Share your discoveries with our community and help make our platform more accessible to everyone.
+            </p>
+
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Button
+                href="https://opensourceleg.discourse.group/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black hover:border-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+              >
+                Share on Forum <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+              </Button>
+              <Button
+                href="mailto:opensourceleg@gmail.com"
+                variant="outline"
+                className="bg-transparent text-white border border-white hover:bg-[var(--light-green)] hover:text-black hover:border-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+              >
+                Contact Us <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
