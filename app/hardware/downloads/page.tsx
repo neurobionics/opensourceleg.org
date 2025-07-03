@@ -2,9 +2,9 @@
 
 import { PageHero } from "@/components/page-hero";
 import { useState } from "react";
-import { Download, ExternalLink, Settings, Zap, ZapOff } from "lucide-react";
+import { Download, ExternalLink, Settings, Zap, ZapOff, Mail, FileText, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "@/components/ui/card";
 import { 
   type DownloadConfig, 
   type JointSelection, 
@@ -14,6 +14,9 @@ import {
   getDownloadInfo,
   defaultConfig
 } from "@/lib/hardware-downloads";
+import InteractiveSystemOverview from "@/components/interactive-system-overview";
+import { defaultComponentUrls } from "@/lib/interactive-system-overview";
+import { vendors, buttonStyles, cardStyles, type VendorButton } from "@/lib/vendors";
 
 export default function Downloads() {
   const [config, setConfig] = useState<DownloadConfig>(defaultConfig);
@@ -24,6 +27,35 @@ export default function Downloads() {
   const renderIcon = (iconType: 'zap' | 'zap-off', iconColor: string) => {
     const className = `w-4 h-4 ${iconColor}`;
     return iconType === 'zap' ? <Zap className={className} /> : <ZapOff className={className} />;
+  };
+
+  // Helper function to render vendor icons
+  const renderVendorIcon = (button: VendorButton, index: number) => {
+    const getIcon = () => {
+      switch (button.type) {
+        case 'quote':
+          return <FileText className="w-4 h-4" />;
+        case 'contact':
+          return <Mail className="w-4 h-4" />;
+        case 'buy':
+          return <ShoppingCart className="w-4 h-4" />;
+      }
+    };
+
+    const positionClass = index === 0 ? 'top-2 right-2' : 'bottom-2 right-2';
+    
+    return (
+      <a
+        key={index}
+        href={button.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`absolute ${positionClass} p-2 border border-white/50 bg-transparent hover:bg-white text-white hover:text-black rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group`}
+        title={button.label}
+      >
+        {getIcon()}
+      </a>
+    );
   };
 
   return (
@@ -164,7 +196,7 @@ export default function Downloads() {
         </div>
 
         {/* Downloadable Files Section */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-xl mx-auto">
           <Card className="h-full bg-white/90 backdrop-blur-sm">
             <CardHeader className="text-center">
               <CardTitle className="text-xl font-semibold italic text-gray-900 flex items-center justify-center gap-2">
@@ -179,7 +211,7 @@ export default function Downloads() {
                   <div className="text-sm text-gray-600 text-center">{downloadInfo.description}</div>
                 </div>
                 
-                <div className="grid md:grid-cols-2 gap-4 pt-4">
+                <div className="flex justify-center pt-4">
                   <Button 
                     href={downloadInfo.cadDownloadUrl}
                     target="_blank"
@@ -188,16 +220,6 @@ export default function Downloads() {
                   >
                     <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                     Download STEP + DWG Files
-                  </Button>
-                  <Button 
-                    href={downloadInfo.quotesDownloadUrl}
-                    variant="outline"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-black border-black hover:bg-[var(--light-blue)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base flex items-center justify-center gap-2"
-                  >
-                    <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                    Example Quotes from a Machine Shop
                   </Button>
                 </div>
               </div>
@@ -208,7 +230,7 @@ export default function Downloads() {
       </div>
 
       <div className="py-16 sm:py-20 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8">
               <span className="relative font-medium italic">
@@ -229,10 +251,81 @@ export default function Downloads() {
                 </svg>
               </span>
             </h2>
-            <p className="text-lg sm:text-xl md:text-xl text-gray-700 leading-relaxed max-w-6xl mx-auto">
-              
+            <p className="text-lg sm:text-xl md:text-xl text-gray-700 leading-relaxed max-w-6xl mx-auto mb-8">
+              Click on any component below to access quotes or supplier information.
             </p>
           </div>
+          
+            {/* Interactive System Overview */}
+           <div className="mb-12">
+             <InteractiveSystemOverview componentUrls={defaultComponentUrls} />
+           </div>
+
+           {/* Vendor-Based BOM Section */}
+           <div className="mb-12">
+             <h3 className="text-2xl sm:text-3xl font-light text-gray-900 mb-6 text-center">
+               <span className="relative font-medium italic">
+                 By Supplier
+               </span>
+             </h3>
+             <p className="text-base text-gray-600 text-center mb-8 max-w-4xl mx-auto">
+               Browse components organized by supplier for streamlined procurement
+             </p>
+             
+             <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+               {vendors.map((vendor) => {
+                 return (
+                   <Card key={vendor.id} className={`${cardStyles.container} relative overflow-hidden shadow-2xl`}>
+                     <CardHeader className={cardStyles.header}>
+                       <CardDescription className={cardStyles.description}>{vendor.description}</CardDescription>
+                       <CardTitle className={cardStyles.price}>
+                         {vendor.priceUSD}
+                       </CardTitle>
+                     </CardHeader>
+                     <CardFooter className={cardStyles.footer}>
+                       <div className="line-clamp-1 flex gap-2 font-medium">
+                         <span className="text-[var(--light-blue)] sm:text-lg">{vendor.name}</span>
+                       </div>
+                       <div className="text-gray-400 text-xs leading-relaxed">
+                         Click icons to view quotes or contact vendor
+                       </div>
+                     </CardFooter>
+                     {vendor.buttons.map((button, index) => renderVendorIcon(button, index))}
+                   </Card>
+                 );
+               })}
+             </div>
+             
+             {/* Pricing Footnote */}
+             <div className="mt-8 text-center">
+               <p className="text-sm text-gray-500 italic">
+                 * All prices shown are estimates for all components required to build one complete Open-Source Leg system
+               </p>
+             </div>
+           </div>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+              <Button 
+                href="https://docs.google.com/spreadsheets/d/1qVSoAV6mRzleJ215N53O3MT-OEZ30ZFP/edit?usp=drive_link&ouid=101976074095932955884&rtpof=true&sd=true"
+                target="_blank"
+                className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-8 py-8 text-base flex items-center justify-center gap-2"
+              >
+                <ExternalLink className="w-4 h-4" />
+                View Complete BOM
+              </Button>
+              <Button 
+                href="https://cad.onshape.com/documents/3520551dd01cf402179e8687/w/87da2fb0a553b44a27833624/e/d9c95c04904f8d6a753006a4"
+                target="_blank"
+                variant="outline"
+                className="text-black border-black hover:bg-[var(--light-blue)] hover:text-black rounded-lg px-8 py-8 text-base flex items-center justify-center gap-2"
+              >
+                <ExternalLink className="w-4 h-4" />
+                View BOM in OnShape
+              </Button>
+            </div>
+            <p className="text-sm text-gray-600 text-center max-w-4xl mx-auto">
+              The Bill of Materials is directly linked to our OnShape CAD models for easy reference and part identification.
+            </p>
         </div>
       </div>
 

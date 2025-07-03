@@ -6,23 +6,23 @@ export interface HardwareCostItem {
 export const hardwareCostData: HardwareCostItem[] = [
   {
     component: "Machined Parts",
-    price: 5640.00
+    price: 5453.00
   },
   {
     component: "Actuators and Batteries", 
-    price: 11220.00
+    price: 12630.00
   },
   {
     component: "Belts",
-    price: 100.00
+    price: 162.00
   },
   {
     component: "Bearings and Fasteners",
-    price: 2422.00
+    price: 1323.00
   },
   {
-    component: "Angular Bearings",
-    price: 1736.00
+    component: "Sensors & Electronics",
+    price: 3532.00
   }
 ]
 

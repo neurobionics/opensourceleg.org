@@ -2,33 +2,26 @@ export type JointSelection = 'knee' | 'ankle' | 'both';
 export type SEASelection = 'with-sea' | 'without-sea';
 
 // Base URLs for cleaner configuration
-const QUOTES_BASE = 'https://opensourceleg.com/osl-webcontent/build/make';
 const GDRIVE_BASE = 'https://drive.google.com';
 
 export const DOWNLOAD_URLS: Record<FolderKey, DownloadUrls> = {
   'osl-w-sea': {
-    cadDownloadUrl: `${GDRIVE_BASE}/drive/folders/1mIMOlmVQX8Xdgtd782tyHEGqLrVzspa6?usp=drive_link`,
-    quotesDownloadUrl: `${QUOTES_BASE}/Great_Light_OSL_V2_1_Knee_and_Ankle_Quote_Q22OSL230.pdf`
+    cadDownloadUrl: `${GDRIVE_BASE}/drive/folders/1mIMOlmVQX8Xdgtd782tyHEGqLrVzspa6?usp=drive_link`
   },
   'osl-wo-sea': {
-    cadDownloadUrl: `${GDRIVE_BASE}/drive/folders/1rE2bNcRiYNKi9Il1L8-3KTZlCniRvrYs?usp=drive_link`,
-    quotesDownloadUrl: `${QUOTES_BASE}/Great_Light_OSL_V2_1_Knee_and_Ankle_Quote_Q22OSL230.pdf`
+    cadDownloadUrl: `${GDRIVE_BASE}/drive/folders/1rE2bNcRiYNKi9Il1L8-3KTZlCniRvrYs?usp=drive_link`
   },
   'knee-w-sea': {
-    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1RmPL3H8yjOe8R1sCtS2mi2Imjb5i6eQP/view?usp=drive_link`,
-    quotesDownloadUrl: `${QUOTES_BASE}/Great_Light_OSL_V2_1_2_Knee_Quote_Q22OSL226_227.pdf`
+    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1RmPL3H8yjOe8R1sCtS2mi2Imjb5i6eQP/view?usp=drive_link`
   },
   'knee-wo-sea': {
-    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1_v9M9H_Q2yBjffZOukBJ9bpz5KsenRK_/view?usp=drive_link`,
-    quotesDownloadUrl: `${QUOTES_BASE}/Great_Light_OSL_V2_1_2_Knee_Quote_Q22OSL226_227.pdf`
+    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1_v9M9H_Q2yBjffZOukBJ9bpz5KsenRK_/view?usp=drive_link`
   },
   'ankle-w-sea': {
-    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1lwjw-H0knNHXrif-XEhnv_7gMxsDlrKk/view?usp=drive_link`,
-    quotesDownloadUrl: `${QUOTES_BASE}/Great_Light_OSL_V2_1_2_Ankle_Quote_Q22OSL228_229-1.pdf`
+    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1lwjw-H0knNHXrif-XEhnv_7gMxsDlrKk/view?usp=drive_link`
   },
   'ankle-wo-sea': {
-    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1LrLjmYephrcWrxV4gxMsumwfNIaIHx_-/view?usp=drive_link`,
-    quotesDownloadUrl: `${QUOTES_BASE}/Great_Light_OSL_V2_1_2_Ankle_Quote_Q22OSL228_229-1.pdf`
+    cadDownloadUrl: `${GDRIVE_BASE}/file/d/1LrLjmYephrcWrxV4gxMsumwfNIaIHx_-/view?usp=drive_link`
   }
 } as const;
 
@@ -56,12 +49,10 @@ export interface DownloadInfo {
   description: string;
   folder: string;
   cadDownloadUrl: string;
-  quotesDownloadUrl: string;
 }
 
 export interface DownloadUrls {
   cadDownloadUrl: string;
-  quotesDownloadUrl: string;
 }
 
 export type FolderKey = 'osl-w-sea' | 'osl-wo-sea' | 'knee-w-sea' | 'knee-wo-sea' | 'ankle-w-sea' | 'ankle-wo-sea';
@@ -118,8 +109,7 @@ export const getDownloadInfo = (config: DownloadConfig): DownloadInfo => {
     title: `${jointLabel} ${seaLabel}`,
     description: `${systemDesc} ${springDesc}`,
     folder,
-    cadDownloadUrl: urls.cadDownloadUrl,
-    quotesDownloadUrl: urls.quotesDownloadUrl
+    cadDownloadUrl: urls.cadDownloadUrl
   };
 };
 

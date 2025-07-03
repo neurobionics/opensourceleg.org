@@ -123,7 +123,7 @@ export default function Hardware() {
                   <DollarSign className="w-5 h-5" />
                 </h3>
                 <p className="text-sm text-white/70 leading-relaxed text-justify">
-                  The OSL is a cost-effective solution, ranging from approximately $10,500 to $21,000, depending 
+                  The OSL is a cost-effective solution, ranging from approximately $10,500 to $23,000, depending 
                   on degrees of freedom and sensing options. This stands in stark contrast to commercial powered 
                   prostheses, which can cost up to $100,000.
                 </p>

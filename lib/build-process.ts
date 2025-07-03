@@ -50,7 +50,7 @@ export const diyBenefits = [
   "Develop troubleshooting skills for any maintenance or repairs",
   "Contribute improvements and modifications back to the community",
   "Use any custom motors, sensors, or components you prefer",
-  "Significant cost savings: $21,000 vs $55,000+"
+  "Significant cost savings: $23,000 vs $55,000+"
 ]
 
 export const mermaidDiagram = `
