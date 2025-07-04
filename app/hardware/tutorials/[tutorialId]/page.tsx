@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { ArrowLeft, Play, CheckCircle, Clock, Users, Wrench, Package, ExternalLink, Eye } from "lucide-react";
+import { ArrowLeft, Play, CheckCircle, Clock, Wrench, Package, ExternalLink, Eye, Settings } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { tutorialSections } from "@/lib/hardware-tutorials";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -125,7 +125,7 @@ export default function TutorialOverview() {
             <div className="flex gap-3 justify-between">
               <Link
                 href={`/hardware/tutorials/${tutorialId}/0`}
-                className="bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-3 font-medium transition-colors"
+                className="bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-6 py-3 font-medium transition-colors"
               >
                 {progress && progress.completedSteps > 0 ? "Continue Tutorial" : "Start Tutorial"}
               </Link>
@@ -168,7 +168,7 @@ export default function TutorialOverview() {
                             {step.title}
                           </h3>
                           {progress && index < progress.completedSteps && (
-                            <span className="px-2 py-1 bg-[var(--light-blue)] text-[var(--light-green)] text-xs rounded">
+                            <span className="px-2 py-1 bg-[var(--light-green)] text-[var(--black)] text-xs rounded-md border border-black">
                               Completed
                             </span>
                           )}
@@ -191,8 +191,8 @@ export default function TutorialOverview() {
                         )}
                         {step.instructions.length > 0 && (
                           <div className="flex items-center gap-1">
-                            <Users className="w-4 h-4" />
-                            {step.instructions.length} instructions
+                            <Settings className="w-4 h-4" />
+                            {step.instructions.length} steps
                           </div>
                         )}
                       </div>

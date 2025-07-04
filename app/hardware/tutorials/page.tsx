@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ExternalLink, CheckCircle, Clock, AlertCircle, ArrowRight, PlayIcon } from "lucide-react";
+import { ExternalLink, CheckCircle, Clock, AlertCircle, ArrowRight, PlayIcon, MessageCircle, ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { tutorialSections } from "@/lib/hardware-tutorials";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 type TutorialProgress = {
   [tutorialId: string]: {
@@ -123,7 +124,7 @@ export default function Tutorials() {
         
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="grid gap-8 lg:grid-cols-2">
-            <div className="bg-[var(--white)] rounded-lg shadow-md p-6 flex flex-col justify-between h-full">
+            <div className="bg-[var(--white)] rounded-lg shadow-md border border-black p-6 flex flex-col justify-between h-full">
               <h2 className="text-xl font-light mb-4 text-gray-900">
                 Overall Progress
               </h2>
@@ -131,7 +132,7 @@ export default function Tutorials() {
                 <div className="flex-1">
                   <div className="bg-gray-200 rounded-full h-3">
                     <div 
-                      className="bg-[var(--light-blue)] h-3 rounded-full transition-all duration-300"
+                      className="bg-[var(--black)] h-3 rounded-full transition-all duration-300"
                       style={{ width: `${getTotalProgress()}%` }}
                     />
                   </div>
@@ -147,11 +148,11 @@ export default function Tutorials() {
 
             {/* Next Step Card */}
             {nextStep && (
-              <div className="bg-[var(--white)] rounded-lg shadow-md p-6 border-l-4 border-[var(--light-green)]">
+              <div className="bg-[var(--white)] border border-black rounded-lg shadow-md p-6">
                 <div className="flex flex-col justify-between h-full">
                   <div className="flex-1">
-                    <p className="text-gray-600 italic mb-3">
-                      {nextStep.tutorial.title} - Step {nextStep.stepId + 1}: {nextStep.step.title}
+                    <p className="text-xl font-light mb-4 text-gray-900">
+                      {nextStep.tutorial.title}: {nextStep.step.title}
                     </p>
                   </div>
                   <div className="mt-4">
@@ -272,6 +273,57 @@ export default function Tutorials() {
               );
             })}
           </div>
+
+      {/* Contribute Section */}
+      <div className="py-16 sm:py-20 px-4 sm:px-6 mt-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-light text-black">
+              <span className="relative font-medium italic">
+                Contribute
+                <svg 
+                  className="absolute -bottom-1 left-0 w-full h-2 sm:h-3" 
+                  viewBox="0 0 200 12" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path 
+                    d="M2 10C60 6 140 6 198 8" 
+                    stroke="var(--light-green)" 
+                    strokeWidth="6" 
+                    strokeLinecap="round"
+                    fill="none"
+                  />
+                </svg>
+              </span>
+              {" "}to the Project
+            </h2>
+            
+            <p className="text-base sm:text-lg md:text-xl text-black/90 leading-relaxed max-w-3xl mx-auto py-8">
+            If you have any suggestions or feedback to improve these tutorials, please share them on the forum or contact us directly.
+            </p>
+
+            {/* Action buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Button
+                href="https://opensourceleg.discourse.group/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[var(--light-green)] text-black border border-black hover:bg-[var(--light-blue)] hover:text-white hover:border-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+              >
+                Share on Forum <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+              </Button>
+              <Button
+                href="mailto:opensourceleg@gmail.com"
+                variant="outline"
+                className="bg-transparent text-black border border-black hover:bg-[var(--light-blue)] hover:text-white hover:border-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
+              >
+                Contact Us <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>          
         </div>
       </div>
     </div>

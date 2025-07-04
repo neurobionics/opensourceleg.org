@@ -2,9 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle, Package, Wrench, Users, AlertTriangle, StickyNote } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle, Package, Wrench, AlertTriangle, Settings } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { tutorialSections } from "@/lib/hardware-tutorials";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";
 
 type TutorialProgress = {
@@ -88,9 +90,6 @@ export default function TutorialStep() {
     );
   }
 
-  const progress = tutorialProgress[tutorialId];
-  const progressPercentage = progress ? Math.round(((stepId + 1) / progress.totalSteps) * 100) : 0;
-
   return (
     <div className="min-h-screen pt-12">
       <PageHero 
@@ -100,37 +99,20 @@ export default function TutorialStep() {
             <span className="font-bold italic">Step {stepId + 1}</span>
           </>
         }
+        primaryButton={{
+          href: `/hardware/tutorials/${tutorialId}`,
+          text: `Back to ${tutorial.title}`,
+          icon: <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />,     
+        }}
         description={step.title}
         className="pb-8"
       />
 
-      <div className="px-4 sm:px-6 lg:px-12 xl:px-20 py-8">
+      <div className="py-24 sm:py-20 px-4 sm:px-6 lg:px-12 xl:px-20 sm:my-10">
         <div className="max-w-6xl mx-auto">
-          {/* Navigation */}
-          <div className="flex items-center justify-between mb-8">
-            <Link
-              href={`/hardware/tutorials/${tutorialId}`}
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to {tutorial.title}
-            </Link>
-            
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <span>Step {stepId + 1} of {tutorial.steps.length}</span>
-              <div className="w-32 bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-[var(--light-green)] h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${progressPercentage}%` }}
-                />
-              </div>
-            </div>
-          </div>
-
           {/* Video Section */}
           {step.videoUrl && (
-            <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
-              <h2 className="text-xl font-medium text-gray-900 mb-4">Video Tutorial</h2>
+            <div className="rounded-lg border border-black shadow-xl mb-8">
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
                 <iframe
                   src={step.videoUrl}
@@ -143,95 +125,141 @@ export default function TutorialStep() {
             </div>
           )}
 
-          <div className="grid gap-8 lg:grid-cols-2">
+          <div className="grid gap-0 border border-black rounded-lg overflow-hidden">
             {/* Parts Required */}
             {step.partsRequired.length > 0 && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Package className="w-5 h-5 text-gray-600" />
-                  <h2 className="text-xl font-medium text-gray-900">Parts Required</h2>
-                </div>
-                <div className="space-y-3">
-                  {step.partsRequired.map((part, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <div className="flex-1">
-                        <h3 className="font-medium text-gray-900">{part.name}</h3>
-                        <p className="text-sm text-gray-600">Quantity: {part.quantity}</p>
-                      </div>
-                      {(part as PartWithOptionalUrl).url && (
-                        <Link
-                          href={(part as PartWithOptionalUrl).url!}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800 p-2"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </Link>
-                      )}
+              <Accordion type="single" collapsible className="w-full overflow-hidden">
+                <AccordionItem value="parts" className="">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                    <div className="flex items-center gap-2">
+                      <Package className="w-5 h-5 text-gray-600" />
+                      <h2 className="text-xl font-medium text-gray-900">Parts Required</h2>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="bg-transparent">
+                          <TableHead className="font-semibold text-gray-900">Part Name</TableHead>
+                          <TableHead className="font-semibold text-gray-900 text-center">Quantity</TableHead>
+                          <TableHead className="font-semibold text-gray-900 text-center w-16">Link</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {step.partsRequired.map((part, index) => (
+                          <TableRow key={index} className="hover:bg-gray-50/50 transition-colors">
+                            <TableCell className="font-medium text-gray-900">{part.name}</TableCell>
+                            <TableCell className="text-center text-gray-700">{part.quantity}</TableCell>
+                            <TableCell className="text-center">
+                              {(part as PartWithOptionalUrl).url && (
+                                <Link
+                                  href={(part as PartWithOptionalUrl).url!}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 rounded-lg p-2 text-sm font-medium transition-colors inline-block"
+                                  title="View Part"
+                                >
+                                  <ExternalLink className="w-4 h-4" />
+                                </Link>
+                              )}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             )}
 
             {/* Tools Required */}
             {step.toolsRequired.length > 0 && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Wrench className="w-5 h-5 text-gray-600" />
-                  <h2 className="text-xl font-medium text-gray-900">Tools Required</h2>
-                </div>
-                <div className="space-y-2">
-                  {step.toolsRequired.map((tool, index) => (
-                    <div key={index} className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
-                      <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                      <span className="text-gray-900">{typeof tool === 'string' ? tool : tool.name}</span>
+              <Accordion type="single" collapsible className="w-full overflow-hidden">
+                <AccordionItem value="tools" className="">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                    <div className="flex items-center gap-2">
+                      <Wrench className="w-5 h-5 text-gray-600" />
+                      <h2 className="text-xl font-medium text-gray-900">Tools Required</h2>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="bg-transparent">
+                          <TableHead className="font-semibold text-gray-900">Tool Name</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {step.toolsRequired.map((tool, index) => (
+                          <TableRow key={index} className="hover:bg-gray-50/50 transition-colors">
+                            <TableCell className="font-medium text-gray-900">
+                              {typeof tool === 'string' ? tool : tool.name}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             )}
 
             {/* Screws Required */}
             {step.screwsRequired.length > 0 && (
-              <div className="bg-white rounded-lg border border-gray-200 p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Package className="w-5 h-5 text-gray-600" />
-                  <h2 className="text-xl font-medium text-gray-900">Screws Required</h2>
-                </div>
-                <div className="space-y-3">
-                  {step.screwsRequired.map((screw, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                      <div className="flex-1">
-                        <h3 className="font-medium text-gray-900">{screw.name}</h3>
-                        <p className="text-sm text-gray-600">Quantity: {screw.quantity}</p>
-                      </div>
-                      {(screw as ScrewWithOptionalUrl).url && (
-                        <Link
-                          href={(screw as ScrewWithOptionalUrl).url!}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800 p-2"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </Link>
-                      )}
+              <Accordion type="single" collapsible className="w-full overflow-hidden">
+                <AccordionItem value="screws" className="">
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline">
+                    <div className="flex items-center gap-2">
+                      <Package className="w-5 h-5 text-gray-600" />
+                      <h2 className="text-xl font-medium text-gray-900">Screws Required</h2>
                     </div>
-                  ))}
-                </div>
-              </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-6">
+                    <Table>
+                      <TableHeader>
+                        <TableRow className="bg-transparent">
+                          <TableHead className="font-semibold text-gray-900">Screw Name</TableHead>
+                          <TableHead className="font-semibold text-gray-900 text-center">Quantity</TableHead>
+                          <TableHead className="font-semibold text-gray-900 text-center w-16">Link</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {step.screwsRequired.map((screw, index) => (
+                          <TableRow key={index} className="hover:bg-gray-50/50 transition-colors">
+                            <TableCell className="font-medium text-gray-900">{screw.name}</TableCell>
+                            <TableCell className="text-center text-gray-700">{screw.quantity}</TableCell>
+                            <TableCell className="text-center">
+                              {(screw as ScrewWithOptionalUrl).url && (
+                                <Link
+                                  href={(screw as ScrewWithOptionalUrl).url!}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-gray-600 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400 rounded-lg p-2 text-sm font-medium transition-colors inline-block"
+                                  title="View Screw"
+                                >
+                                  <ExternalLink className="w-4 h-4" />
+                                </Link>
+                              )}
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             )}
           </div>
 
           {/* Instructions */}
-          <div className="bg-white rounded-lg border border-gray-200 p-6 mt-8">
+          <div className="rounded-lg border border-black p-6 mt-8 shadow-2xl">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="w-5 h-5 text-gray-600" />
+              <Settings className="w-5 h-5 text-gray-600" />
               <h2 className="text-xl font-medium text-gray-900">Instructions</h2>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-2">
               {step.instructions.map((instruction, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 bg-gray-50 rounded-lg">
+                <div key={index} className="flex items-start gap-3 p-4">
                   <div className="flex-shrink-0 w-6 h-6 bg-[var(--light-green)] text-black rounded-full flex items-center justify-center text-sm font-medium">
                     {index + 1}
                   </div>
@@ -243,16 +271,18 @@ export default function TutorialStep() {
 
           {/* Notes */}
           {step.notes && step.notes.length > 0 && (
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mt-8">
+            <div className="border border-black rounded-lg p-6 mt-8">
               <div className="flex items-center gap-2 mb-4">
-                <StickyNote className="w-5 h-5 text-amber-600" />
-                <h2 className="text-xl font-medium text-amber-900">Important Notes</h2>
+                <AlertTriangle className="w-5 h-5 text-gray-600" />
+                <h2 className="text-xl font-medium text-gray-900">Important Notes</h2>
               </div>
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {step.notes.map((note, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                    <p className="text-amber-900 leading-relaxed">{note}</p>
+                  <div key={index} className="flex items-start gap-3 p-4">
+                    <div className="flex-shrink-0 w-6 h-6 bg-[var(--light-blue)] text-black rounded-full flex items-center justify-center text-sm font-medium">
+                      {index + 1}
+                    </div>
+                    <p className="text-black leading-relaxed">{note}</p>
                   </div>
                 ))}
               </div>
@@ -265,7 +295,7 @@ export default function TutorialStep() {
               {stepId > 0 && (
                 <button
                   onClick={() => navigateToStep(stepId - 1)}
-                  className="flex items-center gap-2 text-black border border-black hover:bg-[var(--light-blue)] hover:text-black rounded-lg px-6 py-3 font-medium transition-colors"
+                  className="flex items-center gap-2 text-black border border-black hover:bg-[var(--light-blue)] hover:text-black rounded-lg px-6 py-3 font-medium transition-colors cursor-pointer"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   Previous Step
@@ -277,13 +307,13 @@ export default function TutorialStep() {
               {!isStepCompleted ? (
                 <button
                   onClick={markStepCompleted}
-                  className="flex items-center gap-2 bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-3 font-medium transition-colors"
+                  className="flex items-center gap-2 bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-3 font-medium transition-colors cursor-pointer"
                 >
                   <CheckCircle className="w-4 h-4" />
                   Mark as Complete
                 </button>
               ) : (
-                <div className="flex items-center gap-2 text-[var(--light-green)]">
+                <div className="flex items-center gap-2 text-[var(--black)]">
                   <CheckCircle className="w-4 h-4" />
                   <span className="font-medium">Completed</span>
                 </div>
@@ -292,7 +322,7 @@ export default function TutorialStep() {
               {stepId < tutorial.steps.length - 1 && (
                 <button
                   onClick={() => navigateToStep(stepId + 1)}
-                  className="flex items-center gap-2 bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-3 font-medium transition-colors"
+                  className="flex items-center gap-2 bg-[var(--light-green)] text-black border hover:bg-[var(--light-blue)] rounded-lg px-6 py-3 font-medium transition-colors cursor-pointer"
                 >
                   Next Step
                   <ArrowRight className="w-4 h-4" />
