@@ -18,24 +18,24 @@ export default function Footer() {
       title: "Software", 
       links: [
         { title: "Overview", href: "/software" },
-        { title: "Downloads", href: "/software/downloads" },
-        { title: "Tutorials", href: "/software/tutorials" },
+        { title: "API Documentation", href: "https://neurobionics.github.io/opensourceleg/" },
+        { title: "Tutorials", href: "#" },
       ]
     },
     {
-      title: "Electronics",
+      title: "Research",
       links: [
-        { title: "Overview", href: "/electronics" },
-        { title: "Downloads", href: "/electronics/downloads" },
-        { title: "Tutorials", href: "/electronics/tutorials" },
+        { title: "Overview", href: "/research" },
+        { title: "Controllers", href: "/research/controllers" },
+        { title: "Datasets", href: "#" },
       ]
     },
     {
       title: "Community",
       links: [
         { title: "Forum", href: "https://opensourceleg.discourse.group/" },
-        { title: "Governance", href: "/governance" },
-        { title: "Code of Conduct", href: "/code-of-conduct" },
+        { title: "Contributing", href: "https://neurobionics.github.io/opensourceleg/contributing/" },
+        { title: "Contact Us", href: "mailto:opensourceleg@gmail.com" },
       ]
     }
   ]

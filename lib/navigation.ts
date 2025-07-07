@@ -64,14 +64,14 @@ export const navigationConfig: NavigationSection[] = [
     },
     items: [
       {
-        title: "Downloads",
-        href: "/software/downloads",
-        description: "One stop shop for all things software"
+        title: "API Documentation",
+        href: "https://neurobionics.github.io/opensourceleg/",
+        description: "Documentation for the opensourceleg SDK"
       },
       {
         title: "Tutorials",
-        href: "/software/tutorials",
-        description: "Step by step guides to use our software"
+        href: "#",
+        description: "Coming soon :)"
       }
     ]
   },
@@ -107,13 +107,13 @@ export const navigationConfig: NavigationSection[] = [
     items: [
       {
         title: "Downloadable Controllers",
-        href: "/research/downloads",
-        description: "Controllers to try out on the Open-Source Leg"
+        href: "/research/controllers",
+        description: "Controllers to try out on the Open-Source Leg hardware"
       },
       {
         title: "Dataset",
-        href: "/research/dataset",
-        description: "Coming soon..."
+        href: "#",
+        description: "Coming soon :)"
       }
     ]
   },

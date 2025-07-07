@@ -486,7 +486,7 @@ export default function Software() {
                   Contributing Guidelines <Github className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
                 <Button
-                  href="https://github.com/neurobionics/opensourceleg/discussions"
+                  href="https://opensourceleg.discourse.group/"
                   target="_blank"
                   rel="noopener noreferrer"
                   variant="outline"
