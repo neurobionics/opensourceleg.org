@@ -70,4 +70,5 @@ export const specNotes = [
   "Minimum build height is measured from the ground to the top of the knee pyramid with a variflex foot.",
   "Peak instantaneous and continuous torque values are calculated based on Dephy's actuator specifications at 25A and 5A respectively.",
   "Series elasticity can be customized using spring disks with different stiffness values.",
+  "Calculations utilize our latest custom actuators, which feature an improved torque constant compared to pre-2024 models (0.112 Nm/A)."
 ] 
