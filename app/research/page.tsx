@@ -53,6 +53,7 @@ export default async function ResearchPage() {
       <div id="insights-section" className="py-16 px-4 sm:px-6 mt-8 bg-gray-50">
         <AnalyticsDashboard analytics={analytics} />
       </div>
+      
         {/* Join Research Community Section */}
         <div className="bg-[var(--black)] py-16 sm:py-20 px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
