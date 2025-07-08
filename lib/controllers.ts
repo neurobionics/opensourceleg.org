@@ -30,7 +30,7 @@ export const controllers: Controller[] = [
       short: "Our Locomotor Control Systems Lab has pioneered a new approach utilizing a phase variable and continuous impedance parameter functions in lieu of a finite state machine. We use convex optimization to automatically identify optimal impedance parameter functions, resulting in biomimetic joint kinematics and kinetics without manual tuning.",
       long: "Our controller allows a user to sit, stand, and walk across level ground, and it automatically handles switching between walking and sit/stand modes. Potential uses of this software release include but are not limited to: using our controller as a comparison point for a novel walking controller; using our controller as a component in a larger, more complex controller; using our controller when researching other related topics, such as balance or metabolic cost."
     },
-    image: "/sit_stand_walk.jpg",
+    image: "/research/kevin-controller.webp",
     date: "Dec 20th, 2023",
     license: "Polyform Non-Commercial",
     citation: "T. K. Best, C. G. Welker, E. J. Rouse and R. D. Gregg, 'Data-Driven Variable Impedance Control of a Powered Knee–Ankle Prosthesis for Adaptive Speed and Incline Walking,' in IEEE Transactions on Robotics, vol. 39, no. 3, pp. 2151-2169, June 2023, doi: 10.1109/TRO.2022.3226887",
@@ -40,7 +40,7 @@ export const controllers: Controller[] = [
       line2: "Locomotor Control Systems Laboratory"
     },
     url: "https://available-inventions.umich.edu/product/data-driven-variable-impedance-control-of-a-powered-knee-ankle-prosthesis-for-variable-activities",
-    tags: ["Variable Impedance", "Walking", "Sitting", "Standing", "Phase Variable", "Convex Optimization"],
+    tags: ["Variable Impedance", "Walking", "Sitting", "Standing", "Phase Variable"],
     institution: "University of Michigan",
     lab: "Locomotor Control Systems Lab"
   },
@@ -52,7 +52,7 @@ export const controllers: Controller[] = [
       short: "Out of the ROAM Lab at the University of Notre Dame, Ryan Posh has designed and compared multiple novel control approaches for robotic lower-limb prostheses. Among these is Hybrid Volitional Control, which makes use of a direct myoelectric controller as a subcomponent. This myoelectric control component, available here for both knee-ankle and ankle-only configurations, allows users to control the Open-Source Leg with any agonist-antagonist muscle pair (e.g. the gastrocnemius and tibialis anterior).",
       long: "This component has been shown to enable a wide variety of user-directed activities, including biomimetic walking, standing on tip-toes, and tapping the foot, leading to high overall satisfaction for individuals with amputation [citation below]. Potential uses of this software release include but are not limited to: using our controller as a comparison point for a novel walking controller; using our controller as a component in a larger, more complex controller like Hybrid Volitional Control; using our controller when researching other related topics, such as human-robot interaction, prosthesis user preference, or fatigue. This software may also be used for other Raspberry Pi projects that would like to incorporate low-cost electromyography."
     },
-    image: "/myoelectric.png",
+    image: "/research/ryan-controller.webp",
     date: "May 12th, 2024",
     license: "Lesser General Public License (LGPL) v2.1",
     citation: "R. R. Posh, J. P. Schmiedeler, and P. M. Wensing, \"Finite-state impedance and direct myoelectric control for robotic ankle prostheses: Comparing their performance and exploring their combination,\" IEEE T Neur Sys Reh, vol. 31, pp. 2778–2788, 2023.",

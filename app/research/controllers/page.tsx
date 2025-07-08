@@ -1,8 +1,9 @@
-import { ArrowUpRight, ExternalLink } from "lucide-react"
+import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import { ControllersPageClient } from "./controllers-client"
 import { controllers } from "@/lib/controllers"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export const metadata = {
   title: "Research Controllers - OpenSourceLeg",
@@ -33,14 +34,14 @@ export default async function ControllersPage() {
       />
 
       {/* Controllers Section */}
-      <div id="controllers-section" className="p-4 sm:px-6">
+      <div id="controllers-section" className="py-4 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <ControllersPageClient controllers={controllers} />
         </div>
       </div>
 
       {/* Join Controller Community Section */}
-      <div className="bg-[var(--black)] py-16 sm:py-20 px-4 sm:px-6 mt-16">
+      <div className="bg-[var(--black)] py-16 sm:py-20 px-4 sm:px-6 mt-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -61,7 +62,7 @@ export default async function ControllersPage() {
                   variant="outline"
                   className="bg-[var(--light-green)] text-black border border-white hover:bg-[var(--light-blue)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                 >
-                  Software <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                  Software <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                 </Button>
                 <Button
                   href="https://opensourceleg.discourse.group/"
@@ -77,9 +78,11 @@ export default async function ControllersPage() {
 
             {/* Right Content - Image */}
             <div className="relative">
-              <img
+              <Image
                 src="/controllers.webp"
                 alt="Controllers in development"
+                width={800}
+                height={600}
                 className="w-full h-auto rounded-lg border border-white/20"
               />
             </div>

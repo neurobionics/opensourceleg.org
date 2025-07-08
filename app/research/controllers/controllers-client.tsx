@@ -16,6 +16,7 @@ import { formatControllerAuthors, getControllerDownloadUrl, type Controller } fr
 import { ExternalLink, X, Search, Download, Info } from "lucide-react"
 import Link from "next/link"
 import Fuse from 'fuse.js'
+import Image from "next/image"
 
 interface ControllersPageClientProps {
   controllers: Controller[]
@@ -310,7 +311,7 @@ export function ControllersPageClient({ controllers }: ControllersPageClientProp
           {/* Contribution CTA */}
           <div className="mt-6 text-center p-4 bg-[var(--light-blue)] rounded-lg">
             <p className="text-sm text-white mb-3">
-              Have a controller you'd like to share with the community?
+              Have a controller you&apos;d like to share with the community?
             </p>
             <Link
               href={process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "#"}
@@ -341,59 +342,55 @@ export function ControllersPageClient({ controllers }: ControllersPageClientProp
               </div>
               
               <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <img
+                <div className="flex flex-col justify-between">
+                  <Image
                     src={selectedController.image}
                     alt={selectedController.title}
-                    className="w-full h-48 object-cover rounded-lg mb-4"
+                    width={400}
+                    height={400}
+                    className="w-full h-2/3 object-cover rounded-lg mb-4"
                   />
                   
-                  <div className="space-y-3">
-                    <div>
-                      <h4 className="font-medium text-gray-900">Authors</h4>
-                      <p className="text-sm text-gray-600">{selectedController.authors}</p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-gray-900">Institution</h4>
-                      <p className="text-sm text-gray-600">{selectedController.institution}</p>
-                      <p className="text-sm text-gray-600">{selectedController.lab}</p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-gray-900">License</h4>
-                      <p className="text-sm text-gray-600">{selectedController.license}</p>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-medium text-gray-900">Tags</h4>
-                      <div className="flex flex-wrap gap-1 mt-1">
-                        {selectedController.tags.map((tag, index) => (
-                          <Badge key={index} variant="secondary" className="text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="space-y-4">
+
                   <div>
-                    <h4 className="font-medium text-gray-900 mb-2">Description</h4>
-                    <p className="text-sm text-gray-600 mb-3">{selectedController.description.short}</p>
-                    <p className="text-sm text-gray-600">{selectedController.description.long}</p>
+                    <h4 className="font-medium text-gray-900 italic">Authors</h4>
+                    <p className="text-sm text-gray-600">{selectedController.authors}</p>
                   </div>
                   
                   <div>
-                    <h4 className="font-medium text-gray-900 mb-2">Citation</h4>
+                    <h4 className="font-medium text-gray-900 italic">License</h4>
+                    <p className="text-sm text-gray-600">{selectedController.license}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-gray-900 italic">Tags</h4>
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {selectedController.tags.map((tag, index) => (
+                        <Badge key={index} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+                
+                <div className="space-y-4 flex flex-col justify-between">
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-2 italic">Description</h4>
+                    <p className="text-sm text-gray-600 mb-3 text-justify">{selectedController.description.short}</p>
+                    <p className="text-sm text-gray-600 text-justify">{selectedController.description.long}</p>
+                  </div>
+                  
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-2 italic">Citation</h4>
                     <p className="text-xs text-gray-600 bg-gray-50 p-3 rounded border font-mono">
                       {selectedController.citation}
                     </p>
-                  </div>
+                  </div>               
                   
                   <div>
-                    <h4 className="font-medium text-gray-900 mb-2">Copyright</h4>
+                    <h4 className="font-medium text-gray-900 mb-2 italic">Copyright</h4>
                     <p className="text-xs text-gray-600">
                       © {selectedController.copyright.year} {selectedController.copyright.line1}
                       <br />
