@@ -446,84 +446,93 @@ export default function About() {
            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
              {/* Software License */}
              <div className="bg-white rounded-2xl p-8 border border-black">
-               <div className="flex items-center mb-6">
-                 <Code className="w-8 h-8 text-[var(--light-blue)] mr-3" />
-                 <h3 className="text-2xl font-semibold text-gray-900">Software</h3>
+               <div className="flex items-center justify-between mb-6">
+                 <div className="flex items-center">
+                   <Code className="w-8 h-8 text-[var(--black)] mr-3" />
+                   <h3 className="text-xl font-semibold text-gray-900">Software</h3>
+                 </div>
+                 <h4 className="font-bold text-2xl text-gray-900 italic">LGPL v2.1</h4>
                </div>
-                               <div className="mb-6">
-                  <h4 className="font-bold text-lg text-gray-900 mb-2">LGPL v2.1</h4>
-                  <p className="text-sm text-gray-600 mb-4">
+                <div className="mb-6">
+                  <p className="text-base text-gray-600 mb-4">
                     User-focused weak copyleft license that protects software freedom while allowing commercial applications.
                   </p>
                 </div>
                                 <div className="space-y-3 mb-6">
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Free to use for any purpose</p>
+                     <p className="text-base text-gray-700">Free to use for any purpose</p>
                    </div>
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Build commercial software using our libraries</p>
+                     <p className="text-base text-gray-700">Build commercial software using our libraries</p>
                    </div>
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Modifications to OSL software must remain LGPL</p>
+                     <p className="text-base text-gray-700">Modifications to OSL software must remain LGPL</p>
                    </div>
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Clear separation between OSL and your application</p>
+                     <p className="text-base text-gray-700">Clear separation between OSL and your application</p>
                    </div>
                  </div>
-                 <Button
-                   href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="w-full bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
-                 >
-                   <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                   Read Full License
-                 </Button>
+
+                 <div className="flex justify-center mt-12">
+                  <Button
+                    href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                    Read Full License
+                  </Button>
+                 </div>
              </div>
 
              {/* Hardware License */}
              <div className="bg-white rounded-2xl p-8 border border-black">
-               <div className="flex items-center mb-6">
-                 <Settings className="w-8 h-8 text-[var(--light-blue)] mr-3" />
-                 <h3 className="text-2xl font-semibold text-gray-900">Hardware</h3>
+               <div className="flex items-center justify-between mb-6">
+                 <div className="flex items-center">
+                   <Settings className="w-8 h-8 text-[var(--black)] mr-3" />
+                   <h3 className="text-xl font-semibold text-gray-900">Hardware</h3>
+                 </div>
+                 <h4 className="font-bold text-2xl text-gray-900 italic">CERN-OHL-P v2.0</h4>
                </div>
                <div className="mb-6">
-                 <h4 className="font-bold text-lg text-gray-900 mb-2">CERN-OHL-P v2.0</h4>
-                 <p className="text-sm text-gray-600 mb-4">
+                 <p className="text-base text-gray-600 mb-4">
                    Permissive open hardware license providing flexibility for commercial use without sharing obligations.
                  </p>
                </div>
                                 <div className="space-y-3 mb-6">
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Free to use, modify, and manufacture</p>
+                     <p className="text-base text-gray-700">Free to use, modify, and manufacture</p>
                    </div>
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Commercial distribution without sharing requirements</p>
+                     <p className="text-base text-gray-700">Commercial distribution without sharing requirements</p>
                    </div>
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Keep acknowledgments and disclaimers intact</p>
+                     <p className="text-base text-gray-700">Keep acknowledgments and disclaimers intact</p>
                    </div>
                    <div className="flex items-start gap-2">
                      <div className="w-2 h-2 bg-[var(--light-green)] rounded-full mt-2 flex-shrink-0"></div>
-                     <p className="text-sm text-gray-700">Clearly identify and document modifications</p>
+                     <p className="text-base text-gray-700">Clearly identify and document modifications</p>
                    </div>
                  </div>
-                 <Button
-                   href="https://ohwr.org/cern_ohl_p_v2.txt"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="w-full bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
-                 >
-                   <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
-                   Read Full License
-                 </Button>
+                 <div className="flex justify-center mt-12">
+                  <Button
+                    href="https://ohwr.org/cern_ohl_p_v2.txt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[var(--light-blue)] text-white border hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-base sm:text-lg flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5" />
+                    Read Full License
+                  </Button>
+                 </div>
              </div>
            </div>
 
@@ -611,7 +620,7 @@ export default function About() {
             </div>
           </div>
 
-                    {/* Contributors */}
+          {/* Contributors */}
           <div>
               <h3 className="text-2xl sm:text-3xl text-center mb-12">Our Amazing <span className="relative font-bold italic">
                Contributors
@@ -703,66 +712,45 @@ export default function About() {
                         fill="none"
                       />
                     </svg>
-                  </span> the community!
+                  </span> the team!
                 </h2>
                 
                 <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
-                  Join our wonderful community of students, engineers, and researchers driving groundbreaking advancements in prosthetics.
+                  All kinds of contributions are welcome and much appreciated! Whether you're fixing bugs, adding features, improving documentation, or sharing your research — we'd love to have you on board.
                 </p>
 
                 {/* Action buttons */}
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <Button
-                    href="https://opensourceleg.discourse.group/"
+                    href="https://neurobionics.github.io/opensourceleg/contributing/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white text-[var(--light-blue)] border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
-                    Forum <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                    Contributing <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
                   <Button
-                    href="/hardware"
+                    href="https://github.com/neurobionics/opensourceleg"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     variant="outline"
                     className="bg-transparent text-white border border-white hover:bg-[var(--light-green)] hover:text-black rounded-md px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base font-medium"
                   >
-                    Get Started <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
+                    View on GitHub <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
                   </Button>
                 </div>
               </div>
 
+
+              {/* Right Content - Image */}
               <div className="relative">
-                {/* Desktop Layout - Absolute Positioned */}
-                <div className="hidden lg:block relative h-80 lg:h-88 xl:h-96">
-                  {/* Image 1 - Top Left */}
-                  <div className="absolute top-0 left-0 w-60 lg:w-72 xl:w-80 h-40 lg:h-48 xl:h-64 rounded-2xl overflow-hidden shadow-lg transform -rotate-2 border-4 border-[var(--white)]">
-                    <Image 
-                      src="/community/ssnr.jpg" 
-                      alt="Community member working on prosthetics" 
-                      fill 
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  {/* Image 2 - Center Right */}
-                  <div className="absolute top-12 lg:top-16 right-0 w-48 lg:w-56 xl:w-64 h-32 lg:h-40 xl:h-48 rounded-2xl overflow-hidden shadow-lg transform rotate-4 border-4 border-[var(--white)]">
-                    <Image 
-                      src="/community/iros.webp" 
-                      alt="Research team collaboration" 
-                      fill 
-                      className="object-cover"
-                    />
-                  </div>
-                  
-                  {/* Image 3 - Bottom Left */}
-                  <div className="absolute -bottom-4 left-44 lg:left-52 xl:left-60 w-36 lg:w-40 xl:w-48 h-24 lg:h-28 xl:h-32 rounded-2xl overflow-hidden shadow-lg transform rotate-2 border-4 border-[var(--white)]">
-                    <Image 
-                      src="/community/fsu.jpg" 
-                      alt="Open source hardware development" 
-                      fill 
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
+                <Image
+                  src="/contribute.webp"
+                  alt="Contributing to the Open-Source Leg"
+                  width={600}
+                  height={600}
+                  className="w-full h-auto rounded-lg border border-white"
+                />
               </div>
             </div>
           </div>
