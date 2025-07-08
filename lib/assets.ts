@@ -6,6 +6,7 @@ export interface ToolPanel {
   description: string
   href: string
   icon: LucideIcon
+  logo: string
 }
 
 export const toolPanels: ToolPanel[] = [
@@ -15,6 +16,7 @@ export const toolPanels: ToolPanel[] = [
     description: "Onshape CAD files, drawings, and bill of materials for our hardware",
     href: "/hardware",
     icon: Move3DIcon,
+    logo: "/onshape.webp",
   },
   {
     id: "robot-ci",
@@ -22,6 +24,7 @@ export const toolPanels: ToolPanel[] = [
     description: "Build, test, and deploy operating systems for robots at scale",
     href: "https://github.com/neurobionics/robot-ci",
     icon: ComputerIcon,
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
   },
   {
     id: "opensourceleg",
@@ -29,6 +32,7 @@ export const toolPanels: ToolPanel[] = [
           description: "SDK for developing control algorithms for robotic hardware",
     href: "https://github.com/neurobionics/opensourceleg",
     icon: Code2,
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
   },
   {
     id: "electronics",
@@ -36,5 +40,6 @@ export const toolPanels: ToolPanel[] = [
     description: "Turn-key electronics for building robotic hardware",
     href: "https://available-inventions.umich.edu/product/osl-electronics",
     icon: CircuitBoard,
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg",
   },
 ] 

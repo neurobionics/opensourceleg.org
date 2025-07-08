@@ -71,7 +71,7 @@ export default function Home() {
 
       {/* Features Section */}
       <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-24 sm:-mt-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[40vh] sm:h-[40vh] xl:h-[70vh] flex items-center -mt-10 sm:-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[60vh] sm:h-[60vh] md:h-[70vh] xl:h-[70vh] flex items-center -mt-10 sm:-mt-20">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full h-full py-20 sm:py-20">
             {/* Left Content - Video */}
             <div className="h-full flex items-center order-2 lg:order-1">
@@ -164,7 +164,7 @@ export default function Home() {
       </div>
 
       {/* Leverage Section */}
-      <div className="py-24 sm:py-32 px-4 sm:px-6">
+      <div className="py-24 sm:py-32 px-4 sm:px-6 my-12">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-12 sm:mb-16">
@@ -205,11 +205,20 @@ export default function Home() {
                   target="_blank"
                   className="group bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 h-64 sm:h-80 flex flex-col justify-between border border-[var(--black)] hover:shadow-xl transition-all duration-300 cursor-pointer"
                 >
-                  <div className="flex-1 flex items-center justify-center">
+                  <div className="flex-1 flex items-center justify-center relative">
                     <IconComponent 
                       className="w-16 h-16 text-[var(--black)] group-hover:scale-110 group-hover:text-[var(--light-blue)] transition-transform duration-300" 
                       strokeWidth={1.0}
                     />
+                    <div className="absolute top-1/2 left-1/2 transform translate-x-2 translate-y-2 group-hover:scale-110 transition-transform duration-300">
+                      <div className="bg-white rounded-full p-1.5 shadow-sm border border-gray-100">
+                        <img 
+                          src={tool.logo}
+                          alt={`${tool.title} logo`}
+                          className="w-8 h-8"
+                        />
+                      </div>
+                    </div>
                   </div>
                   <div className="text-center">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{tool.title}</h3>
@@ -223,7 +232,7 @@ export default function Home() {
       </div>
 
       {/* Hardware Section */}
-      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-16 sm:py-20 px-6 sm:px-12 lg:px-20">
+      <div className="bg-[var(--black)] max-w-7xl mx-auto rounded-2xl sm:rounded-[2rem] text-white py-16 sm:py-20 px-6 sm:px-12 lg:px-20 my-20">
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6 sm:space-y-8 flex flex-col gap-3 sm:gap-4 justify-center">
@@ -283,7 +292,7 @@ export default function Home() {
       </div>  
 
       {/* Software Section */}
-      <div className="py-16 sm:py-20 px-4 sm:px-6">
+      <div className="py-16 sm:py-20 px-4 sm:px-6 my-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
             {/* Left Content - Software Screenshot */}

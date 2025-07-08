@@ -297,7 +297,7 @@ export default function About() {
              {/* Left Content */}
              <div className="space-y-6 flex flex-col justify-between h-full">
                <p className="text-lg sm:text-xl text-gray-700 leading-relaxed text-justify">
-                 Our project operates under a <span className="font-bold italic">Benevolent Dictator for Life (BDFL)</span> model with <span className="font-bold">Prof. Elliott Rouse</span> serving as the principal investigator, supported by a Governance Advisory Board comprising esteemed professors and directors from research groups that contributed during the project&apos;s foundational phase.
+                 Our project operates under a <span className="font-bold italic">BDFL</span> model with <span className="font-bold">Prof. Elliott Rouse</span> serving as the principal investigator, supported by a Governance Advisory Board comprising esteemed professors and directors from research groups that contributed during the project&apos;s foundational phase.
                </p>
                
                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">

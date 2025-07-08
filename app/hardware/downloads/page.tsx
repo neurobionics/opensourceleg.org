@@ -227,6 +227,25 @@ export default function Downloads() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Alternative Option */}
+        <div className="text-center pt-8 max-w-3xl mx-auto">
+          <div className="text-white/90 mb-4">
+            <p className="text-base sm:text-lg">
+              You can also generate your own STEP files and drawings directly from our Onshape document
+            </p>
+          </div>
+          <Button 
+            href="https://cad.onshape.com/documents/43e6364e2a094611be7b3cb6/w/cb020faf6e878aaef4c7b3de/e/9e1efedfe6e6a295a51c7f38?renderMode=0&uiState=6692ead70074bb6b04618954"
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline"
+            className="bg-transparent text-white border border-white hover:bg-[var(--light-green)] hover:text-black rounded-lg px-4 sm:px-6 py-4 sm:py-6 text-sm sm:text-base"
+          >
+            <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+            View Onshape Document
+          </Button>
+        </div>
         </div>
       </div>
 
