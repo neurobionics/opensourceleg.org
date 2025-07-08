@@ -4,7 +4,7 @@ import {
   Treemap, 
   ResponsiveContainer
 } from 'recharts'
-import { KeywordData, FundingData, CountryData, ResearchLabData } from '@/lib/research-analytics'
+import { KeywordData, FundingData, CountryData, ResearchLabData } from '@/lib/research/research-analytics'
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card'
 
 

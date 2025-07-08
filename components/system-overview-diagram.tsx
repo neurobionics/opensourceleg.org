@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
-import { mermaidSystemDiagram } from '@/lib/system-overview';
+import { mermaidSystemDiagram } from '@/lib/hardware/system-overview';
 
 export default function SystemOverviewDiagram() {
   const mermaidRef = useRef<HTMLDivElement>(null);

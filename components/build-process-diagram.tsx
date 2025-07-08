@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import mermaid from 'mermaid';
-import { mermaidDiagram } from '@/lib/build-process';
+import { mermaidDiagram } from '@/lib/hardware/build-process';
 
 export default function BuildProcessDiagram() {
   const mermaidRef = useRef<HTMLDivElement>(null);

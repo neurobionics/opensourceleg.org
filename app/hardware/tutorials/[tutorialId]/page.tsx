@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { ArrowLeft, Play, CheckCircle, Clock, Wrench, Package, ExternalLink, Eye, Settings } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
-import { tutorialSections } from "@/lib/hardware-tutorials";
+import { tutorialSections } from "@/lib/hardware/hardware-tutorials";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import Link from "next/link";
 

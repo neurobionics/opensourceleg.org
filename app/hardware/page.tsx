@@ -2,9 +2,9 @@ import { PageHero } from "@/components/page-hero";
 import { ArrowDown, ExternalLink, Zap, Plane, DollarSign, Download, FileText, ArrowUpRight } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { hardwareCostData, getTotalCost, formatPrice } from "@/lib/hardware-cost";
-import { hardwareSpecs, specNotes } from "@/lib/hardware-specs";
-import { diyBenefits } from "@/lib/build-process";
+import { hardwareCostData, getTotalCost, formatPrice } from "@/lib/hardware/hardware-cost";
+import { hardwareSpecs, specNotes } from "@/lib/hardware/hardware-specs";
+import { diyBenefits } from "@/lib/hardware/build-process";
 import BuildProcessDiagram from "@/components/build-process-diagram";
 import SystemOverviewDiagram from "@/components/system-overview-diagram";
 import Image from "next/image";
@@ -433,7 +433,7 @@ export default function Hardware() {
                 </div>
                 <div className="p-3">
                   <Image 
-                    src="/logo/humotech-logo.svg" 
+                    src="/logo/other/humotech-logo.svg" 
                     alt="Humotech Logo" 
                     width={120}
                     height={32}

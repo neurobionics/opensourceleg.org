@@ -1,7 +1,7 @@
 'use client'
 
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import { YearlyPublicationData } from '@/lib/research-analytics'
+import { YearlyPublicationData } from '@/lib/research/research-analytics'
 
 interface PublicationsByYearChartProps {
   data: YearlyPublicationData[]

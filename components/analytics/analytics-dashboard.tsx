@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowRight } from 'lucide-react'
-import { ResearchAnalytics } from '@/lib/research-analytics'
+import { ResearchAnalytics } from '@/lib/research/research-analytics'
 import { TreemapChart, CountryTreemapChart, SummaryStats } from './analytics-charts'
 
 

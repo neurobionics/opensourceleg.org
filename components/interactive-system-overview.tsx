@@ -7,7 +7,7 @@ import {
   mermaidConfig, 
   buildDiagramWithUrls, 
   componentStyles 
-} from '@/lib/interactive-system-overview';
+} from '@/lib/hardware/interactive-system-overview';
 
 interface InteractiveSystemOverviewProps {
   componentUrls: ComponentUrls;

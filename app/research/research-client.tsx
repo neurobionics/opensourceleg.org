@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { formatAuthors, getPublicationUrl, type Publication } from "@/lib/publications"
+import { formatAuthors, getPublicationUrl, type Publication } from "@/lib/research/publications"
 import { ExternalLink, X, Search } from "lucide-react"
 import Link from "next/link"
 import { Pagination } from "@/components/pagination"

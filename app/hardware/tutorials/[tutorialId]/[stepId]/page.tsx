@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, ArrowRight, ExternalLink, CheckCircle, Package, Wrench, AlertTriangle, Settings } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
-import { tutorialSections } from "@/lib/hardware-tutorials";
+import { tutorialSections } from "@/lib/hardware/hardware-tutorials";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Link from "next/link";

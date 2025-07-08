@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { ExternalLink, CheckCircle, Clock, AlertCircle, ArrowRight, PlayIcon, MessageCircle, ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
-import { tutorialSections } from "@/lib/hardware-tutorials";
+import { tutorialSections } from "@/lib/hardware/hardware-tutorials";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 

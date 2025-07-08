@@ -1,7 +1,7 @@
 import { ArrowRight, ArrowUpRight, ExternalLink } from "lucide-react"
 import { PageHero } from "@/components/page-hero"
 import { ControllersPageClient } from "./controllers-client"
-import { controllers } from "@/lib/controllers"
+import { controllers } from "@/lib/research/controllers"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -79,7 +79,7 @@ export default async function ControllersPage() {
             {/* Right Content - Image */}
             <div className="relative">
               <Image
-                src="/controllers.webp"
+                src="/research/controllers.webp"
                 alt="Controllers in development"
                 width={800}
                 height={600}

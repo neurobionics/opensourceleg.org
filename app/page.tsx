@@ -129,14 +129,14 @@ export default function Home() {
               <div className="logo-carousel-track slow">
                 {/* First set of logos */}
                 <Image 
-                  src="/logo-strip-1.png" 
+                  src="/logo/other/logo-strip-1.png" 
                   alt="Research institutions - strip 1" 
                   width={600}
                   height={72}
                   className="h-12 sm:h-16 object-contain flex-shrink-0"
                 />
                 <Image 
-                  src="/logo-strip-2.png" 
+                  src="/logo/other/logo-strip-2.png" 
                   alt="Research institutions - strip 2" 
                   width={600}
                   height={72}
@@ -144,14 +144,14 @@ export default function Home() {
                 />
                 {/* Duplicate set for seamless infinite loop */}
                 <Image 
-                  src="/logo-strip-1.png" 
+                  src="/logo/other/logo-strip-1.png" 
                   alt="Research institutions - strip 1" 
                   width={600}
                   height={72}
                   className="h-12 sm:h-16 object-contain flex-shrink-0"
                 />
                 <Image 
-                  src="/logo-strip-2.png" 
+                  src="/logo/other/logo-strip-2.png" 
                   alt="Research institutions - strip 2" 
                   width={600}
                   height={72}

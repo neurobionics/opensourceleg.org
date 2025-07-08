@@ -1,8 +1,8 @@
-import { fetchPublications } from "@/lib/publications"
+import { fetchPublications } from "@/lib/research/publications"
 import { ResearchPageClient } from "./research-client"
 import { ArrowDown, ExternalLink, ArrowRight, ArrowUpRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { generateResearchAnalytics } from "@/lib/research-analytics"
+import { generateResearchAnalytics } from "@/lib/research/research-analytics"
 import { AnalyticsDashboard } from "@/components/analytics/analytics-dashboard"
 import { PublicationsByYearChart } from '@/components/analytics/publications-by-year-chart'
 import { PageHero } from "@/components/page-hero"

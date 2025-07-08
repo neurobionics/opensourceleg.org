@@ -1,4 +1,4 @@
-import { tutorialSections } from "@/lib/hardware-tutorials";
+import { tutorialSections } from "@/lib/hardware/hardware-tutorials";
 
 export async function generateStaticParams() {
   return Object.keys(tutorialSections).map((tutorialId) => ({

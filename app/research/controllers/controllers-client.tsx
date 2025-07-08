@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { formatControllerAuthors, getControllerDownloadUrl, type Controller } from "@/lib/controllers"
+import { formatControllerAuthors, getControllerDownloadUrl, type Controller } from "@/lib/research/controllers"
 import { X, Search, Download, Info } from "lucide-react"
 import Link from "next/link"
 import Fuse from 'fuse.js'

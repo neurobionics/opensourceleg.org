@@ -14,11 +14,11 @@ import {
   seaOptions,
   getDownloadInfo,
   defaultConfig
-} from "@/lib/hardware-downloads";
+} from "@/lib/hardware/hardware-downloads";
 import InteractiveSystemOverview from "@/components/interactive-system-overview";
-import { defaultComponentUrls } from "@/lib/interactive-system-overview";
-import { vendors, cardStyles, type VendorButton } from "@/lib/vendors";
-import { datasheets } from "@/lib/datasheets";
+import { defaultComponentUrls } from "@/lib/hardware/interactive-system-overview";
+import { vendors, cardStyles, type VendorButton } from "@/lib/hardware/vendors";
+import { datasheets } from "@/lib/hardware/datasheets";
 
 export default function Downloads() {
   const [config, setConfig] = useState<DownloadConfig>(defaultConfig);

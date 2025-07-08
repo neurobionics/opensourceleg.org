@@ -16,7 +16,7 @@ export const toolPanels: ToolPanel[] = [
     description: "Onshape CAD files, drawings, and bill of materials for our hardware",
     href: "/hardware",
     icon: Move3DIcon,
-    logo: "/onshape.webp",
+    logo: "/logo/other/onshape.webp",
   },
   {
     id: "robot-ci",
