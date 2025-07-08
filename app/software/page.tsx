@@ -179,7 +179,7 @@ export default function Software() {
                     Hours spent manually configuring each Raspberry Pi with the same packages, users, and network settings. 
                     Every new device means starting from scratch.
                   </p>
-                                  </div>
+                </div>
 
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">
@@ -190,7 +190,7 @@ export default function Software() {
                     &quot;It works on my Pi but not yours.&quot; Inconsistent environments lead to debugging nightmares 
                     and make collaboration difficult.
                   </p>
-                                  </div>
+                </div>
 
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">

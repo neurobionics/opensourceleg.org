@@ -17,35 +17,35 @@ export default function OpenSourceLegArchitectureDiagram() {
             primaryColor: '#f0f9ff',
             primaryTextColor: '#1f2937',
             primaryBorderColor: '#3b82f6',
-            lineColor: '#6b7280',
+            lineColor: '#1E1C19',
             secondaryColor: '#f3f4f6',
             tertiaryColor: '#f9fafb',
             background: '#ffffff',
             mainBkg: '#ffffff',
             secondBkg: '#f8fafc',
             tertiaryBkg: '#f1f5f9',
-            nodeBorder: '#e5e7eb',
+            nodeBorder: '#1E1C19',
             clusterBorder: '#d1d5db',
             defaultLinkColor: '#6b7280',
             titleColor: '#111827',
             edgeLabelBackground: '#ffffff',
             nodeTextColor: '#374151',
-            fontSize: '14px',
+            fontSize: '16px',
           },
         });
 
         const diagramDefinition = `classDiagram
     class OpenSourceLeg {
         +tag string
-        +knee ActuatorBase
-        +ankle ActuatorBase
-        +sensors List~SensorBase~
+        +actuators dict~string, ActuatorBase~
+        +sensors dict~string, SensorBase~
         +update()
         +home()
-        +add_joint()
-        +add_sensor()
         +start()
         +stop()
+        +knee ActuatorBase
+        +ankle ActuatorBase
+        +loadcell SensorBase
     }
     
     class ActuatorBase {
@@ -54,6 +54,9 @@ export default function OpenSourceLegArchitectureDiagram() {
         +gear_ratio float
         +frequency int
         +mode CONTROL_MODES
+        +motor_constants MOTOR_CONSTANTS
+        +is_homed bool
+        +is_offline bool
         +start()
         +stop()
         +update()
@@ -61,14 +64,29 @@ export default function OpenSourceLegArchitectureDiagram() {
         +set_motor_voltage()
         +set_motor_current()
         +set_motor_position()
+        +set_motor_torque()
+        +set_output_torque()
+        +set_current_gains()
+        +set_position_gains()
+        +set_impedance_gains()
         +home()
+        +motor_position float
+        +motor_velocity float
+        +motor_voltage float
+        +motor_current float
+        +motor_torque float
+        +output_position float
+        +output_velocity float
+        +case_temperature float
+        +winding_temperature float
     }
     
     class SensorBase {
         <<abstract>>
         +tag string
-        +frequency int
+        +is_offline bool
         +is_streaming bool
+        +data Any
         +start()
         +stop()
         +update()
@@ -78,26 +96,55 @@ export default function OpenSourceLegArchitectureDiagram() {
         +port string
         +baud_rate int
         +firmware_version string
-        +motor_voltage float
-        +motor_current float
-        +motor_position float
-        +motor_velocity float
-        +case_temperature float
-        +winding_temperature float
+        +gear_ratio float
+        +frequency int
+        +debug_level int
+        +dephy_log bool
+        +stop_motor_on_disconnect bool
         +set_position_gains()
         +set_current_gains()
         +set_impedance_gains()
+        +set_motor_impedance()
+        +set_output_impedance()
+        +battery_voltage float
+        +battery_current float
+        +output_torque float
+        +motor_encoder_counts int
+        +motor_acceleration float
+        +accelx float
+        +accely float
+        +accelz float
+        +gyrox float
+        +gyroy float
+        +gyroz float
+        +thermal_scaling_factor float
+        +genvars ndarray
     }
     
-    class TMotorActuator {
+    class TMotorMITCANActuator {
         +motor_type string
         +motor_ID int
-        +position float
-        +velocity float
-        +torque float
+        +gear_ratio float
+        +frequency int
         +max_mosfett_temp float
+        +output_position float
+        +output_velocity float
+        +output_acceleration float
+        +output_torque float
+        +motor_position float
+        +motor_velocity float
+        +motor_acceleration float
+        +motor_torque float
+        +set_output_position()
+        +set_output_velocity()
+        +set_output_torque()
+        +set_motor_position()
+        +set_motor_velocity()
+        +set_motor_torque()
+        +set_velocity_gains()
         +power_on()
         +power_off()
+        +check_can_connection()
     }
     
     class CustomActuator {
@@ -108,27 +155,43 @@ export default function OpenSourceLegArchitectureDiagram() {
     }
     
     class AS5048B {
+        +tag string
         +bus string
         +A1_adr_pin bool
         +A2_adr_pin bool
         +zero_position int
+        +enable_diagnostics bool
         +position float
         +velocity float
         +abs_ang float
+        +counts int
+        +encoder_map Polynomial
         +set_zero_position()
+        +set_encoder_map()
+        +diag_compH bool
+        +diag_compL bool
+        +diag_COF bool
+        +diag_OCF bool
     }
     
     class DephyLoadcellAmplifier {
+        +tag string
         +amp_gain float
         +exc float
         +bus int
         +i2c_address int
+        +calibration_matrix ndarray
+        +enable_diagnostics bool
         +fx float
         +fy float
         +fz float
         +mx float
         +my float
         +mz float
+        +is_calibrated bool
+        +calibrate()
+        +reset()
+        +check_data()
     }
     
     class CustomSensor {
@@ -142,14 +205,16 @@ export default function OpenSourceLegArchitectureDiagram() {
     OpenSourceLeg o-- SensorBase : contains
     
     ActuatorBase <|-- DephyActuator
-    ActuatorBase <|-- TMotorActuator
+    ActuatorBase <|-- TMotorMITCANActuator
     ActuatorBase <|-- CustomActuator
     
     SensorBase <|-- AS5048B
     SensorBase <|-- DephyLoadcellAmplifier
     SensorBase <|-- CustomSensor
     
-    note "or any custom robot class built on base class signatures"`;
+    note for OpenSourceLeg "Robot class supporting multiple actuators and sensors<br/>with properties for common joint access"
+    note for ActuatorBase "Abstract base with control mode management<br/>and safety features like thermal monitoring"
+    note for SensorBase "Abstract base for all sensor types<br/>with streaming and calibration support"`;
 
         try {
           // Clear the container
