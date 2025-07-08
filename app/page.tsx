@@ -71,7 +71,7 @@ export default function Home() {
 
       {/* Features Section */}
       <div className="bg-[var(--black)] text-white relative overflow-hidden -mt-24 sm:-mt-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[70vh] sm:h-[80vh] flex items-center -mt-10 sm:-mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-[40vh] sm:h-[40vh] xl:h-[70vh] flex items-center -mt-10 sm:-mt-20">
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center w-full h-full py-20 sm:py-20">
             {/* Left Content - Video */}
             <div className="h-full flex items-center order-2 lg:order-1">
@@ -93,15 +93,15 @@ export default function Home() {
               <div className="relative w-full">
                 {/* Quote SVG Icon */}
                 <svg 
-                  className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 text-white/20" 
+                  className="absolute -top-4 -left-4 sm:-top-6 sm:-left-6 w-10 h-10 sm:w-12 sm:h-12 text-white/20" 
                   fill="currentColor" 
                   viewBox="0 0 24 24"
                 >
                   <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z"/>
                 </svg>
                 
-                <blockquote className="text-white pl-8 sm:pl-12">
-                  <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light leading-relaxed mb-6 sm:mb-8">
+                <blockquote className="text-white py-4 sm:py-8">
+                  <p className="text-lg sm:text-xl lg:text-2xl font-light leading-relaxed mb-6 sm:mb-8 text-justify">
                     We want to give people access to the tools needed to overcome the barriers preventing these technologies from impacting the lives of people with disabilities.
                   </p>
                   <footer className="text-white/60 text-base sm:text-lg">
@@ -207,7 +207,7 @@ export default function Home() {
                 >
                   <div className="flex-1 flex items-center justify-center">
                     <IconComponent 
-                      className="w-16 h-16 sm:w-20 sm:h-20 text-[var(--black)] group-hover:scale-110 group-hover:text-[var(--light-blue)] transition-transform duration-300" 
+                      className="w-16 h-16 text-[var(--black)] group-hover:scale-110 group-hover:text-[var(--light-blue)] transition-transform duration-300" 
                       strokeWidth={1.0}
                     />
                   </div>
