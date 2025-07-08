@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/page-hero";
-import { ArrowDown, ExternalLink, Github, BookOpen, ArrowUpRight, Terminal, Settings, Package, Monitor } from "lucide-react";
+import { ArrowDown, ExternalLink, Github, BookOpen, ArrowUpRight, Terminal, Settings, Package, Monitor, PackageIcon, Blocks } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RobotCISequenceDiagram from "@/components/robot-ci-sequence-diagram";
 import OpenSourceLegArchitectureDiagram from "@/components/opensourceleg-architecture-diagram";
@@ -89,6 +89,7 @@ export default function Software() {
               <div className="bg-[var(--black)] border border-black rounded-2xl p-6 space-y-4 shadow-2xl">
                 <h3 className="text-xl sm:text-2xl text-[var(--white)] font-semibold flex items-center gap-2 justify-center">
                   Open
+                  <Github className="w-5 h-5" />
                 </h3>
                 <p className="text-sm text-white/70 leading-relaxed text-justify">
                   Both Robot CI and our Python SDK are fully open source with permissive licensing. All code, documentation, 
@@ -101,6 +102,7 @@ export default function Software() {
               <div className="bg-[var(--black)] border border-black rounded-2xl p-6 space-y-4 shadow-2xl">
                 <h3 className="text-xl sm:text-2xl font-semibold text-[var(--white)] flex items-center gap-2 justify-center">
                   Modular
+                  <PackageIcon className="w-5 h-5" />
                 </h3>
                 <p className="text-sm text-white/70 leading-relaxed text-justify">
                   Our software is designed with clear separation of concerns. Robot CI handles OS provisioning independently, 
@@ -113,6 +115,7 @@ export default function Software() {
               <div className="bg-[var(--black)] border border-black rounded-2xl p-6 space-y-4 shadow-2xl">
                 <h3 className="text-xl sm:text-2xl font-semibold text-[var(--white)] flex items-center gap-2 justify-center">
                   Extensible
+                  <Blocks className="w-5 h-5" />
                 </h3>
                 <p className="text-sm text-white/70 leading-relaxed text-justify">
                   Built around abstract base classes and plugin architectures that encourage customization. Add new sensors, 
