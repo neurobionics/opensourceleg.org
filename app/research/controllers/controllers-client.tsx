@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import {
   Table,
   TableBody,
@@ -13,7 +12,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { formatControllerAuthors, getControllerDownloadUrl, type Controller } from "@/lib/controllers"
-import { ExternalLink, X, Search, Download, Info } from "lucide-react"
+import { X, Search, Download, Info } from "lucide-react"
 import Link from "next/link"
 import Fuse from 'fuse.js'
 import Image from "next/image"

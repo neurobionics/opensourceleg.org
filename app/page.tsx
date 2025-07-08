@@ -212,9 +212,11 @@ export default function Home() {
                     />
                     <div className="absolute top-1/2 left-1/2 transform translate-x-2 translate-y-2 group-hover:scale-110 transition-transform duration-300">
                       <div className="bg-white rounded-full p-1.5 shadow-sm border border-gray-100">
-                        <img 
+                        <Image 
                           src={tool.logo}
                           alt={`${tool.title} logo`}
+                          width={32}
+                          height={32}
                           className="w-8 h-8"
                         />
                       </div>
