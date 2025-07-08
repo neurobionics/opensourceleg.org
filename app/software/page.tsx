@@ -1,5 +1,5 @@
 import { PageHero } from "@/components/page-hero";
-import { ArrowDown, ExternalLink, Github, BookOpen, ArrowUpRight, Terminal, Settings, Package, Monitor, PackageIcon, Blocks } from "lucide-react";
+import { ArrowDown, ExternalLink, Github, BookOpen, ArrowUpRight, Terminal, Settings, Package, Monitor, PackageIcon, Blocks, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RobotCISequenceDiagram from "@/components/robot-ci-sequence-diagram";
 import OpenSourceLegArchitectureDiagram from "@/components/opensourceleg-architecture-diagram";
@@ -158,46 +158,44 @@ export default function Software() {
 
             {/* The Problem */}
             <div className="bg-transparent">
+              {/* Problem Section Header */}
+              <div className="text-right mb-12">
+                <h3 className="text-2xl font-light text-gray-900 mb-4">
+                  <span className="font-medium italic">Challenges</span> we addressed
+                </h3>
+                <p className="text-gray-600 text-base">
+                  These common development obstacles led us to create Robot CI
+                </p>
+              </div>
+              
               {/* Pain Points Grid */}
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl relative">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-lg font-semibold text-gray-900">Repetitive Setup</h4>
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                    <AlertTriangle className="w-5 h-5 text-gray-500" />
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed text-justify">
                     Hours spent manually configuring each Raspberry Pi with the same packages, users, and network settings. 
                     Every new device means starting from scratch.
                   </p>
-                </div>
+                                  </div>
 
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-lg font-semibold text-gray-900">Environment Drift</h4>
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                    <AlertTriangle className="w-5 h-5 text-gray-500" />
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed text-justify">
                     &quot;It works on my Pi but not yours.&quot; Inconsistent environments lead to debugging nightmares 
                     and make collaboration difficult.
                   </p>
-                </div>
+                                  </div>
 
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-lg font-semibold text-gray-900">Onboarding Friction</h4>
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                    <AlertTriangle className="w-5 h-5 text-gray-500" />
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed text-justify">
                     New team members, students, or collaborators spend days just getting their development 
@@ -210,7 +208,7 @@ export default function Software() {
             {/* Sequence Diagram */}
             <div className="mb-12 flex flex-col gap-6 my-20">
               <h2 className="text-2xl font-light text-gray-900">Our <span className="font-medium italic">Solution</span></h2>
-              <p className="text-gray-800 leading-relaxed mx-auto mb-4">
+              <p className="text-gray-800 leading-relaxed mx-auto mb-4 text-base">
                   Define your entire development environment as code, build it automatically with GitHub Actions, 
                   and deploy consistent, reproducible systems in minutes instead of hours. Perfect for research labs, 
                   educational projects, hobby builds, and commercial robotics development.
@@ -225,7 +223,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Settings className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Version-Controlled OS</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Version-Controlled OS</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Track and manage your robot environment in code. Enable reproducible builds with GitHub Actions, 
@@ -236,7 +234,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Monitor className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Remote Development</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Remote Development</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Optimized headless server images with automatic IP notifications via email. 
@@ -247,7 +245,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Package className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Customizable Environment</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Customizable Environment</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Pre-install drivers, custom packages, and configure services automatically. 
@@ -258,7 +256,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Terminal className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Network Auto-Config</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Network Auto-Config</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Automatically connects to WiFi networks and establishes a fallback access point 
@@ -313,16 +311,22 @@ export default function Software() {
 
             {/* What it Solves */}
             <div className="bg-transparent">
+              {/* Problem Section Header */}
+              <div className="text-right mb-12">
+                <h3 className="text-2xl font-light text-gray-900 mb-4">
+                  <span className="font-medium italic">Challenges</span> we addressed
+                </h3>
+                <p className="text-gray-600 text-base">
+                  These common development obstacles led us to create the OpenSourceLeg SDK
+                </p>
+              </div>
+              
               {/* Pain Points Grid */}
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-lg font-semibold text-gray-900">Hardware Integration</h4>
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                    <AlertTriangle className="w-5 h-5 text-gray-500" />
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed text-justify">
                     Each actuator and sensor requires custom drivers, communication protocols, and calibration procedures. 
@@ -333,11 +337,7 @@ export default function Software() {
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-lg font-semibold text-gray-900">Inconsistent APIs</h4>
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                    <AlertTriangle className="w-5 h-5 text-gray-500" />
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed text-justify">
                     Every component has its own API, units, and conventions. Switching between different sensors 
@@ -348,11 +348,7 @@ export default function Software() {
                 <div className="bg-white rounded-xl p-6 border border-black shadow-xl flex flex-col justify-between">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="text-lg font-semibold text-gray-900">Reinventing the Wheel</h4>
-                    <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-                      <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </div>
+                    <AlertTriangle className="w-5 h-5 text-gray-500" />
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed text-justify">
                     Common robotics tasks like real-time control loops, data logging, and safety monitoring 
@@ -380,7 +376,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Package className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Standardized Interfaces</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Standardized Interfaces</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Consistent APIs across all actuators and sensors. Switch between different hardware components 
@@ -391,7 +387,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Settings className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Hardware Support</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Hardware Support</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Ready-to-use implementations for Dephy actuators, AS5048B encoders, Lord Microstrain IMUs, 
@@ -402,7 +398,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Terminal className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Control Utilities</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Control Utilities</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Built-in real-time control loops, finite state machines, compiled controller support, 
@@ -413,7 +409,7 @@ export default function Software() {
                 <div className="bg-white border border-black rounded-lg p-6">
                   <div className="flex items-center mb-3">
                     <Monitor className="w-6 h-6 text-[var(--black)] mr-3" />
-                    <h4 className="text-lg font-light text-gray-900">Data & Logging</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Data & Logging</h4>
                   </div>
                   <p className="text-gray-600 text-sm leading-relaxed">
                     Comprehensive logging system with variable tracking, automatic CSV generation, 
