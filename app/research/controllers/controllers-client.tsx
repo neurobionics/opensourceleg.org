@@ -196,8 +196,8 @@ export function ControllersPageClient({ controllers }: ControllersPageClientProp
       </div>
 
       {/* Controllers Table */}
-      <Card className="border-black">
-        <CardContent>
+      <div className="border-black">
+        <div className="">
           {filteredAndSortedControllers.length === 0 ? (
             // No Results State
             <div className="p-12 text-center">
@@ -230,10 +230,10 @@ export function ControllersPageClient({ controllers }: ControllersPageClientProp
             </div>
           ) : (
             // Results Table
-            <div className="rounded-md border border-black/40">
+            <div className="rounded-md border border-black">
               <Table>
                 <TableHeader>
-                  <TableRow className="border-black/40">
+                  <TableRow className="border-black/60">
                     <TableHead className="w-[35%] text-gray-900 font-semibold">Controller & Authors</TableHead>
                     <TableHead className="w-[20%] text-gray-900 font-semibold">Institution/Lab</TableHead>
                     <TableHead className="w-[10%] text-gray-900 font-semibold">Date</TableHead>
@@ -245,9 +245,9 @@ export function ControllersPageClient({ controllers }: ControllersPageClientProp
                 </TableHeader>
                 <TableBody>
                   {filteredAndSortedControllers.map((controller) => (
-                    <TableRow key={controller.id} className="border-gray-200 hover:bg-gray-50">
+                    <TableRow key={controller.id} className="border-black/60 hover:bg-gray-50">
                       <TableCell>
-                        <div className="space-y-1">
+                        <div className="space-y-2">
                           <h4 className="font-medium text-sm leading-tight text-gray-900">
                             {controller.title}
                           </h4>
@@ -307,24 +307,8 @@ export function ControllersPageClient({ controllers }: ControllersPageClientProp
               </Table>
             </div>
           )}
-
-          {/* Contribution CTA */}
-          <div className="mt-6 text-center p-4 bg-[var(--light-blue)] rounded-lg">
-            <p className="text-sm text-white mb-3">
-              Have a controller you&apos;d like to share with the community?
-            </p>
-            <Link
-              href={process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-[var(--white)] text-black border-2 border-black hover:text-black hover:bg-[var(--light-green)] rounded-md px-4 py-2 text-sm font-medium transition-colors"
-            >
-              <ExternalLink className="h-4 w-4 mr-2" />
-              Submit Controller
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
       {/* Controller Details Modal */}
       {selectedController && (
