@@ -716,7 +716,7 @@ export default function About() {
                 </h2>
                 
                 <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
-                  All kinds of contributions are welcome and much appreciated! Whether you're fixing bugs, adding features, improving documentation, or sharing your research — we'd love to have you on board.
+                  All kinds of contributions are welcome and much appreciated! Whether you&apos;re fixing bugs, adding features, improving documentation, or sharing your research — we&apos;d love to have you on board.
                 </p>
 
                 {/* Action buttons */}
