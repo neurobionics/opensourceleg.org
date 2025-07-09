@@ -45,8 +45,6 @@ const mockedMatter = await import('gray-matter') as any
 describe('MDX Library', () => {
   beforeEach(() => {
     vi.clearAllMocks()
-    // Mock process.cwd() to return a consistent path
-    vi.spyOn(process, 'cwd').mockReturnValue('/project/root')
   })
 
   describe('getPostSlugs', () => {
@@ -61,7 +59,7 @@ describe('MDX Library', () => {
 
       const slugs = getPostSlugs()
 
-      expect(mockedReaddirSync).toHaveBeenCalledWith('/home/senthur/Projects/opensourceleg.github.io/posts')
+      expect(mockedReaddirSync).toHaveBeenCalledWith(`${process.cwd()}/posts`)
       expect(slugs).toEqual(['post1.mdx', 'post2.mdx', 'post3.mdx'])
     })
 
@@ -116,7 +114,7 @@ describe('MDX Library', () => {
         content: 'This is test content for the post.'
       })
 
-      expect(mockedReadFileSync).toHaveBeenCalledWith('/home/senthur/Projects/opensourceleg.github.io/posts/test-post.mdx', 'utf8')
+      expect(mockedReadFileSync).toHaveBeenCalledWith(`${process.cwd()}/posts/test-post.mdx`, 'utf8')
     })
 
     it('removes .mdx extension from slug', () => {
@@ -125,7 +123,7 @@ describe('MDX Library', () => {
       const post = getPostBySlug('test-post.mdx')
 
       expect(post.slug).toBe('test-post')
-      expect(mockedReadFileSync).toHaveBeenCalledWith('/home/senthur/Projects/opensourceleg.github.io/posts/test-post.mdx', 'utf8')
+      expect(mockedReadFileSync).toHaveBeenCalledWith(`${process.cwd()}/posts/test-post.mdx`, 'utf8')
     })
 
     it('handles missing frontmatter fields with defaults', () => {
