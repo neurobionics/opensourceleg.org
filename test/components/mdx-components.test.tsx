@@ -36,7 +36,7 @@ describe('useMDXComponents', () => {
 
   describe('Heading Components', () => {
     it('renders h1 with correct styling', () => {
-      const H1 = components.h1! as React.ComponentType<any>
+      const H1 = components.h1! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<H1>Test Heading 1</H1>)
       
       const heading = screen.getByRole('heading', { level: 1 })
@@ -45,7 +45,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders h2 with correct styling', () => {
-      const H2 = components.h2!
+      const H2 = components.h2! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<H2>Test Heading 2</H2>)
       
       const heading = screen.getByRole('heading', { level: 2 })
@@ -54,7 +54,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders h3 with correct styling', () => {
-      const H3 = components.h3!
+      const H3 = components.h3! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<H3>Test Heading 3</H3>)
       
       const heading = screen.getByRole('heading', { level: 3 })
@@ -63,7 +63,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders h4 with correct styling', () => {
-      const H4 = components.h4!
+      const H4 = components.h4! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<H4>Test Heading 4</H4>)
       
       const heading = screen.getByRole('heading', { level: 4 })
@@ -72,10 +72,10 @@ describe('useMDXComponents', () => {
     })
 
     it('preserves heading hierarchy with correct levels', () => {
-      const H1 = components.h1!
-      const H2 = components.h2!
-      const H3 = components.h3!
-      const H4 = components.h4!
+      const H1 = components.h1! as React.ComponentType<React.PropsWithChildren<{}>>
+      const H2 = components.h2! as React.ComponentType<React.PropsWithChildren<{}>>
+      const H3 = components.h3! as React.ComponentType<React.PropsWithChildren<{}>>
+      const H4 = components.h4! as React.ComponentType<React.PropsWithChildren<{}>>
       
       render(
         <div>
@@ -95,7 +95,7 @@ describe('useMDXComponents', () => {
 
   describe('Text Components', () => {
     it('renders paragraphs with correct styling', () => {
-      const P = components.p!
+      const P = components.p! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<P>Test paragraph content</P>)
       
       const paragraph = screen.getByText('Test paragraph content')
@@ -103,7 +103,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders inline code with correct styling', () => {
-      const Code = components.code!
+      const Code = components.code! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<Code>inline code</Code>)
       
       const code = screen.getByText('inline code')
@@ -111,7 +111,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders code blocks with correct styling', () => {
-      const Pre = components.pre!
+      const Pre = components.pre! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<Pre>console.log('test')</Pre>)
       
       const pre = screen.getByText('console.log(\'test\')')
@@ -119,7 +119,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders blockquotes with correct styling', () => {
-      const Blockquote = components.blockquote!
+      const Blockquote = components.blockquote! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<Blockquote>This is a quote</Blockquote>)
       
       const blockquote = screen.getByText('This is a quote')
@@ -132,8 +132,8 @@ describe('useMDXComponents', () => {
 
   describe('List Components', () => {
     it('renders unordered lists with correct styling', () => {
-      const Ul = components.ul!
-      const Li = components.li!
+      const Ul = components.ul! as React.ComponentType<React.PropsWithChildren<{}>>
+      const Li = components.li! as React.ComponentType<React.PropsWithChildren<{}>>
       
       render(
         <Ul>
@@ -147,8 +147,8 @@ describe('useMDXComponents', () => {
     })
 
     it('renders ordered lists with correct styling', () => {
-      const Ol = components.ol!
-      const Li = components.li!
+      const Ol = components.ol! as React.ComponentType<React.PropsWithChildren<{}>>
+      const Li = components.li! as React.ComponentType<React.PropsWithChildren<{}>>
       
       render(
         <Ol>
@@ -162,7 +162,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders list items with correct styling', () => {
-      const Li = components.li!
+      const Li = components.li! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<Li>List item content</Li>)
       
       const listItem = screen.getByText('List item content')
@@ -172,7 +172,7 @@ describe('useMDXComponents', () => {
 
   describe('Link Components', () => {
     it('renders links with href and correct styling', () => {
-      const A = components.a!
+      const A = components.a! as React.ComponentType<React.PropsWithChildren<{ href?: string }>>
       render(<A href="/test-link">Test Link</A>)
       
       const link = screen.getByRole('link', { name: 'Test Link' })
@@ -184,7 +184,7 @@ describe('useMDXComponents', () => {
     })
 
     it('handles missing href with fallback', () => {
-      const A = components.a!
+      const A = components.a! as React.ComponentType<React.PropsWithChildren<{ href?: string }>>
       render(<A href={undefined}>Link without href</A>)
       
       const link = screen.getByRole('link', { name: 'Link without href' })
@@ -192,7 +192,7 @@ describe('useMDXComponents', () => {
     })
 
     it('handles null href with fallback', () => {
-      const A = components.a!
+      const A = components.a! as React.ComponentType<React.PropsWithChildren<{ href?: string | null }>>
       render(<A href={null}>Link with null href</A>)
       
       const link = screen.getByRole('link', { name: 'Link with null href' })
@@ -200,7 +200,7 @@ describe('useMDXComponents', () => {
     })
 
     it('preserves valid href values', () => {
-      const A = components.a!
+      const A = components.a! as React.ComponentType<React.PropsWithChildren<{ href?: string }>>
       const testCases = [
         '/internal-link',
         'https://external.com',
@@ -218,7 +218,7 @@ describe('useMDXComponents', () => {
 
   describe('Image Components', () => {
     it('renders images with responsive design', () => {
-      const Img = components.img!
+      const Img = components.img! as React.ComponentType<React.PropsWithChildren<{ src?: string; alt?: string }>>
       render(<Img src="/test-image.jpg" alt="Test image" />)
       
       const image = screen.getByRole('img', { name: 'Test image' })
@@ -230,7 +230,7 @@ describe('useMDXComponents', () => {
     })
 
     it('handles missing alt text with fallback', () => {
-      const Img = components.img! as React.ComponentType<any>
+      const Img = components.img! as React.ComponentType<React.PropsWithChildren<{ src?: string; alt?: string }>>
       render(<Img src="/test.jpg" />)
       
       // Image with empty alt becomes presentation role, so use querySelector instead
@@ -240,7 +240,7 @@ describe('useMDXComponents', () => {
     })
 
     it('applies responsive styling', () => {
-      const Img = components.img!
+      const Img = components.img! as React.ComponentType<React.PropsWithChildren<{ src?: string; alt?: string }>>
       render(<Img src="/responsive.jpg" alt="Responsive image" />)
       
       const image = screen.getByRole('img', { name: 'Responsive image' })
@@ -251,7 +251,7 @@ describe('useMDXComponents', () => {
     })
 
     it('preserves other image props', () => {
-      const Img = components.img!
+      const Img = components.img! as React.ComponentType<React.PropsWithChildren<{ src?: string; alt?: string; title?: string; loading?: string }>>
       render(
         <Img 
           src="/test.jpg" 
@@ -269,9 +269,9 @@ describe('useMDXComponents', () => {
 
   describe('Table Components', () => {
     it('renders tables with responsive wrapper', () => {
-      const Table = components.table!
-      const Th = components.th!
-      const Td = components.td!
+      const Table = components.table! as React.ComponentType<React.PropsWithChildren<{}>>
+      const Th = components.th! as React.ComponentType<React.PropsWithChildren<{}>>
+      const Td = components.td! as React.ComponentType<React.PropsWithChildren<{}>>
       
       render(
         <Table>
@@ -298,7 +298,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders table headers with correct styling', () => {
-      const Th = components.th!
+      const Th = components.th! as React.ComponentType<React.PropsWithChildren<{}>>
       render(
         <table>
           <thead>
@@ -317,7 +317,7 @@ describe('useMDXComponents', () => {
     })
 
     it('renders table cells with correct styling', () => {
-      const Td = components.td!
+      const Td = components.td! as React.ComponentType<React.PropsWithChildren<{}>>
       render(
         <table>
           <tbody>
@@ -335,7 +335,7 @@ describe('useMDXComponents', () => {
 
   describe('Other Components', () => {
     it('renders horizontal rules with correct styling', () => {
-      const Hr = components.hr!
+      const Hr = components.hr! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<Hr />)
       
       const hr = document.querySelector('hr')
@@ -343,7 +343,7 @@ describe('useMDXComponents', () => {
     })
 
     it('handles horizontal rule without content', () => {
-      const Hr = components.hr!
+      const Hr = components.hr! as React.ComponentType<React.PropsWithChildren<{}>>
       expect(() => render(<Hr />)).not.toThrow()
       
       const hr = document.querySelector('hr')
@@ -361,7 +361,7 @@ describe('useMDXComponents', () => {
       const mergedComponents = useMDXComponents(customComponents)
       
       // Custom h1 should override the default
-      const CustomH1 = mergedComponents.h1!
+      const CustomH1 = mergedComponents.h1! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<CustomH1>Custom Heading</CustomH1>)
       
       const heading = screen.getByRole('heading', { level: 1 })
@@ -377,7 +377,7 @@ describe('useMDXComponents', () => {
       const mergedComponents = useMDXComponents(customComponents)
       
       // h2 should still use default implementation
-      const H2 = mergedComponents.h2!
+      const H2 = mergedComponents.h2! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<H2>Default H2</H2>)
       
       const heading = screen.getByRole('heading', { level: 2 })
@@ -393,7 +393,7 @@ describe('useMDXComponents', () => {
       
       expect(mergedComponents.customBlock).toBeDefined()
       
-      const CustomBlock = mergedComponents.customBlock!
+      const CustomBlock = mergedComponents.customBlock! as React.ComponentType<React.PropsWithChildren<{}>>
       render(<CustomBlock>Custom content</CustomBlock>)
       
       const block = screen.getByText('Custom content')
@@ -403,10 +403,10 @@ describe('useMDXComponents', () => {
 
   describe('Responsive Design', () => {
     it('applies responsive text sizes consistently', () => {
-      const H1 = components.h1!
-      const H2 = components.h2!
-      const P = components.p!
-      const Li = components.li!
+      const H1 = components.h1! as React.ComponentType<React.PropsWithChildren<{}>>
+      const H2 = components.h2! as React.ComponentType<React.PropsWithChildren<{}>>
+      const P = components.p! as React.ComponentType<React.PropsWithChildren<{}>>
+      const Li = components.li! as React.ComponentType<React.PropsWithChildren<{}>>
       
       render(
         <div>
@@ -425,9 +425,9 @@ describe('useMDXComponents', () => {
     })
 
     it('uses consistent spacing patterns', () => {
-      const H1 = components.h1!
-      const H2 = components.h2!
-      const P = components.p!
+      const H1 = components.h1! as React.ComponentType<React.PropsWithChildren<{}>>
+      const H2 = components.h2! as React.ComponentType<React.PropsWithChildren<{}>>
+      const P = components.p! as React.ComponentType<React.PropsWithChildren<{}>>
       
       render(
         <div>

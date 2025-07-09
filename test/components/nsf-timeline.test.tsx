@@ -2,9 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import NSFTimeline from '@/components/nsf-timeline'
 
-// Mock Mermaid library - need to import it to sync with vi.mock
-import { vi } from 'vitest'
-
+// Mock Mermaid library
 vi.mock('mermaid', () => ({
   default: {
     initialize: vi.fn(),
@@ -13,8 +11,8 @@ vi.mock('mermaid', () => ({
 }))
 
 // Import the mocked mermaid to get the actual mock functions
-const mermaid = await import('mermaid')
-const mockMermaid = mermaid.default
+import mermaid from 'mermaid'
+const mockMermaid = mermaid as any
 
 describe('NSFTimeline Component', () => {
   beforeEach(() => {
